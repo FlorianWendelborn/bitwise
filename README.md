@@ -14,7 +14,7 @@ If you want to save it as a dependency in ````package.json```` you should use ``
 
 ## methods
 ### readByte (Int byte)
-Returns an Array of length 8 with the read bytes. Example: 42 -> [0,0,1,0,1,0,1,0].
+Returns an Array of length 8 with the read bytes. Example: ````42 → [0,0,1,0,1,0,1,0]````.
 
 ### writeByte (Array bits)
-Returns a Byte (0-255) which equals the given bits. Example [0,0,1,0,1,0,1,0] -> 42
+Returns a Byte (0-255) which equals the given bits. Example ````[0,0,1,0,1,0,1,0] → 42````
