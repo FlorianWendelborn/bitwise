@@ -1,0 +1,32 @@
+{
+  "name": "bitwise",
+  "version": "0.0.1",
+  "description": "Bit manipulation library.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dodekeract/bitwise.git"
+  },
+  "keywords": [
+    "binary",
+    "bit",
+    "buffer",
+    "manipulate",
+    "change",
+    "read",
+    "write",
+    "bitwise"
+  ],
+  "author": "Florian Wendelborn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dodekeract/bitwise/issues"
+  },
+  "homepage": "https://github.com/dodekeract/bitwise#readme",
+  "dependencies": {
+    "expect.js": "^0.3.1"
+  }
+}
