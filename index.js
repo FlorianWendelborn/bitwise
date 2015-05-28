@@ -32,4 +32,4 @@ function writeByte (bits) {
 module.exports = {
 	readByte: readByte,
 	writeByte: writeByte
-}
+};

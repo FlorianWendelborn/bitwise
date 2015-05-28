@@ -7,3 +7,14 @@
 ![NPM Dependencies](https://david-dm.org/dodekeract/bitwise.png)
 
 Node.js library to manipulate bits.
+
+## installation
+Just type ````npm install bitwise````.
+If you want to save it as a dependency in ````package.json```` you should use ````npm install bitwise --save````.
+
+## methods
+### readByte (Int byte)
+Returns an Array of length 8 with the read bytes. Example: 42 -> [0,0,1,0,1,0,1,0].
+
+### writeByte (Array bits)
+Returns a Byte (0-255) which equals the given bits. Example [0,0,1,0,1,0,1,0] -> 42
