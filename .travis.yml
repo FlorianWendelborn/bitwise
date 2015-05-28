@@ -1,10 +1,9 @@
 sudo: false
 language: node_js
 node_js:
-  - 'latest'
+  - 'stable'
   - '0.12'
   - '0.11'
   - '0.10'
-  - '0.9'
 before_install: npm install -g mocha
 script: mocha test
