@@ -80,7 +80,8 @@ describe('buffer manipulation', function () {
 
 	describe('modify buffers', function () {
 		it('with one bit of data', function () {
-			var buffer = new Buffer(1).fill(0x00);
+			var buffer = new Buffer(1);
+			buffer.fill(0x00);
 
 			bitwise.modifyBuffer(buffer, bin('1'));
 

@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var p2 = [1, 2, 4, 8, 16, 32, 64, 128];
 
@@ -41,7 +41,6 @@ function readBuffer (buffer, offset, length) {
 	}
 	var start = Math.floor(offset/8);
 	var end = Math.ceil((offset + length) / 8);
-	var subBuffer = buffer.slice(start, end);
 	var bytesToRead = Math.floor(length/8) + 2;
 	
 	var arr = [];
@@ -60,8 +59,8 @@ function readBuffer (buffer, offset, length) {
 		i++;
 	}
 	
-	var sOff = offset % 8;
-	return arr.slice(sOff, sOff+length);
+	var subOffset = offset % 8;
+	return arr.slice(subOffset, subOffset+length);
 }
 
 function modifyBuffer (buffer, bits, offset) {
@@ -71,24 +70,26 @@ function modifyBuffer (buffer, bits, offset) {
 	var start = Math.floor(offset/8);
 	var end = Math.ceil((offset + bits.length) / 8);
 	var subBuffer = buffer.slice(start, end);
-	var arr = readBuffer(subBuffer);
-	var sOff = offset % 8;
-	var i = 0;
-	while (i < bits.length) {
-		arr[sOff] = bits[i];
-		sOff++;
-		i++;
+	
+	var byteData = readBuffer(subBuffer);
+	
+	var subOffset = offset % 8;
+	
+	for (var i = 0; i < bits.length; i++) {
+		byteData[subOffset] = bits[i];
+		subOffset++;
 	}
-	i = 0;
-	while (i < end-start) {
-		subBuffer[i] = writeByte(arr.slice(i*8, (i*8)+8));
-		i++;
+	
+	var length = end-start;
+	for (var i = 0; i < length; i++) {
+		subBuffer[i] = writeByte(byteData.slice(i*8, (i+1)*8));
 	}
 }
 
 var createBufferArray = [0,0,0,0,0,0,0,0];
 function createBuffer (bits) {
-	var buffer = new Buffer(Math.ceil(bits.length/8)).fill(0x00);
+	var buffer = new Buffer(Math.ceil(bits.length/8));
+	buffer.fill(0x00);
 
 	for (var i = 0; i < buffer.length; i++) {
 		for (var j = 0; j < 8; j++) {
