@@ -3,29 +3,39 @@ var bitwise = require('../');
 
 console.log('\033c');
 
-function bin (string) {
-	var array = [];
+bin = bitwise.toBits;
 
-	for (var i = 0; i < string.length; i++) {
-		if (string[i] === '1') {
-			array.push(1);
-		} else if (string[i] === '0') {
-			array.push(0);
-		}
-	}
-
-	return array;
-}
+describe('binary conversion', function () {
+	describe('convert from strings', function () {
+		it('without special characters', function () {
+			expect(bitwise.toBits('1001')).to.eql([1,0,0,1]);
+		});
+		it('with special characters', function () {
+			expect(bitwise.toBits('10$" -_,.\\/=01')).to.eql([1,0,0,1]);
+		});
+		it('with long strings', function () {
+			expect(bitwise.toBits('1010 0011 0001 0000 1011 0000 0100 1101 1111 0000 1101 1001 0000 0100 1110 0001 1110 0001 0010 0100')).to.eql([1,0,1,0,0,0,1,1,0,0,0,1,0,0,0,0,1,0,1,1,0,0,0,0,0,1,0,0,1,1,0,1,1,1,1,1,0,0,0,0,1,1,0,1,1,0,0,1,0,0,0,0,0,1,0,0,1,1,1,0,0,0,0,1,1,1,1,0,0,0,0,1,0,0,1,0,0,1,0,0]);
+		});
+	});
+	describe('convert from bits', function () {
+		it('without spacing', function () {
+			expect(bitwise.toString([1,0,1,0,1,0,1,0,1,0,1,0])).to.be('101010101010');
+		});
+		it('with spacing', function () {
+			expect(bitwise.toString([1,0,1,0,0,0,1,1,0,0,0,1,0,0,0,0,1,0,1,1,0,0,0,0,0,1,0,0,1,1,0,1,1,1,1,1,0,0,0,0,1,1,0,1,1,0,0,1,0,0,0,0,0,1,0,0,1,1,1,0,0,0,0,1,1,1,1,0,0,0,0,1,0,0,1,0,0,1,0,0], 4)).to.eql('1010 0011 0001 0000 1011 0000 0100 1101 1111 0000 1101 1001 0000 0100 1110 0001 1110 0001 0010 0100');
+		});
+	});
+});
 
 describe('byte manipulation', function () {
 	describe('write data', function () {
-		it('should write data', function () {
+		it('write data', function () {
 			expect(bitwise.writeByte([1,1,1,0,0,0,0,1])).to.be(0xE1);
 			expect(bitwise.writeByte([0,0,1,0,1,0,1,0])).to.be(0x2A);
 			expect(bitwise.writeByte([1,1,1,1,1,1,1,1])).to.be(0xFF);
 			expect(bitwise.writeByte([0,0,0,0,0,0,0,0])).to.be(0x00);
 		});
-		it('should return false when the array is invalid', function () {
+		it('return false when the array is invalid', function () {
 			expect(bitwise.writeByte([1,0,1,0])).to.not.be.ok();
 			expect(bitwise.writeByte([1,0,1,0,1,0,1,0,1])).to.not.be.ok();
 			expect(bitwise.writeByte([])).to.not.be.ok();
@@ -33,13 +43,13 @@ describe('byte manipulation', function () {
 		});
 	});
 	describe('read data', function () {
-		it('should read data', function () {
+		it('read data', function () {
 			expect(bitwise.readByte(0xE1)).to.eql([1,1,1,0,0,0,0,1]);
 			expect(bitwise.readByte(0x2A)).to.eql([0,0,1,0,1,0,1,0]);
 			expect(bitwise.readByte(0xFF)).to.eql([1,1,1,1,1,1,1,1]);
 			expect(bitwise.readByte(0x00)).to.eql([0,0,0,0,0,0,0,0]);
 		});
-		it('should return false when the array is invalid', function () {
+		it('return false when the array is invalid', function () {
 			expect(bitwise.readByte()).to.not.be.ok();
 			expect(bitwise.readByte(256)).to.not.be.ok();
 			expect(bitwise.readByte(-1)).to.not.be.ok();

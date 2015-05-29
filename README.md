@@ -9,11 +9,9 @@
 Node.js library to manipulate bits.
 
 ## Installation
-**Basic**
-````npm install bitwise````.
+**Basic**: ````npm install bitwise````
 
-**As Dependency**
-````npm install bitwise --save````.
+**As Dependency**: ````npm install bitwise --save````
 
 ## Methods
 ### readByte (Int byte)
@@ -55,6 +53,14 @@ var buffer = bitwise.createBuffer([1,1,1,1, 0,0,0,1, 1,0,1,0]);
 bitwise.readBuffer(buffer);
 // 1111 0001 1010 0000
 ````
+
+### toBits (String string)
+Converts a string into an array of bits. Ignores all characters except 1 and 0.
+Example: ````'10 10 12$%_.0' → [1,0,1,0,1,0]````
+
+### toString (Array bits, Int spacing, String spacer)
+Converts a bit array to a string. If defined, inserts ````spacer```` every ````spacing```` characters, but never inserts it as the last substring.
+Example: ````bitwise.toString([1,0,1,0,1,0], 2, '_') → '10_10_10'````
 
 ## Contributors
 - [Hubertus Weber](https://github.com/HubertusWeber) ([hw.gg](https://hw.gg))

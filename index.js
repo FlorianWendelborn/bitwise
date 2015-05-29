@@ -104,10 +104,52 @@ function createBuffer (bits) {
 	return buffer;
 }
 
+var toBitsArray = [];
+var toBitsIndex = 0;
+function toBits (string) {
+	toBitsArray = [];
+	toBitsIndex = 0;
+	for (var i = 0; i < string.length; i++) {
+		if (string[i] === '1') {
+			toBitsArray[toBitsIndex] = 1;
+			toBitsIndex++;
+		} else if (string[i] === '0') {
+			toBitsArray[toBitsIndex] = 0;
+			toBitsIndex++;
+		}
+	}
+
+	return toBitsArray;
+}
+
+var toStringString;
+function toString (bits, spacing, spacer) {
+	if (typeof spacing === 'undefined') {
+		spacing = 0;
+	}
+	if (typeof spacer === 'undefined') {
+		spacer = ' ';
+	}
+	if (spacing) {
+		toStringString = '';
+		for (var i = 0; i < bits.length; i++) {
+			toStringString += bits[i] ? 1 : 0;
+			if (i % spacing === spacing-1 && i !== bits.length-1) {
+				toStringString += spacer;
+			}
+		}
+		return toStringString;
+	} else {
+		return bits.join('');
+	}
+}
+
 module.exports = {
 	readByte: readByte,
 	writeByte: writeByte,
 	readBuffer: readBuffer,
 	modifyBuffer: modifyBuffer,
-	createBuffer: createBuffer
+	createBuffer: createBuffer,
+	toBits: toBits,
+	toString: toString
 };
