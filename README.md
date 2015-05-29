@@ -8,13 +8,16 @@
 
 Node.js library to manipulate bits.
 
-## installation
-Just type ````npm install bitwise````.
-If you want to save it as a dependency in ````package.json```` you should use ````npm install bitwise --save````.
+## Installation
+### Basic
+````npm install bitwise````.
 
-## methods
+### As Dependency
+````npm install bitwise --save````.
+
+## Methods
 ### readByte (Int byte)
-Returns an Array of length 8 with the read bytes.
+Returns an Array of length 8 containing the read bits.
 
 Example: ````42 → [0,0,1,0,1,0,1,0]````.
 
@@ -53,5 +56,5 @@ bitwise.readBuffer(buffer);
 // 1111 0001 1010 0000
 ````
 
-## contributors
-- [Hubertus Weber](https://github.com/HubertusWeber)
+## Contributors
+- [Hubertus Weber](https://github.com/HubertusWeber)[hw.gg](https://hw.gg)
