@@ -40,7 +40,6 @@ function readBuffer (buffer, offset, length) {
 		length = buffer.length*8-offset;
 	}
 	var start = Math.floor(offset/8);
-	var end = Math.ceil((offset + length) / 8);
 	var bytesToRead = Math.floor(length/8) + 2;
 	
 	var arr = [];
@@ -81,7 +80,7 @@ function modifyBuffer (buffer, bits, offset) {
 	}
 	
 	var length = end-start;
-	for (var i = 0; i < length; i++) {
+	for (i = 0; i < length; i++) {
 		subBuffer[i] = writeByte(byteData.slice(i*8, (i+1)*8));
 	}
 }
