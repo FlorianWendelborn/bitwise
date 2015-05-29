@@ -33,7 +33,7 @@ bitwise.readBuffer(buffer, 12);
 // 0100 0011 1110 0001 0111
 ````
 
-## modifyBuffer (Buffer buffer, Array newBits, [Int bitOffset])
+### modifyBuffer (Buffer buffer, Array newBits, [Int bitOffset])
 Modifies the buffer's bits to equal newBits starting at bitOffset.
 
 Example:
@@ -43,7 +43,7 @@ bitwise.modifyBuffer(buffer, [0,0,0,1, 0,0,1], 3);
 // 1010 1001 0011 1010
 ````
 
-## createBuffer (Array bits)
+### createBuffer (Array bits)
 Creates a new buffer and writes the given bits.
 
 Example:
