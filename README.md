@@ -28,9 +28,9 @@ Returns an Array containing bitLength bits starting at bitOffset.
 
 Example:
 ````javascript
-	var buffer = new Buffer('ED743E17', 'hex');
-	bitwise.readBuffer(buffer, 12);
-	// 0100 0011 1110 0001 0111
+var buffer = new Buffer('ED743E17', 'hex');
+bitwise.readBuffer(buffer, 12);
+// 0100 0011 1110 0001 0111
 ````
 
 ## modifyBuffer (Buffer buffer, Array newBits, [Int bitOffset])
@@ -38,9 +38,9 @@ Modifies the buffer's bits to equal newBits starting at bitOffset.
 
 Example:
 ````javascript
-	var buffer = new Buffer('A43A', 'hex');
-	bitwise.modifyBuffer(buffer, [0,0,0,1, 0,0,1], 3);
-	// 1010 1001 0011 1010
+var buffer = new Buffer('A43A', 'hex');
+bitwise.modifyBuffer(buffer, [0,0,0,1, 0,0,1], 3);
+// 1010 1001 0011 1010
 ````
 
 ## createBuffer (Array bits)
@@ -48,9 +48,9 @@ Creates a new buffer and writes the given bits.
 
 Example:
 ````javascript
-	var buffer = bitwise.createBuffer([1,1,1,1, 0,0,0,1, 1,0,1,0]);
-	bitwise.readBuffer(buffer);
-	// 1111 0001 1010 0000
+var buffer = bitwise.createBuffer([1,1,1,1, 0,0,0,1, 1,0,1,0]);
+bitwise.readBuffer(buffer);
+// 1111 0001 1010 0000
 ````
 
 ## contributors
