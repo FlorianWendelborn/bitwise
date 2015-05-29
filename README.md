@@ -9,10 +9,10 @@
 Node.js library to manipulate bits.
 
 ## Installation
-### Basic
+**Basic**
 ````npm install bitwise````.
 
-### As Dependency
+**As Dependency**
 ````npm install bitwise --save````.
 
 ## Methods
@@ -57,4 +57,4 @@ bitwise.readBuffer(buffer);
 ````
 
 ## Contributors
-- [Hubertus Weber](https://github.com/HubertusWeber)[hw.gg](https://hw.gg)
+- [Hubertus Weber](https://github.com/HubertusWeber) ([hw.gg](https://hw.gg))
