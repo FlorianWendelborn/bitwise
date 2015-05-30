@@ -248,7 +248,7 @@ var readUIntArray = [];
 var readUIntResult = 0;
 
 /**
- *	Converts a section of a buffer to an signed integer.
+ *	Converts a section of a buffer to a signed integer.
  *  
  *	@example
  *	// buffer 11110110
@@ -288,7 +288,7 @@ var readIntResult = 0;
 
 /**
  *	Converts a section of a buffer to a complementary integer.
- *	A complementary integer is like a unsigned integer, but always represents negative numbers.
+ *	A complementary integer is like an unsigned integer, but always represents negative numbers.
  *  
  *	@example
  *	// buffer 11110110

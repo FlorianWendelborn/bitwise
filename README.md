@@ -14,6 +14,8 @@ Node.js library to manipulate bits.
 
 **As Dependency**: ````npm install bitwise --save````
 
+**Require in Node**: ````var bitwise = require('bitwise');````
+
 ## Methods
 ### readByte (Int byte)
 Returns an Array of length 8 containing the read bits.
@@ -64,6 +66,46 @@ Example: ````'10 10 12$%_.0' → [1,0,1,0,1,0]````
 Converts a bit array to a string. If defined, inserts ````spacer```` every ````spacing```` characters, but never inserts it as the last substring.
 
 Example: ````bitwise.toString([1,0,1,0,1,0], 2, '_') → '10_10_10'````
+
+### readUInt (Buffer buffer, Int bitLength = 8, Int bitOffset = 0)
+
+Converts a section of a buffer to an unsigned integer.
+
+Example:
+````
+// buffer 11110110
+bitwise.readUInt(buffer, 5, 3) → 22
+````
+
+### readInt (Buffer buffer, Int bitLength = 8, Int bitOffset = 0)
+
+Converts a section of a buffer to a signed integer.
+
+Example:
+````
+// buffer 11110110
+bitwise.readUInt(buffer, 5, 3) → -10
+````
+
+### readCInt (Buffer buffer, Int bitLength = 8, Int bitOffset = 0)
+
+Converts a section of a buffer to a complementary integer.
+A complementary integer is like an unsigned integer, but always represents negative numbers.
+
+Example:
+````
+// buffer 11110110
+bitwise.readUInt(buffer, 5, 3) → -22
+````
+
+### flipBits (Array bits)
+
+Flips all given bits and returns the flipped bits.
+
+Example:
+````
+bitwise.flipBits([1,0,1,1,0,1]) → [0,1,0,0,1,0]
+````
 
 ## Contributors
 - [Hubertus Weber](https://github.com/HubertusWeber) ([hw.gg](https://hw.gg))
