@@ -1,6 +1,9 @@
 'use strict';
 
-var p2 = [1, 2, 4, 8, 16, 32, 64, 128];
+var p2 = [];
+for (var i = 0; i < 32; i++) {
+	p2[i] = Math.pow(2, i);
+}
 
 /**
  *	Returns an Array of length 8 containing the read bits.
@@ -213,6 +216,109 @@ function toString (bits, spacing, spacer) {
 }
 var toStringString;
 
+/**
+ *	Converts a section of a buffer to an unsigned integer.
+ *  
+ *	@example
+ *	// buffer 11110110
+ *	readUInt(buffer, 5, 3) → 22
+ *	
+ *	@param buffer {Buffer} the buffer to extract information from
+ *	@param length {Number} the length of the unsigned integer (in bits)
+ *	@param offset {Number} where to start (in bits)
+ *	@return {Number}
+ */
+function readUInt (buffer, length, offset) {
+	if (!length) {
+		length = 8;
+	}
+	if (!offset) {
+		offset = 0;
+	}
+	readUIntArray = readBuffer(buffer, offset, length);
+	readUIntResult = 0;
+
+	for (var i = 0; i < length; i++) {
+		readUIntResult += readUIntArray[i] * p2[length-i-1];
+	}
+
+	return readUIntResult;
+}
+var readUIntArray = [];
+var readUIntResult = 0;
+
+/**
+ *	Converts a section of a buffer to an signed integer.
+ *  
+ *	@example
+ *	// buffer 11110110
+ *	readUInt(buffer, 5, 3) → -10
+ *	
+ *	@param buffer {Buffer} the buffer to extract information from
+ *	@param length {Number} the length of the signed integer (in bits)
+ *	@param offset {Number} where to start (in bits)
+ *	@return {Number}
+ */
+function readInt (buffer, length, offset) {
+	if (!length) {
+		length = 8;
+	}
+	if (!offset) {
+		offset = 0;
+	}
+	readIntArray = readBuffer(buffer, offset, length);
+	
+	if (readIntArray[0] === 0) {
+		readIntResult = 0;
+		for (var i = 1; i < length; i++) {
+			readIntResult += readIntArray[i] * p2[length-i-1];
+		}
+	} else {
+		readIntResult = -1;
+		readIntArray = flipBits(readIntArray);
+		for (var i = 1; i < length; i++) {
+			readIntResult -= readIntArray[i] * p2[length-i-1];
+		}
+	}
+
+	return readIntResult;
+}
+var readIntArray = [];
+var readIntResult = 0;
+
+/**
+ *	Converts a section of a buffer to a complementary integer.
+ *	A complementary integer is like a unsigned integer, but always represents negative numbers.
+ *  
+ *	@example
+ *	// buffer 11110110
+ *	readUInt(buffer, 5, 3) → -22
+ *	
+ *	@param buffer {Buffer} the buffer to extract information from
+ *	@param length {Number} the length of the signed integer (in bits)
+ *	@param offset {Number} where to start (in bits)
+ *	@return {Number}
+ */
+function readCInt (buffer, length, offset) {
+	return 0 - readUInt(buffer, length, offset);
+}
+
+/**
+ *	Flips all given bits and returns the flipped bits.	
+ *
+ *	@example
+ *	flipBits([1,0,1,1,0,1]) → [0,1,0,0,1,0]
+ *
+ *	@param bits {Array} the array containing the bits to flip
+ *	@return {Array}	
+ */
+function flipBits (bits) {
+	for (var i = 0; i < bits.length; i++) {
+		bits[i] = bits[i] === 0 ? 1 : 0;
+	}
+	return bits;
+}
+
 module.exports = {
 	readByte: readByte,
 	writeByte: writeByte,
@@ -220,5 +326,9 @@ module.exports = {
 	modifyBuffer: modifyBuffer,
 	createBuffer: createBuffer,
 	toBits: toBits,
-	toString: toString
+	toString: toString,
+	readUInt: readUInt,
+	readInt: readInt,
+	readCInt: readCInt,
+	flipBits: flipBits
 };
