@@ -221,14 +221,14 @@ var toStringString;
  *  
  *	@example
  *	// buffer 11110110
- *	readUInt(buffer, 5, 3) → 22
+ *	readUInt(buffer, 3, 5) → 22
  *	
  *	@param buffer {Buffer} the buffer to extract information from
  *	@param length {Number} the length of the unsigned integer (in bits)
  *	@param offset {Number} where to start (in bits)
  *	@return {Number}
  */
-function readUInt (buffer, length, offset) {
+function readUInt (buffer, offset, length) {
 	if (!length) {
 		length = 8;
 	}
@@ -252,14 +252,14 @@ var readUIntResult = 0;
  *  
  *	@example
  *	// buffer 11110110
- *	readUInt(buffer, 5, 3) → -10
+ *	readUInt(buffer, 3, 5) → -10
  *	
  *	@param buffer {Buffer} the buffer to extract information from
  *	@param length {Number} the length of the signed integer (in bits)
  *	@param offset {Number} where to start (in bits)
  *	@return {Number}
  */
-function readInt (buffer, length, offset) {
+function readInt (buffer, offset, length) {
 	if (!length) {
 		length = 8;
 	}
@@ -275,7 +275,7 @@ function readInt (buffer, length, offset) {
 		}
 	} else {
 		readIntResult = -1;
-		readIntArray = flipBits(readIntArray);
+		readIntArray = not(readIntArray);
 		for (var i = 1; i < length; i++) {
 			readIntResult -= readIntArray[i] * p2[length-i-1];
 		}
@@ -292,29 +292,50 @@ var readIntResult = 0;
  *  
  *	@example
  *	// buffer 11110110
- *	readUInt(buffer, 5, 3) → -22
+ *	readUInt(buffer, 3, 5) → -22
  *	
  *	@param buffer {Buffer} the buffer to extract information from
  *	@param length {Number} the length of the signed integer (in bits)
  *	@param offset {Number} where to start (in bits)
  *	@return {Number}
  */
-function readCInt (buffer, length, offset) {
-	return 0 - readUInt(buffer, length, offset);
+function readCInt (buffer, offset, length) {
+	return 0 - readUInt(buffer, offset, length);
 }
 
 /**
  *	Flips all given bits and returns the flipped bits.	
  *
  *	@example
- *	flipBits([1,0,1,1,0,1]) → [0,1,0,0,1,0]
+ *	not([1,0,1,1,0,1]) → [0,1,0,0,1,0]
  *
  *	@param bits {Array} the array containing the bits to flip
  *	@return {Array}	
  */
-function flipBits (bits) {
+function not (bits) {
 	for (var i = 0; i < bits.length; i++) {
 		bits[i] = bits[i] === 0 ? 1 : 0;
+	}
+	return bits;
+}
+
+function and (bits, otherBits) {
+	for (var i = 0; i < bits.length; i++) {
+		bits[i] *= otherBits[i];
+	}
+	return bits;
+}
+
+function or (bits, otherBits) {
+	for (var i = 0; i < bits.length; i++) {
+		bits[i] =  bits[i] === 0 && bits[i] === otherBits[i] ? 0 : 1;
+	}
+	return bits;
+}
+
+function xor (bits, otherBits) {
+	for (var i = 0; i < bits.length; i++) {
+		bits[i] = bits[i] !== otherBits[i] ? 1 : 0;
 	}
 	return bits;
 }
@@ -330,5 +351,9 @@ module.exports = {
 	readUInt: readUInt,
 	readInt: readInt,
 	readCInt: readCInt,
-	flipBits: flipBits
+	flipBits: not,
+	not: not,
+	and: and,
+	or: or,
+	xor: xor
 };

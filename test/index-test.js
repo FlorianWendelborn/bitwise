@@ -3,8 +3,6 @@ console.log('\033c');
 var expect = require('expect.js');
 var bitwise = require('../');
 
-bin = bitwise.toBits;
-
 describe('binary conversion', function () {
 	describe('convert from strings', function () {
 		it('without special characters', function () {
@@ -27,11 +25,35 @@ describe('binary conversion', function () {
 	});
 });
 
-describe('bit manipulation', function () {
-	it('flip bits', function () {
-		var bits = bitwise.toBits('11110110 11111110 10000110 11001000');
-		var expected = bitwise.toBits('00001001 00000001 01111001 00110111');
-		expect(bitwise.flipBits(bits)).to.eql(expected);
+describe('bitwise operations', function () {
+	function createBits () {
+		return bitwise.toBits('1000 1101');
+	}
+	function createOtherBits () {
+		return bitwise.toBits('0110 0100');
+	}
+	it('NOT', function () {
+		var bits = createBits();
+		var expected = bitwise.toBits('0111 0010');
+		expect(bitwise.not(bits)).to.eql(expected);
+	});
+	it('AND', function () {
+		var bits = createBits();
+		var otherBits = createOtherBits();
+		var expected = bitwise.toBits('0000 0100');
+		expect(bitwise.and(bits, otherBits)).to.eql(expected);
+	});
+	it('OR', function () {
+		var bits = createBits();
+		var otherBits = createOtherBits();
+		var expected = bitwise.toBits('1110 1101');
+		expect(bitwise.or(bits, otherBits)).to.eql(expected);
+	});
+	it('XOR', function () {
+		var bits = createBits();
+		var otherBits = createOtherBits();
+		var expected = bitwise.toBits('1110 1001');
+		expect(bitwise.xor(bits, otherBits)).to.eql(expected);
 	});
 });
 
@@ -85,7 +107,7 @@ describe('number conversion', function () {
 				{length: 5, offset: 4, expected: 13}
 			];
 			tests.forEach(function (test) {
-				var number = bitwise.readUInt(buffer, test.length, test.offset);
+				var number = bitwise.readUInt(buffer, test.offset, test.length);
 				expect(number).to.be(test.expected);
 			});
 		});
@@ -103,7 +125,7 @@ describe('number conversion', function () {
 				{length: 13, offset: 13, expected: 6683}
 			];
 			tests.forEach(function (test) {
-				var number = bitwise.readUInt(buffer, test.length, test.offset);
+				var number = bitwise.readUInt(buffer, test.offset, test.length);
 				expect(number).to.be(test.expected);
 			});
 		});
@@ -121,7 +143,7 @@ describe('number conversion', function () {
 				{length: 21, offset: 9, expected: 2073010}
 			];
 			tests.forEach(function (test) {
-				var number = bitwise.readUInt(buffer, test.length, test.offset);
+				var number = bitwise.readUInt(buffer, test.offset, test.length);
 				expect(number).to.be(test.expected);
 			});
 		});
@@ -139,13 +161,13 @@ describe('number conversion', function () {
 				{length: 29, offset: 1, expected: 499098034}
 			];
 			tests.forEach(function (test) {
-				var number = bitwise.readUInt(buffer, test.length, test.offset);
+				var number = bitwise.readUInt(buffer, test.offset, test.length);
 				expect(number).to.be(test.expected);
 			});
 		});
 		it('32 bit', function () {
 			var buffer = createTestBuffer();
-			var number = bitwise.readUInt(buffer, 32, 0);
+			var number = bitwise.readUInt(buffer, 0, 32);
 			expect(number).to.be(4143875784);
 		});
 	});
@@ -161,7 +183,7 @@ describe('number conversion', function () {
 				{length: 7, offset: 1, expected: -10}
 			];
 			tests.forEach(function (test) {
-				var number = bitwise.readInt(buffer, test.length, test.offset);
+				var number = bitwise.readInt(buffer, test.offset, test.length);
 				expect(number).to.be(test.expected);	
 			});
 		});
@@ -178,7 +200,7 @@ describe('number conversion', function () {
 				{length: 15, offset: 1, expected: -2306}
 			];
 			tests.forEach(function (test) {
-				var number = bitwise.readInt(buffer, test.length, test.offset);
+				var number = bitwise.readInt(buffer, test.offset, test.length);
 				expect(number).to.be(test.expected);	
 			});
 		});
@@ -195,7 +217,7 @@ describe('number conversion', function () {
 				{length: 23, offset: 1, expected: -590202}
 			];
 			tests.forEach(function (test) {
-				var number = bitwise.readInt(buffer, test.length, test.offset);
+				var number = bitwise.readInt(buffer, test.offset, test.length);
 				expect(number).to.be(test.expected);	
 			});
 		});
@@ -212,13 +234,13 @@ describe('number conversion', function () {
 				{length: 31, offset: 1, expected: -151091512}
 			];
 			tests.forEach(function (test) {
-				var number = bitwise.readInt(buffer, test.length, test.offset);
+				var number = bitwise.readInt(buffer, test.offset, test.length);
 				expect(number).to.be(test.expected);	
 			});
 		});
 		it('32 bit', function () {
 			var buffer = createTestBuffer();
-			var number = bitwise.readInt(buffer, 32, 0);
+			var number = bitwise.readInt(buffer, 0, 32);
 			expect(number).to.be(-151091512);
 		});
 	});
@@ -235,7 +257,7 @@ describe('number conversion', function () {
 				{length: 5, offset: 4, expected: -13}
 			];
 			tests.forEach(function (test) {
-				var number = bitwise.readCInt(buffer, test.length, test.offset);
+				var number = bitwise.readCInt(buffer, test.offset, test.length);
 				expect(number).to.be(test.expected);
 			});
 		});
@@ -253,7 +275,7 @@ describe('number conversion', function () {
 				{length: 13, offset: 13, expected: -6683}
 			];
 			tests.forEach(function (test) {
-				var number = bitwise.readCInt(buffer, test.length, test.offset);
+				var number = bitwise.readCInt(buffer, test.offset, test.length);
 				expect(number).to.be(test.expected);
 			});
 		});
@@ -271,7 +293,7 @@ describe('number conversion', function () {
 				{length: 21, offset: 9, expected: -2073010}
 			];
 			tests.forEach(function (test) {
-				var number = bitwise.readCInt(buffer, test.length, test.offset);
+				var number = bitwise.readCInt(buffer, test.offset, test.length);
 				expect(number).to.be(test.expected);
 			});
 		});
@@ -289,13 +311,13 @@ describe('number conversion', function () {
 				{length: 29, offset: 1, expected: -499098034}
 			];
 			tests.forEach(function (test) {
-				var number = bitwise.readCInt(buffer, test.length, test.offset);
+				var number = bitwise.readCInt(buffer, test.offset, test.length);
 				expect(number).to.be(test.expected);
 			});
 		});
 		it('32 bit', function () {
 			var buffer = createTestBuffer();
-			var number = bitwise.readCInt(buffer, 32, 0);
+			var number = bitwise.readCInt(buffer, 0, 32);
 			expect(number).to.be(-4143875784);
 		});
 	});
@@ -305,27 +327,27 @@ describe('buffer manipulation', function () {
 	describe('read buffers', function () {
 		it('without length and offset', function () {
 			var buffer = new Buffer('AE37', 'hex');
-			expect(bitwise.readBuffer(buffer).join()).to.be(bin('1010 1110 0011 0111').join());
+			expect(bitwise.readBuffer(buffer).join()).to.be(bitwise.toBits('1010 1110 0011 0111').join());
 		});
 		it('without length, but offset', function () {
 			var buffer = new Buffer('950225B12B44E2B4C4A6', 'hex');
-			expect(bitwise.readBuffer(buffer, 64).join()).to.be(bin('1100 0100 1010 0110').join());
+			expect(bitwise.readBuffer(buffer, 64).join()).to.be(bitwise.toBits('1100 0100 1010 0110').join());
 		});
-		it('without length, but offset (offset % 8 !== 0)', function () {
+		it('without length, but offset (odd start)', function () {
 			var buffer = new Buffer('ED743E17', 'hex');
-			expect(bitwise.readBuffer(buffer, 12).join()).to.be(bin('0100 0011 1110 0001 0111').join());
+			expect(bitwise.readBuffer(buffer, 12).join()).to.be(bitwise.toBits('0100 0011 1110 0001 0111').join());
 		});
 		it('with offset and length', function () {
 			var buffer = new Buffer('950225B12B44E2B4C4A6', 'hex');
-			expect(bitwise.readBuffer(buffer, 32, 24).join()).to.be(bin('0010 1011 0100 0100 1110 0010').join());
+			expect(bitwise.readBuffer(buffer, 32, 24).join()).to.be(bitwise.toBits('0010 1011 0100 0100 1110 0010').join());
 		});
-		it('with offset and length (length % 8 !== 0)', function () {
+		it('with offset and length (odd end)', function () {
 			var buffer = new Buffer('950225B12B44E2B4C4A6', 'hex');
-			expect(bitwise.readBuffer(buffer, 32, 30).join()).to.be(bin('0010 1011 0100 0100 1110 0010 1011 01').join());
+			expect(bitwise.readBuffer(buffer, 32, 30).join()).to.be(bitwise.toBits('0010 1011 0100 0100 1110 0010 1011 01').join());
 		});
-		it('with offset and length (offset % 8 !== 0; length % 8 !== 0)', function () {
+		it('with offset and length (odd start and end)', function () {
 			var buffer = new Buffer('950225B12B44E2B4C4A6', 'hex');
-			expect(bitwise.readBuffer(buffer, 34, 28).join()).to.be(bin('1010 1101 0001 0011 1000 1010 1101').join());
+			expect(bitwise.readBuffer(buffer, 34, 28).join()).to.be(bitwise.toBits('1010 1101 0001 0011 1000 1010 1101').join());
 		});
 	});
 
@@ -334,49 +356,49 @@ describe('buffer manipulation', function () {
 			var buffer = new Buffer(1);
 			buffer.fill(0x00);
 
-			bitwise.modifyBuffer(buffer, bin('1'));
+			bitwise.modifyBuffer(buffer, bitwise.toBits('1'));
 
-			expect(bitwise.readBuffer(buffer).join()).to.be(bin('1000 0000').join());
+			expect(bitwise.readBuffer(buffer).join()).to.be(bitwise.toBits('1000 0000').join());
 		});
 		it('without offset', function () {
 			var buffer = new Buffer('FBA8', 'hex');
 
-			bitwise.modifyBuffer(buffer, bin('01010'));
+			bitwise.modifyBuffer(buffer, bitwise.toBits('01010'));
 
-			expect(bitwise.readBuffer(buffer).join()).to.be(bin('0101 0011 1010 1000').join());
+			expect(bitwise.readBuffer(buffer).join()).to.be(bitwise.toBits('0101 0011 1010 1000').join());
 		});
 		it('with offset', function () {
 			var buffer = new Buffer('A43A', 'hex');
 
-			bitwise.modifyBuffer(buffer, bin('01001001'), 3);
+			bitwise.modifyBuffer(buffer, bitwise.toBits('01001001'), 3);
 			
-			expect(bitwise.readBuffer(buffer).join()).to.be(bin('1010 1001 0011 1010').join());
+			expect(bitwise.readBuffer(buffer).join()).to.be(bitwise.toBits('1010 1001 0011 1010').join());
 		});
 		it('with one byte offset', function () {
 			var buffer = new Buffer('AC14E974', 'hex');
 
-			bitwise.modifyBuffer(buffer, bin('01001001'), 8);
+			bitwise.modifyBuffer(buffer, bitwise.toBits('01001001'), 8);
 			
-			expect(bitwise.readBuffer(buffer).join()).to.be(bin('1010 1100 0100 1001 1110 1001 0111 0100').join());
+			expect(bitwise.readBuffer(buffer).join()).to.be(bitwise.toBits('1010 1100 0100 1001 1110 1001 0111 0100').join());
 		});
 	});
 
 	describe('create buffers', function () {
 		it('with less than one byte', function () {
-			var buffer = bitwise.createBuffer(bin('10011'));
-			expect(bitwise.readBuffer(buffer).join()).to.be(bin('1001 1000').join());
+			var buffer = bitwise.createBuffer(bitwise.toBits('10011'));
+			expect(bitwise.readBuffer(buffer).join()).to.be(bitwise.toBits('1001 1000').join());
 		});
 		it('with one byte', function () {
-			var buffer = bitwise.createBuffer(bin('0111 1100'));
-			expect(bitwise.readBuffer(buffer).join()).to.be(bin('0111 1100').join());
+			var buffer = bitwise.createBuffer(bitwise.toBits('0111 1100'));
+			expect(bitwise.readBuffer(buffer).join()).to.be(bitwise.toBits('0111 1100').join());
 		});
 		it('with more than one byte', function () {
-			var buffer = bitwise.createBuffer(bin('1111 0001 1010'));
-			expect(bitwise.readBuffer(buffer).join()).to.be(bin('1111 0001 1010 0000').join());
+			var buffer = bitwise.createBuffer(bitwise.toBits('1111 0001 1010'));
+			expect(bitwise.readBuffer(buffer).join()).to.be(bitwise.toBits('1111 0001 1010 0000').join());
 		});
 		it('with multiple bytes', function () {
-			var buffer = bitwise.createBuffer(bin('10101101 11100101 01100011'));
-			expect(bitwise.readBuffer(buffer).join()).to.be(bin('10101101 11100101 01100011').join());
+			var buffer = bitwise.createBuffer(bitwise.toBits('10101101 11100101 01100011'));
+			expect(bitwise.readBuffer(buffer).join()).to.be(bitwise.toBits('10101101 11100101 01100011').join());
 		});
 	});
 });
