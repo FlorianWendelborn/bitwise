@@ -138,6 +138,7 @@ bitwise.xor([1,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,0,0,1]
 ### 0.1.0
 - **Re-ordered the arguments** in readInt, readCInt, readUInt
 - Added not, and, or, xor
+- Renamed flipBits to not
 
 ## Contributors
 - [Hubertus Weber](https://github.com/HubertusWeber) ([hw.gg](https://hw.gg))
