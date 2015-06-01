@@ -319,6 +319,16 @@ function not (bits) {
 	return bits;
 }
 
+/**
+ *	Applies the AND operation, expects two arrays of the same size and returns a new one.	
+ *
+ *	@example
+ *	and([1,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [0,0,0,0,0,1,0,0]
+ *
+ *	@param bits {Array} the array containing the bits
+ *	@param otherBits {Array} the array containing the other bits
+ *	@return {Array}
+ */
 function and (bits, otherBits) {
 	for (var i = 0; i < bits.length; i++) {
 		bits[i] *= otherBits[i];
@@ -326,6 +336,16 @@ function and (bits, otherBits) {
 	return bits;
 }
 
+/**
+ *	Applies the OR operation, expects two arrays of the same size and returns a new one.
+ *
+ *	@example
+ *	or([1,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,1,0,1]
+ *
+ *	@param bits {Array} the array containing the bits
+ *	@param otherBits {Array} the array containing the other bits
+ *	@return {Array}
+ */
 function or (bits, otherBits) {
 	for (var i = 0; i < bits.length; i++) {
 		bits[i] =  bits[i] === 0 && bits[i] === otherBits[i] ? 0 : 1;
@@ -333,6 +353,16 @@ function or (bits, otherBits) {
 	return bits;
 }
 
+/**
+ *	Applies the exclusive or operation, expects two arrays of the same size and returns a new one.
+ *
+ *	@example
+ *	xor([1,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,0,0,1]
+ *
+ *	@param bits {Array} the array containing the bits
+ *	@param otherBits {Array} the array containing the other bits
+ *	@return {Array}
+ */
 function xor (bits, otherBits) {
 	for (var i = 0; i < bits.length; i++) {
 		bits[i] = bits[i] !== otherBits[i] ? 1 : 0;
@@ -351,7 +381,6 @@ module.exports = {
 	readUInt: readUInt,
 	readInt: readInt,
 	readCInt: readCInt,
-	flipBits: not,
 	not: not,
 	and: and,
 	or: or,

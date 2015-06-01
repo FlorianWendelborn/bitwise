@@ -98,14 +98,46 @@ Example:
 bitwise.readUInt(buffer, 5, 3) → -22
 ````
 
-### flipBits (Array bits)
+### not (Array bits)
 
 Flips all given bits and returns the flipped bits.
 
 Example:
 ````
-bitwise.flipBits([1,0,1,1,0,1]) → [0,1,0,0,1,0]
+bitwise.not([1,0,1,1,0,1]) → [0,1,0,0,1,0]
 ````
+
+### and (Array bits1, Array bits2)
+
+Applies the AND operation, expects two arrays of the same size and returns a new one.
+
+Example:
+````
+bitwise.and([1,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [0,0,0,0,0,1,0,0]
+````
+
+### or (Array bits1, Array bits2)
+
+Applies the OR operation, expects two arrays of the same size and returns a new one.
+
+Example:
+````
+bitwise.or([1,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,1,0,1]
+````
+
+### xor (Array bits1, Array bits2)
+
+Applies the exclusive or operation, expects two arrays of the same size and returns a new one.
+
+Example:
+````
+bitwise.xor([1,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,0,0,1]
+````
+
+## History
+### 0.1.0
+- **Re-ordered the arguments** in readInt, readCInt, readUInt
+- Added not, and, or, xor
 
 ## Contributors
 - [Hubertus Weber](https://github.com/HubertusWeber) ([hw.gg](https://hw.gg))
