@@ -67,27 +67,27 @@ Converts a bit array to a string. If defined, inserts ````spacer```` every ````s
 
 Example: ````bitwise.toString([1,0,1,0,1,0], 2, '_') → '10_10_10'````
 
-### readUInt (Buffer buffer, Int bitLength = 8, Int bitOffset = 0)
+### readUInt (Buffer buffer, Int bitOffset = 0, Int bitLength = 8)
 
 Converts a section of a buffer to an unsigned integer.
 
 Example:
 ````
 // buffer 11110110
-bitwise.readUInt(buffer, 5, 3) → 22
+bitwise.readUInt(buffer, 3, 5) → 22
 ````
 
-### readInt (Buffer buffer, Int bitLength = 8, Int bitOffset = 0)
+### readInt (Buffer buffer, Int bitOffset = 0, Int bitLength = 8)
 
 Converts a section of a buffer to a signed integer.
 
 Example:
 ````
 // buffer 11110110
-bitwise.readUInt(buffer, 5, 3) → -10
+bitwise.readUInt(buffer, 3, 5) → -10
 ````
 
-### readCInt (Buffer buffer, Int bitLength = 8, Int bitOffset = 0)
+### readCInt (Buffer buffer, Int bitOffset = 0, Int bitLength = 8)
 
 Converts a section of a buffer to a complementary integer.
 A complementary integer is like an unsigned integer, but always represents negative numbers.
@@ -95,7 +95,7 @@ A complementary integer is like an unsigned integer, but always represents negat
 Example:
 ````
 // buffer 11110110
-bitwise.readUInt(buffer, 5, 3) → -22
+bitwise.readUInt(buffer, 3, 5) → -22
 ````
 
 ### not (Array bits)
