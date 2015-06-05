@@ -1,5 +1,10 @@
 'use strict';
 
+// require
+var operators = require('./operators');
+var not = operators.not;
+
+// generate powers of two
 var p2 = [];
 for (var i = 0; i < 32; i++) {
 	p2[i] = Math.pow(2, i);
@@ -303,147 +308,32 @@ function readCInt (buffer, offset, length) {
 	return 0 - readUInt(buffer, offset, length);
 }
 
-/**
- *	Flips all given bits and returns the flipped bits.	
- *
- *	@example
- *	not([1,0,1,1,0,1]) → [0,1,0,0,1,0]
- *
- *	@param bits {Array} the array containing the bits to flip
- *	@return {Array}	
- */
-function not (bits) {
-	var result = [];
-	for (var i = 0; i < bits.length; i++) {
-		result[i] = bits[i] === 0 ? 1 : 0;
-	}
-	return result;
-}
-
-/**
- *	Applies the AND operation, expects two arrays of the same size and returns a new one.	
- *
- *	@example
- *	and([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [0,0,0,0,0,1,0,0]
- *
- *	@param bits {Array} the array containing the bits
- *	@param otherBits {Array} the array containing the other bits
- *	@return {Array}
- */
-function and (bits, otherBits) {
-	var result = [];
-	for (var i = 0; i < bits.length; i++) {
-		result[i] = bits[i] * otherBits[i];
-	}
-	return result;
-}
-
-/**
- *	Applies the OR operation, expects two arrays of the same size and returns a new one.
- *
- *	@example
- *	or([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,1,0,1]
- *
- *	@param bits {Array} the array containing the bits
- *	@param otherBits {Array} the array containing the other bits
- *	@return {Array}
- */
-function or (bits, otherBits) {
-	var result = [];
-	for (var i = 0; i < bits.length; i++) {
-		result[i] = bits[i] === 0 && bits[i] === otherBits[i] ? 0 : 1;
-	}
-	return result;
-}
-
-/**
- *	Applies the exclusive or operation, expects two arrays of the same size and returns a new one.
- *
- *	@example
- *	xor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,0,0,1]
- *
- *	@param bits {Array} the array containing the bits
- *	@param otherBits {Array} the array containing the other bits
- *	@return {Array}
- */
-function xor (bits, otherBits) {
-	var result = [];
-	for (var i = 0; i < bits.length; i++) {
-		result[i] = bits[i] !== otherBits[i] ? 1 : 0;
-	}
-	return result;
-}
-
-/**
- *	Applies the NOR operation, expects two arrays of the same size and returns a new one.
- *
- *	@example
- *	nor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [0,0,0,1,0,0,1,0]
- *
- *	@param bits {Array} the array containing the bits
- *	@param otherBits {Array} the array containing the other bits
- *	@return {Array}
- */
-function nor (bits, otherBits) {
-	var result = [];
-	for (var i = 0; i < bits.length; i++) {
-		result[i] = bits[i] === 0 && bits[i] === otherBits[i] ? 1 : 0;
-	}
-	return result;
-}
-
-/**
- *	Applies the exclusive nor operation, expects two arrays of the same size and returns a new one.
- *
- *	@example
- *	xnor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [0,0,0,1,0,1,1,0]
- *
- *	@param bits {Array} the array containing the bits
- *	@param otherBits {Array} the array containing the other bits
- *	@return {Array}
- */
-function xnor (bits, otherBits) {
-	var result = [];
-	for (var i = 0; i < bits.length; i++) {
-		result[i] = bits[i] === otherBits[i] ? 1 : 0;
-	}
-	return result;
-}
-
-/**
- *	Applies the NAND operation, expects two arrays of the same size and returns a new one.	
- *
- *	@example
- *	nand([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,1,1,0,1,1]
- *
- *	@param bits {Array} the array containing the bits
- *	@param otherBits {Array} the array containing the other bits
- *	@return {Array}
- */
-function nand (bits, otherBits) {
-	var result = [];
-	for (var i = 0; i < bits.length; i++) {
-		result[i] = bits[i] === 1 && bits[i] === otherBits[i] ? 0 : 1;
-	}
-	return result;
-}
-
 module.exports = {
+	// bytes
 	readByte: readByte,
 	writeByte: writeByte,
+	
+	// buffers
 	readBuffer: readBuffer,
 	modifyBuffer: modifyBuffer,
 	createBuffer: createBuffer,
+	
+	// convert
 	toBits: toBits,
 	toString: toString,
+
+	// types
 	readUInt: readUInt,
 	readInt: readInt,
 	readCInt: readCInt,
-	not: not,
-	and: and,
-	or: or,
-	xor: xor,
-	nor: nor,
-	xnor: xnor,
-	nand: nand
+
+	// operators
+	not: operators.not,
+	or: operators.or,
+	nor: operators.nor,
+	xor: operators.xor,
+	xnor: operators.xnor,
+	and: operators.and,
+	nand: operators.nand,
+	operators: operators
 };
