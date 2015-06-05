@@ -1,4 +1,3 @@
 node_modules/
 .travis.yml
 test/
-.inch.json

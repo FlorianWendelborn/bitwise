@@ -1,7 +1,7 @@
 'use strict';
 
 // require
-var operators = require('./operators');
+var operators = require('./lib/operators.js');
 var not = operators.not;
 
 // generate powers of two
