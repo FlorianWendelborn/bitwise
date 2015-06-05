@@ -113,7 +113,7 @@ Applies the AND operation, expects two arrays of the same size and returns a new
 
 Example:
 ````
-bitwise.and([1,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [0,0,0,0,0,1,0,0]
+bitwise.and([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [0,0,0,0,0,1,0,0]
 ````
 
 ### or (Array bits1, Array bits2)
@@ -122,7 +122,7 @@ Applies the OR operation, expects two arrays of the same size and returns a new 
 
 Example:
 ````
-bitwise.or([1,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,1,0,1]
+bitwise.or([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,1,0,1]
 ````
 
 ### xor (Array bits1, Array bits2)
@@ -131,10 +131,41 @@ Applies the exclusive or operation, expects two arrays of the same size and retu
 
 Example:
 ````
-bitwise.xor([1,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,0,0,1]
+bitwise.xor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,0,0,1]
+````
+
+### nor (Array bits1, Array bits2)
+
+Applies the NOR operation, expects two arrays of the same size and returns a new one.
+
+Example:
+````
+bitwise.nor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,0,0,1]
+````
+
+### xnor (Array bits1, Array bits2)
+
+Applies the exclusive NOR operation, expects two arrays of the same size and returns a new one.
+
+Example:
+````
+bitwise.xnor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,0,0,1]
+````
+
+### nand (Array bits1, Array bits2)
+
+Applies the NAND operation, expects two arrays of the same size and returns a new one.
+
+Example:
+````
+bitwise.nand([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,0,0,1]
 ````
 
 ## History
+### 0.1.2
+- Added nor, xnor, nand
+- Fixed bitwise operations modifying original array
+
 ### 0.1.0
 - **Re-ordered the arguments** in readInt, readCInt, readUInt
 - Added not, and, or, xor

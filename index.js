@@ -313,61 +313,119 @@ function readCInt (buffer, offset, length) {
  *	@return {Array}	
  */
 function not (bits) {
+	var result = [];
 	for (var i = 0; i < bits.length; i++) {
-		bits[i] = bits[i] === 0 ? 1 : 0;
+		result[i] = bits[i] === 0 ? 1 : 0;
 	}
-	return bits;
+	return result;
 }
 
 /**
  *	Applies the AND operation, expects two arrays of the same size and returns a new one.	
  *
  *	@example
- *	and([1,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [0,0,0,0,0,1,0,0]
+ *	and([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [0,0,0,0,0,1,0,0]
  *
  *	@param bits {Array} the array containing the bits
  *	@param otherBits {Array} the array containing the other bits
  *	@return {Array}
  */
 function and (bits, otherBits) {
+	var result = [];
 	for (var i = 0; i < bits.length; i++) {
-		bits[i] *= otherBits[i];
+		result[i] = bits[i] * otherBits[i];
 	}
-	return bits;
+	return result;
 }
 
 /**
  *	Applies the OR operation, expects two arrays of the same size and returns a new one.
  *
  *	@example
- *	or([1,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,1,0,1]
+ *	or([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,1,0,1]
  *
  *	@param bits {Array} the array containing the bits
  *	@param otherBits {Array} the array containing the other bits
  *	@return {Array}
  */
 function or (bits, otherBits) {
+	var result = [];
 	for (var i = 0; i < bits.length; i++) {
-		bits[i] =  bits[i] === 0 && bits[i] === otherBits[i] ? 0 : 1;
+		result[i] = bits[i] === 0 && bits[i] === otherBits[i] ? 0 : 1;
 	}
-	return bits;
+	return result;
 }
 
 /**
  *	Applies the exclusive or operation, expects two arrays of the same size and returns a new one.
  *
  *	@example
- *	xor([1,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,0,0,1]
+ *	xor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,0,0,1]
  *
  *	@param bits {Array} the array containing the bits
  *	@param otherBits {Array} the array containing the other bits
  *	@return {Array}
  */
 function xor (bits, otherBits) {
+	var result = [];
 	for (var i = 0; i < bits.length; i++) {
-		bits[i] = bits[i] !== otherBits[i] ? 1 : 0;
+		result[i] = bits[i] !== otherBits[i] ? 1 : 0;
 	}
-	return bits;
+	return result;
+}
+
+/**
+ *	Applies the NOR operation, expects two arrays of the same size and returns a new one.
+ *
+ *	@example
+ *	nor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [0,0,0,1,0,0,1,0]
+ *
+ *	@param bits {Array} the array containing the bits
+ *	@param otherBits {Array} the array containing the other bits
+ *	@return {Array}
+ */
+function nor (bits, otherBits) {
+	var result = [];
+	for (var i = 0; i < bits.length; i++) {
+		result[i] = bits[i] === 0 && bits[i] === otherBits[i] ? 1 : 0;
+	}
+	return result;
+}
+
+/**
+ *	Applies the exclusive nor operation, expects two arrays of the same size and returns a new one.
+ *
+ *	@example
+ *	xnor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [0,0,0,1,0,1,1,0]
+ *
+ *	@param bits {Array} the array containing the bits
+ *	@param otherBits {Array} the array containing the other bits
+ *	@return {Array}
+ */
+function xnor (bits, otherBits) {
+	var result = [];
+	for (var i = 0; i < bits.length; i++) {
+		result[i] = bits[i] === otherBits[i] ? 1 : 0;
+	}
+	return result;
+}
+
+/**
+ *	Applies the NAND operation, expects two arrays of the same size and returns a new one.	
+ *
+ *	@example
+ *	nand([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,1,1,0,1,1]
+ *
+ *	@param bits {Array} the array containing the bits
+ *	@param otherBits {Array} the array containing the other bits
+ *	@return {Array}
+ */
+function nand (bits, otherBits) {
+	var result = [];
+	for (var i = 0; i < bits.length; i++) {
+		result[i] = bits[i] === 1 && bits[i] === otherBits[i] ? 0 : 1;
+	}
+	return result;
 }
 
 module.exports = {
@@ -384,5 +442,8 @@ module.exports = {
 	not: not,
 	and: and,
 	or: or,
-	xor: xor
+	xor: xor,
+	nor: nor,
+	xnor: xnor,
+	nand: nand
 };

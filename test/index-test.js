@@ -55,6 +55,24 @@ describe('bitwise operations', function () {
 		var expected = bitwise.toBits('1110 1001');
 		expect(bitwise.xor(bits, otherBits)).to.eql(expected);
 	});
+	it('NOR', function () {
+		var bits = createBits();
+		var otherBits = createOtherBits();
+		var expected = bitwise.toBits('0001 0010');
+		expect(bitwise.nor(bits, otherBits)).to.eql(expected);
+	});
+	it('XNOR', function () {
+		var bits = createBits();
+		var otherBits = createOtherBits();
+		var expected = bitwise.toBits('0001 0110');
+		expect(bitwise.xnor(bits, otherBits)).to.eql(expected);
+	});
+	it('NAND', function () {
+		var bits = createBits();
+		var otherBits = createOtherBits();
+		var expected = bitwise.toBits('1111 1011');
+		expect(bitwise.nand(bits, otherBits)).to.eql(expected);
+	});
 });
 
 describe('byte manipulation', function () {
