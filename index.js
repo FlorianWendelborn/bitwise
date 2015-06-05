@@ -4,6 +4,9 @@
 var operators = require('./lib/operators.js');
 var not = operators.not;
 
+// fix jslint being 2005
+/*jslint bitwise: true */
+
 // generate powers of two
 var p2 = [];
 for (var i = 0; i < 32; i++) {
@@ -276,15 +279,16 @@ function readInt (buffer, offset, length) {
 	}
 	readIntArray = readBuffer(buffer, offset, length);
 	
+	var i = 0;
 	if (readIntArray[0] === 0) {
 		readIntResult = 0;
-		for (var i = 1; i < length; i++) {
+		while (++i < length) {
 			readIntResult += readIntArray[i] * p2[length-i-1];
 		}
 	} else {
 		readIntResult = -1;
 		readIntArray = not(readIntArray);
-		for (var i = 1; i < length; i++) {
+		while (++i < length) {
 			readIntResult -= readIntArray[i] * p2[length-i-1];
 		}
 	}
