@@ -13,7 +13,6 @@ for (var i = 0; i < 32; i++) {
 	p2[i] = Math.pow(2, i);
 }
 
-var readByteArray = [0,0,0,0,0,0,0,0];
 /**
  *	Returns an Array of length 8 containing the read bits.
  *
@@ -24,22 +23,22 @@ var readByteArray = [0,0,0,0,0,0,0,0];
  *	@return {Array, false}
  */
 function readByte (data) {
+	var result = [0,0,0,0,0,0,0,0];
 	if (typeof data === 'number' && data < 256 && data >= 0 && Math.floor(data) === data) {
 		for (var i = 7; i >= 0; i--) {
 			if (data >= p2[i]) {
 				data -= p2[i];
-				readByteArray[7-i] = 1;
+				result[7-i] = 1;
 			} else {
-				readByteArray[7-i] = 0;
+				result[7-i] = 0;
 			}
 		}
-		return readByteArray;
+		return result;
 	} else {
 		return false;
 	}
 }
 
-var writeByteData = 0x00;
 /**
  *	Returns a Byte (0-255) which equals the given bits.
  *
@@ -50,18 +49,18 @@ var writeByteData = 0x00;
  *	@return {Number, false}
  */
 function writeByte (bits) {
+	var data = 0x00;
 	if (typeof bits === 'object' && bits.length === 8) {
-		writeByteData = 0x00;
+		data = 0x00;
 		for (var i = 0; i < 8; i++) {
-			writeByteData = writeByteData | (bits[i] ? p2[7-i] : 0);
+			data = data | (bits[i] ? p2[7-i] : 0);
 		}
-		return writeByteData;
+		return data;
 	} else {
 		return false;
 	}
 }
 
-var readBufferBits = [0,0,0,0,0,0,0,0];
 /**
  *	Returns an Array containing bitLength bits starting at bitOffset.
  *
@@ -74,6 +73,7 @@ var readBufferBits = [0,0,0,0,0,0,0,0];
  *	@return {Array}
  */
 function readBuffer (buffer, offset, length) {
+	var bits = [0,0,0,0,0,0,0,0];
 	if (!offset) {
 		offset = 0;
 	}
@@ -87,15 +87,15 @@ function readBuffer (buffer, offset, length) {
 	arr.length = bytesToRead*8;
 	var i = 0;
 	while (i <= bytesToRead) {
-		readBufferBits = readByte(buffer[start+i]);
-		arr[i*8] = readBufferBits[0];
-		arr[i*8+1] = readBufferBits[1];
-		arr[i*8+2] = readBufferBits[2];
-		arr[i*8+3] = readBufferBits[3];
-		arr[i*8+4] = readBufferBits[4];
-		arr[i*8+5] = readBufferBits[5];
-		arr[i*8+6] = readBufferBits[6];
-		arr[i*8+7] = readBufferBits[7];
+		bits = readByte(buffer[start+i]);
+		arr[i*8] = bits[0];
+		arr[i*8+1] = bits[1];
+		arr[i*8+2] = bits[2];
+		arr[i*8+3] = bits[3];
+		arr[i*8+4] = bits[4];
+		arr[i*8+5] = bits[5];
+		arr[i*8+6] = bits[6];
+		arr[i*8+7] = bits[7];
 		i++;
 	}
 	
@@ -137,7 +137,6 @@ function modifyBuffer (buffer, bits, offset) {
 	}
 }
 
-var createBufferArray = [0,0,0,0,0,0,0,0];
 /**
  *	Creates a new buffer and writes the given bits.
  *
@@ -148,25 +147,24 @@ var createBufferArray = [0,0,0,0,0,0,0,0];
  *	@return {Buffer}
  */
 function createBuffer (bits) {
+	var data = [0,0,0,0,0,0,0,0];
 	var buffer = new Buffer(Math.ceil(bits.length/8));
 	buffer.fill(0x00);
 
 	for (var i = 0; i < buffer.length; i++) {
 		for (var j = 0; j < 8; j++) {
 			if (bits[i*8+j]) {
-				createBufferArray[j] = bits[i*8+j];
+				data[j] = bits[i*8+j];
 			} else {
-				createBufferArray[j] = 0;
+				data[j] = 0;
 			}
 		}
-		buffer[i] = writeByte(createBufferArray);
+		buffer[i] = writeByte(data);
 	}
 
 	return buffer;
 }
 
-var toBitsArray = [];
-var toBitsIndex = 0;
 /**
  *	Converts a string into an array of bits. Ignores all characters except 1 and 0.
  *
@@ -177,22 +175,21 @@ var toBitsIndex = 0;
  *	@return {Array}
  */
 function toBits (string) {
-	toBitsArray = [];
-	toBitsIndex = 0;
+	var arr = [];
+	var index = 0;
 	for (var i = 0; i < string.length; i++) {
 		if (string[i] === '1') {
-			toBitsArray[toBitsIndex] = 1;
-			toBitsIndex++;
+			arr[index] = 1;
+			index++;
 		} else if (string[i] === '0') {
-			toBitsArray[toBitsIndex] = 0;
-			toBitsIndex++;
+			arr[index] = 0;
+			index++;
 		}
 	}
 
-	return toBitsArray;
+	return arr;
 }
 
-var toStringString;
 /**
  *	Converts a bit array to a string. If defined, inserts spacer every spacing characters, but never inserts it as the last substring.
  *
@@ -205,6 +202,7 @@ var toStringString;
  *	@return {String}
  */
 function toString (bits, spacing, spacer) {
+	var string;
 	if (typeof spacing === 'undefined') {
 		spacing = 0;
 	}
@@ -212,21 +210,19 @@ function toString (bits, spacing, spacer) {
 		spacer = ' ';
 	}
 	if (spacing) {
-		toStringString = '';
+		string = '';
 		for (var i = 0; i < bits.length; i++) {
-			toStringString += bits[i] ? 1 : 0;
+			string += bits[i] ? 1 : 0;
 			if (i % spacing === spacing-1 && i !== bits.length-1) {
-				toStringString += spacer;
+				string += spacer;
 			}
 		}
-		return toStringString;
+		return string;
 	} else {
 		return bits.join('');
 	}
 }
 
-var readUIntArray = [];
-var readUIntResult = 0;
 /**
  *	Converts a section of a buffer to an unsigned integer.
  *  
@@ -240,24 +236,25 @@ var readUIntResult = 0;
  *	@return {Number}
  */
 function readUInt (buffer, offset, length) {
+	var arr = [];
+	var result = 0;
+	
 	if (!length) {
 		length = 8;
 	}
 	if (!offset) {
 		offset = 0;
 	}
-	readUIntArray = readBuffer(buffer, offset, length);
-	readUIntResult = 0;
+	arr = readBuffer(buffer, offset, length);
+	result = 0;
 
 	for (var i = 0; i < length; i++) {
-		readUIntResult += readUIntArray[i] * p2[length-i-1];
+		result += arr[i] * p2[length-i-1];
 	}
 
-	return readUIntResult;
+	return result;
 }
 
-var readIntArray = [];
-var readIntResult = 0;
 /**
  *	Converts a section of a buffer to a signed integer.
  *  
@@ -271,29 +268,31 @@ var readIntResult = 0;
  *	@return {Number}
  */
 function readInt (buffer, offset, length) {
+	var arr = [];
+	var result = 0;
 	if (!length) {
 		length = 8;
 	}
 	if (!offset) {
 		offset = 0;
 	}
-	readIntArray = readBuffer(buffer, offset, length);
+	arr = readBuffer(buffer, offset, length);
 	
 	var i = 0;
-	if (readIntArray[0] === 0) {
-		readIntResult = 0;
+	if (arr[0] === 0) {
+		result = 0;
 		while (++i < length) {
-			readIntResult += readIntArray[i] * p2[length-i-1];
+			result += arr[i] * p2[length-i-1];
 		}
 	} else {
-		readIntResult = -1;
-		readIntArray = not(readIntArray);
+		result = -1;
+		arr = not(arr);
 		while (++i < length) {
-			readIntResult -= readIntArray[i] * p2[length-i-1];
+			result -= arr[i] * p2[length-i-1];
 		}
 	}
 
-	return readIntResult;
+	return result;
 }
 
 /**
