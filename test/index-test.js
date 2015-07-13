@@ -132,6 +132,7 @@ describe('number conversion', function () {
 		it('8-15 bit', function () {
 			var buffer = createTestBuffer();
 			var tests = [
+				{length: null, offset: 0, expected: 246},
 				{length: 8, offset: 0, expected: 246},
 				{length: 9, offset: 7, expected: 254},
 				{length: 10, offset: 6, expected: 766},
@@ -202,12 +203,13 @@ describe('number conversion', function () {
 			];
 			tests.forEach(function (test) {
 				var number = bitwise.readInt(buffer, test.offset, test.length);
-				expect(number).to.be(test.expected);	
+				expect(number).to.be(test.expected);
 			});
 		});
 		it('8-15 bit', function () {
 			var buffer = createTestBuffer();
 			var tests = [
+				{length: null, offset: 0, expected: -10},
 				{length: 8, offset: 0, expected: -10},
 				{length: 9, offset: 7, expected: 254},
 				{length: 10, offset: 6, expected: -258},
@@ -219,7 +221,7 @@ describe('number conversion', function () {
 			];
 			tests.forEach(function (test) {
 				var number = bitwise.readInt(buffer, test.offset, test.length);
-				expect(number).to.be(test.expected);	
+				expect(number).to.be(test.expected);
 			});
 		});
 		it('16-23 bit', function () {
@@ -236,7 +238,7 @@ describe('number conversion', function () {
 			];
 			tests.forEach(function (test) {
 				var number = bitwise.readInt(buffer, test.offset, test.length);
-				expect(number).to.be(test.expected);	
+				expect(number).to.be(test.expected);
 			});
 		});
 		it('24-31 bit', function () {
@@ -253,7 +255,7 @@ describe('number conversion', function () {
 			];
 			tests.forEach(function (test) {
 				var number = bitwise.readInt(buffer, test.offset, test.length);
-				expect(number).to.be(test.expected);	
+				expect(number).to.be(test.expected);
 			});
 		});
 		it('32 bit', function () {
@@ -389,14 +391,14 @@ describe('buffer manipulation', function () {
 			var buffer = new Buffer('A43A', 'hex');
 
 			bitwise.modifyBuffer(buffer, bitwise.toBits('01001001'), 3);
-			
+
 			expect(bitwise.readBuffer(buffer).join()).to.be(bitwise.toBits('1010 1001 0011 1010').join());
 		});
 		it('with one byte offset', function () {
 			var buffer = new Buffer('AC14E974', 'hex');
 
 			bitwise.modifyBuffer(buffer, bitwise.toBits('01001001'), 8);
-			
+
 			expect(bitwise.readBuffer(buffer).join()).to.be(bitwise.toBits('1010 1100 0100 1001 1110 1001 0111 0100').join());
 		});
 	});
