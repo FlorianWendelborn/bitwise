@@ -4,7 +4,8 @@
   "description": "Bit manipulation library.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test"
+    "test": "mocha test",
+    "travis": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec test"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,9 @@
   },
   "homepage": "https://github.com/dodekeract/bitwise#readme",
   "devDependencies": {
-    "expect.js": "^0.3.1"
+    "coveralls": "^2.11.2",
+    "expect.js": "^0.3.1",
+    "istanbul": "^0.3.17",
+    "mocha": "^2.2.5"
   }
 }

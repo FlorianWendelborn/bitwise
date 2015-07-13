@@ -6,4 +6,5 @@ node_js:
   - '0.11'
   - '0.10'
 before_install: npm install -g mocha
-script: mocha test
+script: npm run travis
+after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
