@@ -37,12 +37,6 @@ describe('bitwise operations', function () {
 		var expected = bitwise.toBits('0111 0010');
 		expect(bitwise.not(bits)).to.eql(expected);
 	});
-	it('AND', function () {
-		var bits = createBits();
-		var otherBits = createOtherBits();
-		var expected = bitwise.toBits('0000 0100');
-		expect(bitwise.and(bits, otherBits)).to.eql(expected);
-	});
 	it('OR', function () {
 		var bits = createBits();
 		var otherBits = createOtherBits();
@@ -66,6 +60,12 @@ describe('bitwise operations', function () {
 		var otherBits = createOtherBits();
 		var expected = bitwise.toBits('0001 0110');
 		expect(bitwise.xnor(bits, otherBits)).to.eql(expected);
+	});
+	it('AND', function () {
+		var bits = createBits();
+		var otherBits = createOtherBits();
+		var expected = bitwise.toBits('0000 0100');
+		expect(bitwise.and(bits, otherBits)).to.eql(expected);
 	});
 	it('NAND', function () {
 		var bits = createBits();
@@ -419,6 +419,66 @@ describe('buffer manipulation', function () {
 		it('with multiple bytes', function () {
 			var buffer = bitwise.createBuffer(bitwise.toBits('10101101 11100101 01100011'));
 			expect(bitwise.readBuffer(buffer).join()).to.be(bitwise.toBits('10101101 11100101 01100011').join());
+		});
+	});
+});
+
+describe('run bitwise operations on buffers', function () {
+	var bufferA, bufferB, bufferC;
+	beforeEach(function () {
+		bufferA = bitwise.createBuffer(bitwise.toBits('0110 1100 0110 1000 1110 0001 0010 1100'));
+		bufferB = bitwise.createBuffer(bitwise.toBits('1011 0101 1001 1110 0001 1011 0100 0011'));
+		bufferC = bitwise.createBuffer(bitwise.toBits('1010 1010 1010 1010 1010 1010 1010 1010')); // NOR XNOR NAND
+	});
+	it('NOT', function () {
+		expect(bitwise.readBuffer(bitwise.bufferNOT(bufferA)).join()).to.be(bitwise.toBits('1001 0011 1001 0111 0001 1110 1101 0011').join());
+	});
+	describe('OR', function () {
+		it('equal size', function () {
+			expect(bitwise.readBuffer(bitwise.bufferOR(bufferA, bufferB)).join()).to.be(bitwise.toBits('1111 1101 1111 1110 1111 1011 0110 1111').join());
+		});
+		it('looping', function () {
+			expect(bitwise.readBuffer(bitwise.bufferOR(bufferC, bufferA, true)).join()).to.be(bitwise.toBits('1110 1110 1110 1010 1110 1011 1010 1110').join());
+		});
+	});
+	describe('NOR', function () {
+		it('equal size', function () {
+			expect(bitwise.readBuffer(bitwise.bufferNOR(bufferA, bufferB)).join()).to.be(bitwise.toBits('0000 0010 0000 0001 0000 0100 1001 0000').join());
+		});
+		it('looping', function () {
+			expect(bitwise.readBuffer(bitwise.bufferNOR(bufferC, bufferA, true)).join()).to.be(bitwise.toBits('0001 0001 0001 0101 0001 0100 0101 0001').join());
+		});
+	});
+	describe('XOR', function () {
+		it('equal size', function () {
+			expect(bitwise.readBuffer(bitwise.bufferXOR(bufferA, bufferB)).join()).to.be(bitwise.toBits('1101 1001 1111 0110 1111 1010 0110 1111').join());
+		});
+		it('looping', function () {
+			expect(bitwise.readBuffer(bitwise.bufferXOR(bufferC, bufferA, true)).join()).to.be(bitwise.toBits('1100 0110 1100 0010 0100 1011 1000 0110').join());
+		});
+	});
+	describe('XNOR', function () {
+		it('equal size', function () {
+			expect(bitwise.readBuffer(bitwise.bufferXNOR(bufferA, bufferB)).join()).to.be(bitwise.toBits('0010 0110 0000 1001 0000 0101 1001 0000').join());
+		});
+		it('looping', function () {
+			expect(bitwise.readBuffer(bitwise.bufferXNOR(bufferC, bufferA, true)).join()).to.be(bitwise.toBits('0011 1001 0011 1101 1011 0100 0111 1001').join());
+		});
+	});
+	describe('AND', function () {
+		it('equal size', function () {
+			expect(bitwise.readBuffer(bitwise.bufferAND(bufferA, bufferB)).join()).to.be(bitwise.toBits('0010 0100 0000 1000 0000 0001 0000 0000').join());
+		});
+		it('looping', function () {
+			expect(bitwise.readBuffer(bitwise.bufferAND(bufferC, bufferA, true)).join()).to.be(bitwise.toBits('0010 1000 0010 1000 1010 0000 0010 1000').join());
+		});
+	});
+	describe('NAND', function () {
+		it('equal size', function () {
+			expect(bitwise.readBuffer(bitwise.bufferNAND(bufferA, bufferB)).join()).to.be(bitwise.toBits('1101 1011 1111 0111 1111 1110 1111 1111').join());
+		});
+		it('looping', function () {
+			expect(bitwise.readBuffer(bitwise.bufferNAND(bufferC, bufferA, true)).join()).to.be(bitwise.toBits('1101 0111 1101 0111 0101 1111 1101 0111').join());
 		});
 	});
 });

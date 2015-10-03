@@ -82,7 +82,7 @@ function readBuffer (buffer, offset, length) {
 	}
 	var start = Math.floor(offset/8);
 	var bytesToRead = Math.floor(length/8) + 2;
-	
+
 	var arr = [];
 	arr.length = bytesToRead*8;
 	var i = 0;
@@ -98,7 +98,7 @@ function readBuffer (buffer, offset, length) {
 		arr[i*8+7] = bits[7];
 		i++;
 	}
-	
+
 	var subOffset = offset % 8;
 	return arr.slice(subOffset, subOffset+length);
 }
@@ -121,16 +121,16 @@ function modifyBuffer (buffer, bits, offset) {
 	var start = Math.floor(offset/8);
 	var end = Math.ceil((offset + bits.length) / 8);
 	var subBuffer = buffer.slice(start, end);
-	
+
 	var byteData = readBuffer(subBuffer);
-	
+
 	var subOffset = offset % 8;
-	
+
 	for (var i = 0; i < bits.length; i++) {
 		byteData[subOffset] = bits[i];
 		subOffset++;
 	}
-	
+
 	var length = end-start;
 	for (i = 0; i < length; i++) {
 		subBuffer[i] = writeByte(byteData.slice(i*8, (i+1)*8));
@@ -225,11 +225,11 @@ function toString (bits, spacing, spacer) {
 
 /**
  *	Converts a section of a buffer to an unsigned integer.
- *  
+ *
  *	@example
  *	// buffer 11110110
  *	readUInt(buffer, 3, 5) => 22
- *	
+ *
  *	@param buffer {Buffer} the buffer to extract information from
  *	@param length {Number} the length of the unsigned integer (in bits)
  *	@param offset {Number} where to start (in bits)
@@ -238,7 +238,7 @@ function toString (bits, spacing, spacer) {
 function readUInt (buffer, offset, length) {
 	var arr = [];
 	var result = 0;
-	
+
 	if (!length) {
 		length = 8;
 	}
@@ -257,11 +257,11 @@ function readUInt (buffer, offset, length) {
 
 /**
  *	Converts a section of a buffer to a signed integer.
- *  
+ *
  *	@example
  *	// buffer 11110110
  *	readUInt(buffer, 3, 5) => -10
- *	
+ *
  *	@param buffer {Buffer} the buffer to extract information from
  *	@param length {Number} the length of the signed integer (in bits)
  *	@param offset {Number} where to start (in bits)
@@ -277,7 +277,7 @@ function readInt (buffer, offset, length) {
 		offset = 0;
 	}
 	arr = readBuffer(buffer, offset, length);
-	
+
 	var i = 0;
 	if (arr[0] === 0) {
 		result = 0;
@@ -298,11 +298,11 @@ function readInt (buffer, offset, length) {
 /**
  *	Converts a section of a buffer to a complementary integer.
  *	A complementary integer is like an unsigned integer, but always represents negative numbers.
- *  
+ *
  *	@example
  *	// buffer 11110110
  *	readUInt(buffer, 3, 5) => -22
- *	
+ *
  *	@param buffer {Buffer} the buffer to extract information from
  *	@param length {Number} the length of the signed integer (in bits)
  *	@param offset {Number} where to start (in bits)
@@ -312,16 +312,107 @@ function readCInt (buffer, offset, length) {
 	return 0 - readUInt(buffer, offset, length);
 }
 
+function bufferNOT (buffer) {
+	return applyBufferOperation(buffer, buffer, 'not', false);
+}
+
+function bufferOR (buffer, otherBuffer, loop) {
+	return applyBufferOperation(buffer, otherBuffer, 'or', loop);
+}
+
+function bufferNOR (buffer, otherBuffer, loop) {
+	return applyBufferOperation(buffer, otherBuffer, 'nor', loop);
+}
+
+function bufferXOR (buffer, otherBuffer, loop) {
+	return applyBufferOperation(buffer, otherBuffer, 'xor', loop);
+}
+
+function bufferXNOR (buffer, otherBuffer, loop) {
+	return applyBufferOperation(buffer, otherBuffer, 'xnor', loop);
+}
+
+function bufferAND (buffer, otherBuffer, loop) {
+	return applyBufferOperation(buffer, otherBuffer, 'and', loop);
+}
+
+function bufferNAND (buffer, otherBuffer, loop) {
+	return applyBufferOperation(buffer, otherBuffer, 'nand', loop);
+}
+
+function applyBufferOperation (buffer, otherBuffer, type, loop) {
+	if (!loop && buffer.length != otherBuffer.length) {
+		return false;
+	} else {
+		var length = loop ? otherBuffer.length : buffer.length;
+	}
+
+	var resultBuffer = new Buffer(length);
+	resultBuffer.fill(0x00);
+
+	for (var i = 0; i < length; i++) {
+		switch (type) {
+			case 'not':
+				resultBuffer[i] = ~buffer[i];
+			break;
+			case 'or':
+				if(loop) {
+					resultBuffer[i] = buffer[i%buffer.length] | otherBuffer[i];
+				} else {
+					resultBuffer[i] = buffer[i] | otherBuffer[i];
+				}
+			break;
+			case 'nor':
+				if(loop) {
+					resultBuffer[i] = ~(buffer[i%buffer.length] | otherBuffer[i]);
+				} else {
+					resultBuffer[i] = ~(buffer[i] | otherBuffer[i]);
+				}
+			break;
+			case 'xor':
+				if(loop) {
+					resultBuffer[i] = buffer[i%buffer.length] ^ otherBuffer[i];
+				} else {
+					resultBuffer[i] = buffer[i] ^ otherBuffer[i];
+				}
+			break;
+			case 'xnor':
+				if(loop) {
+					resultBuffer[i] = ~(buffer[i%buffer.length] ^ otherBuffer[i]);
+				} else {
+					resultBuffer[i] = ~(buffer[i] ^ otherBuffer[i]);
+				}
+			break;
+			case 'and':
+				if(loop) {
+					resultBuffer[i] = buffer[i%buffer.length] & otherBuffer[i];
+				} else {
+					resultBuffer[i] = buffer[i] & otherBuffer[i];
+				}
+			break;
+			case 'nand':
+				if(loop) {
+					resultBuffer[i] = ~(buffer[i%buffer.length] & otherBuffer[i]);
+				} else {
+					resultBuffer[i] = ~(buffer[i] & otherBuffer[i]);
+				}
+			break;
+		}
+	}
+
+	return resultBuffer;
+}
+
 module.exports = {
 	// bytes
 	readByte: readByte,
 	writeByte: writeByte,
-	
+
 	// buffers
 	readBuffer: readBuffer,
 	modifyBuffer: modifyBuffer,
 	createBuffer: createBuffer,
-	
+
 	// convert
 	toBits: toBits,
 	toString: toString,
@@ -339,5 +430,14 @@ module.exports = {
 	xnor: operators.xnor,
 	and: operators.and,
 	nand: operators.nand,
-	operators: operators
+	operators: operators,
+
+	// buffer operations
+	bufferNOT: bufferNOT,
+	bufferOR: bufferOR,
+	bufferNOR: bufferNOR,
+	bufferXOR: bufferXOR,
+	bufferXNOR: bufferXNOR,
+	bufferAND: bufferAND,
+	bufferNAND: bufferNAND
 };
