@@ -162,7 +162,22 @@ Example:
 bitwise.nand([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,0,0,1]
 ````
 
+## Buffer Operations
+
+NOT, OR, NOR, XOR, XNOR, AND, NAND
+
+Proper documentation will (proably) follow later, if you need to know more now, just look into the [unit test files](https://github.com/dodekeract/bitwise/blob/master/test/index-test.js).
+
+Example:
+````
+var isLooping = true; // -> if first buffer is "empty", it will be read again from its start
+var resultBuffer = bitwise.buffer.xor(bufferA, bufferB, isLooping);
+````
+
 ## History
+### 0.2.0
+- Added buffer bitwise operations
+
 ### 0.1.2
 - Added nor, xnor, nand
 - Fixed bitwise operations modifying original array
