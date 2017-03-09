@@ -1,6 +1,6 @@
 # bitwise
 
-[![Join the chat at https://gitter.im/dodekeract/bitwise](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dodekeract/bitwise?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Slack](https://slack.dodekeract.com/badge.svg)](https://slack.dodekeract.com)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 [![Build Status](https://api.travis-ci.org/dodekeract/bitwise.svg)](https://travis-ci.org/dodekeract/bitwise/)
 [![Code Climate](https://codeclimate.com/github/dodekeract/bitwise/badges/gpa.svg)](https://codeclimate.com/github/dodekeract/bitwise)
