@@ -74,7 +74,7 @@ Example: ````bitwise.toString([1,0,1,0,1,0], 2, '_') → '10_10_10'````
 Converts a section of a buffer to an unsigned integer.
 
 Example:
-````
+````javascript
 // buffer 11110110
 bitwise.readUInt(buffer, 3, 5) → 22
 ````
@@ -84,7 +84,7 @@ bitwise.readUInt(buffer, 3, 5) → 22
 Converts a section of a buffer to a signed integer.
 
 Example:
-````
+````javascript
 // buffer 11110110
 bitwise.readUInt(buffer, 3, 5) → -10
 ````
@@ -95,7 +95,7 @@ Converts a section of a buffer to a complementary integer.
 A complementary integer is like an unsigned integer, but always represents negative numbers.
 
 Example:
-````
+````javascript
 // buffer 11110110
 bitwise.readUInt(buffer, 3, 5) → -22
 ````
@@ -105,7 +105,7 @@ bitwise.readUInt(buffer, 3, 5) → -22
 Flips all given bits and returns the flipped bits.
 
 Example:
-````
+````javascript
 bitwise.not([1,0,1,1,0,1]) → [0,1,0,0,1,0]
 ````
 
@@ -114,7 +114,7 @@ bitwise.not([1,0,1,1,0,1]) → [0,1,0,0,1,0]
 Applies the AND operation, expects two arrays of the same size and returns a new one.
 
 Example:
-````
+````javascript
 bitwise.and([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [0,0,0,0,0,1,0,0]
 ````
 
@@ -123,7 +123,7 @@ bitwise.and([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [0,0,0,0,0,1,0,0]
 Applies the OR operation, expects two arrays of the same size and returns a new one.
 
 Example:
-````
+````javascript
 bitwise.or([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,1,0,1]
 ````
 
@@ -132,7 +132,7 @@ bitwise.or([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,1,0,1]
 Applies the exclusive or operation, expects two arrays of the same size and returns a new one.
 
 Example:
-````
+````javascript
 bitwise.xor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,0,0,1]
 ````
 
@@ -141,7 +141,7 @@ bitwise.xor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,0,0,1]
 Applies the NOR operation, expects two arrays of the same size and returns a new one.
 
 Example:
-````
+````javascript
 bitwise.nor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,0,0,1]
 ````
 
@@ -150,7 +150,7 @@ bitwise.nor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,0,0,1]
 Applies the exclusive NOR operation, expects two arrays of the same size and returns a new one.
 
 Example:
-````
+````javascript
 bitwise.xnor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,0,0,1]
 ````
 
@@ -159,7 +159,7 @@ bitwise.xnor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,0,0,1]
 Applies the NAND operation, expects two arrays of the same size and returns a new one.
 
 Example:
-````
+````javascript
 bitwise.nand([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) → [1,1,1,0,1,0,0,1]
 ````
 
@@ -170,7 +170,7 @@ NOT, OR, NOR, XOR, XNOR, AND, NAND
 Proper documentation will (proably) follow later, if you need to know more now, just look into the [unit test files](https://github.com/dodekeract/bitwise/blob/master/test/index-test.js).
 
 Example:
-````
+````javascript
 var isLooping = true; // -> if first buffer is "empty", it will be read again from its start
 var resultBuffer = bitwise.buffer.xor(bufferA, bufferB, isLooping);
 ````
