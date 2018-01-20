@@ -25,40 +25,40 @@ export const nand = (buffer, otherBuffer, loop) =>
  *	applyOperation('nand', buffer, otherBuffer);
  *
  *	@param type {String} the type of the operation
- *	@param buffer {Buffer} first buffer
- *	@param otherBuffer {Buffer} second buffer
- *	@param loop {Boolean} loop through first buffer
+ *	@param buffer1 {Buffer} first buffer
+ *	@param buffer2 {Buffer} second buffer
+ *	@param isLooping {Boolean} loop through first buffer
  *	@return {Array}
  */
-const applyOperation = (type, buffer, otherBuffer, loop) => {
-	const length = loop ? otherBuffer.length : buffer.length
+const applyOperation = (type, buffer1, buffer2, isLooping = false) => {
+	const length = isLooping ? buffer2.length : buffer1.length
 
 	const result = new Buffer(length)
 	result.fill(0x00)
 
 	for (let i = 0; i < length; i++) {
-		const j = loop ? i % buffer.length : i
+		const j = isLooping ? i % buffer1.length : i
 		switch (type) {
 			case 'not':
-				result[i] = ~buffer[i]
+				result[i] = ~buffer1[i]
 				break
 			case 'or':
-				result[i] = buffer[j] | otherBuffer[i]
+				result[i] = buffer1[j] | buffer2[i]
 				break
 			case 'nor':
-				result[i] = ~(buffer[j] | otherBuffer[i])
+				result[i] = ~(buffer1[j] | buffer2[i])
 				break
 			case 'xor':
-				result[i] = buffer[j] ^ otherBuffer[i]
+				result[i] = buffer1[j] ^ buffer2[i]
 				break
 			case 'xnor':
-				result[i] = ~(buffer[j] ^ otherBuffer[i])
+				result[i] = ~(buffer1[j] ^ buffer2[i])
 				break
 			case 'and':
-				result[i] = buffer[j] & otherBuffer[i]
+				result[i] = buffer1[j] & buffer2[i]
 				break
 			case 'nand':
-				result[i] = ~(buffer[j] & otherBuffer[i])
+				result[i] = ~(buffer1[j] & buffer2[i])
 				break
 		}
 	}

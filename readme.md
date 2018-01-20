@@ -75,41 +75,110 @@ or
 * [string](#string)
 	* [toBits](#stringtobits)
 
-## byte
+## bits
 
-```js
-// cherry-pick
-import byte from 'bitwise/byte'
-```
-
-### byte.read
+### bits.and
 
 ```ts
-(byte: Integer)
+(bits1: Array, bits2: Array)
 ```
 
-Returns an Array of length 8 containing the read bits.
+Applies the `AND` operation, expects two arrays of the same size and returns a new one.
 
 ```js
-bitwise.byte.read(42)
-// [0,0,1,0,1,0,1,0]
-bitwise.byte.read(256)
-// RangeError('invalid size')
+bitwise.bits.and([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
+// [0, 0, 0, 0, 0, 1, 0, 0]
 ```
 
-### byte.write
+### bits.nand
+
+```ts
+(bits1: Array, bits2: Array)
+```
+
+Applies the `NAND` operation, expects two arrays of the same size and returns a new one.
+
+```js
+bitwise.bits.nand([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
+// [1, 1, 1, 0, 1, 0, 0, 1]
+```
+
+### bits.nor
+
+```ts
+(bits1: Array, bits2: Array)
+```
+
+Applies the `NOR` operation, expects two arrays of the same size and returns a new one.
+
+```js
+bitwise.bits.nor([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
+// [1, 1, 1, 0, 1, 0, 0, 1]
+```
+
+### bits.not
 
 ```ts
 (bits: Array)
 ```
 
-Returns a Byte (0-255) which equals the given bits.
+Flips all given bits and returns the flipped bits.
 
 ```js
-bitwise.byte.write([0, 0, 1, 0, 1, 0, 1, 0])
-// 42
-bitwise.byte.read([0, 0, 1, 0, 1, 0, 1, 0, 0])
-// RangeError('invalid array length')
+bitwise.bits.not([1, 0, 1, 1, 0, 1])
+// [0, 1, 0, 0, 1, 0]
+```
+
+### bits.or
+
+```ts
+(bits1: Array, bits2: Array)
+```
+
+Applies the `OR` operation, expects two arrays of the same size and returns a new one.
+
+```js
+bitwise.bits.or([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
+// [1, 1, 1, 0, 1, 1, 0, 1]
+```
+
+### bits.xnor
+
+```ts
+(bits1: Array, bits2: Array)
+```
+
+Applies the exclusive `NOR` operation, expects two arrays of the same size and returns a new one.
+
+```js
+bitwise.bits.xnor([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
+// [1, 1, 1, 0, 1, 0, 0, 1]
+```
+
+### bits.xor
+
+```ts
+(bits1: Array, bits2: Array)
+```
+
+Applies the exclusive `OR` operation, expects two arrays of the same size and returns a new one.
+
+```js
+bitwise.bits.xor([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
+// [1, 1, 1, 0, 1, 0, 0, 1]
+```
+
+### bits.toString
+
+```ts
+(bits: Array, spacing = 0, spacer = ' ')
+```
+
+Converts a bit `Array` to a `String`. If defined, inserts `spacer` every `spacing` characters, but never inserts it as the last substring.
+
+```js
+bitwise.bits.toString([1, 0, 1, 0, 1, 0], 2, '_')
+// '10_10_10'
 ```
 
 ## buffer
@@ -119,18 +188,17 @@ bitwise.byte.read([0, 0, 1, 0, 1, 0, 1, 0, 0])
 import buffer from 'bitwise/buffer'
 ```
 
-### buffer.read
+### buffer.create
 
 ```ts
-(buffer: Buffer, bitOffset = 0, bitLength = 8)
+(bits: Array)
 ```
 
-Returns an Array containing `bitLength` bits starting at `bitOffset`.
+Creates a new buffer and writes the given bits.
 
 ```js
-const buffer = new Buffer('ED743E17', 'hex')
-bitwise.buffer.read(buffer, 12)
-// [0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1]
+const buffer = bitwise.buffer.create([1,1,1,1, 0,0,0,1, 1,0,1,0]);
+// Buffer(1111 0001 1010 0000)
 ```
 
 ### buffer.modify
@@ -147,17 +215,109 @@ bitwise.buffer.modify(buffer, [0, 0, 0, 1, 0, 0, 1], 3);
 // Buffer(1010 1001 0011 1010)
 ```
 
-### buffer.create
+### buffer.and
 
 ```ts
-(bits: Array)
+(buffer1: Buffer, buffer2: Buffer, isLooping = false)
 ```
 
-Creates a new buffer and writes the given bits.
+Applies a bitwise `AND` with `buffer2` to every value in `buffer1`. Returns a new buffer. If `isLooping` is set, `buffer1` may be read multiple times in case it's shorter than `buffer2`.
 
 ```js
-const buffer = bitwise.buffer.create([1,1,1,1, 0,0,0,1, 1,0,1,0]);
-// Buffer(1111 0001 1010 0000)
+bitwise.buffer.and(buffer1, buffer2, false)
+// Buffer(buffer1 AND buffer2)
+```
+
+### buffer.nand
+
+```ts
+(buffer1: Buffer, buffer2: Buffer, isLooping = false)
+```
+
+Applies a bitwise `NAND` with `buffer2` to every value in `buffer1`. Returns a new buffer. If `isLooping` is set, `buffer1` may be read multiple times in case it's shorter than `buffer2`.
+
+```js
+bitwise.buffer.nand(buffer1, buffer2, false)
+// Buffer(buffer1 NAND buffer2)
+```
+
+### buffer.nor
+
+```ts
+(buffer1: Buffer, buffer2: Buffer, isLooping = false)
+```
+
+Applies a bitwise `NOR` with `buffer2` to every value in `buffer1`. Returns a new buffer. If `isLooping` is set, `buffer1` may be read multiple times in case it's shorter than `buffer2`.
+
+```js
+bitwise.buffer.nor(buffer1, buffer2, false)
+// Buffer(buffer1 NOR buffer2)
+```
+
+### buffer.not
+
+```ts
+(buffer: Buffer)
+```
+
+Flips all bits in the given buffer.
+
+```js
+bitwise.buffer.not(buffer, false)
+// Buffer(NOT buffer)
+```
+
+### buffer.or
+
+```ts
+(buffer1: Buffer, buffer2: Buffer, isLooping = false)
+```
+
+Applies a bitwise `OR` with `buffer2` to every value in `buffer1`. Returns a new buffer. If `isLooping` is set, `buffer1` may be read multiple times in case it's shorter than `buffer2`.
+
+```js
+bitwise.buffer.or(buffer1, buffer2, false)
+// Buffer(buffer1 OR buffer2)
+```
+
+### buffer.xnor
+
+```ts
+(buffer1: Buffer, buffer2: Buffer, isLooping = false)
+```
+
+Applies a bitwise `XNOR` with `buffer2` to every value in `buffer1`. Returns a new buffer. If `isLooping` is set, `buffer1` may be read multiple times in case it's shorter than `buffer2`.
+
+```js
+bitwise.buffer.xnor(buffer1, buffer2, false)
+// Buffer(buffer1 XNOR buffer2)
+```
+
+### buffer.xor
+
+```ts
+(buffer1: Buffer, buffer2: Buffer, isLooping = false)
+```
+
+Applies a bitwise `XOR` with `buffer2` to every value in `buffer1`. Returns a new buffer. If `isLooping` is set, `buffer1` may be read multiple times in case it's shorter than `buffer2`.
+
+```js
+bitwise.buffer.xor(buffer1, buffer2, false)
+// Buffer(buffer1 XOR buffer2)
+```
+
+### buffer.read
+
+```ts
+(buffer: Buffer, bitOffset = 0, bitLength = 8)
+```
+
+Returns an Array containing `bitLength` bits starting at `bitOffset`.
+
+```js
+const buffer = new Buffer('ED743E17', 'hex')
+bitwise.buffer.read(buffer, 12)
+// [0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1]
 ```
 
 ### buffer.readUInt
@@ -203,15 +363,78 @@ bitwise.buffer.readUInt(buffer, 3, 5)
 // -22
 ```
 
-### Buffer Operations
-
-NOT, OR, NOR, XOR, XNOR, AND, NAND
-
-Proper documentation will (probably) follow later, if you need to know more now, just look into the [unit test files](https://github.com/dodekeract/bitwise/blob/master/source/buffer/operations.test.js).
+## byte
 
 ```js
-const isLooping = true; // -> if first buffer is "empty", it will be read again from its start
-const resultBuffer = bitwise.buffer.xor(bufferA, bufferB, isLooping);
+// cherry-pick
+import byte from 'bitwise/byte'
+```
+
+### byte.read
+
+```ts
+(byte: Integer)
+```
+
+Returns an Array of length 8 containing the read bits.
+
+```js
+bitwise.byte.read(42)
+// [0,0,1,0,1,0,1,0]
+bitwise.byte.read(256)
+// RangeError('invalid size')
+```
+
+### byte.write
+
+```ts
+(bits: Array)
+```
+
+Returns a Byte (0-255) which represents the given bits.
+
+```js
+bitwise.byte.write([0, 0, 1, 0, 1, 0, 1, 0])
+// 42
+bitwise.byte.write([0, 0, 1, 0, 1, 0, 1, 0, 0])
+// RangeError('invalid array length')
+```
+
+## nibble
+
+```js
+// cherry-pick
+import nibble from 'bitwise/nibble'
+```
+
+### nibble.read
+
+```ts
+(nibble: Integer)
+```
+
+Returns an Array of length 4 containing the read bits.
+
+```js
+bitwise.nibble.read(15)
+// [1, 1, 1, 1]
+bitwise.nibble.read(42)
+// RangeError('invalid size')
+```
+
+### nibble.write
+
+```ts
+(nibble: Array)
+```
+
+Returns a Nibble (`0-15`) which represents the given bits.
+
+```js
+bitwise.nibble.write([0, 0, 1, 0])
+// 2
+bitwise.nibble.write([0, 0, 1, 0, 1])
+// RangeError('invalid array length')
 ```
 
 ## string
@@ -232,112 +455,6 @@ Converts a string into an array of bits. Ignores all characters except `1` and `
 ```js
 bitwise.string.toBits('10 10 12$%_.0')
 // [1, 0, 1, 0, 1, 0]
-```
-
-## bits
-
-### bits.toString
-
-```ts
-(bits: Array, spacing = 0, spacer = ' ')
-```
-
-Converts a bit `Array` to a `String`. If defined, inserts `spacer` every `spacing` characters, but never inserts it as the last substring.
-
-```js
-bitwise.bits.toString([1,0,1,0,1,0], 2, '_')
-// '10_10_10'
-```
-
-### bits.not
-
-```ts
-(bits: Array)
-```
-
-Flips all given bits and returns the flipped bits.
-
-```js
-bitwise.bits.not([1,0,1,1,0,1])
-// [0,1,0,0,1,0]
-```
-
-### bits.and
-
-```ts
-(bits1: Array, bits2: Array)
-```
-
-Applies the AND operation, expects two arrays of the same size and returns a new one.
-
-```js
-bitwise.bits.and([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
-// [0,0,0,0,0,1,0,0]
-```
-
-### bits.or
-
-```ts
-(bits1: Array, bits2: Array)
-```
-
-Applies the OR operation, expects two arrays of the same size and returns a new one.
-
-```js
-bitwise.bits.or([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
-// [1,1,1,0,1,1,0,1]
-```
-
-### bits.xor
-
-```ts
-(bits1: Array, bits2: Array)
-```
-
-Applies the exclusive or operation, expects two arrays of the same size and returns a new one.
-
-```js
-bitwise.bits.xor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
-// [1,1,1,0,1,0,0,1]
-```
-
-### bits.nor
-
-```ts
-(bits1: Array, bits2: Array)
-```
-
-Applies the NOR operation, expects two arrays of the same size and returns a new one.
-
-```js
-bitwise.bits.nor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
-// [1,1,1,0,1,0,0,1]
-```
-
-### bits.xnor
-
-```ts
-(bits1: Array, bits2: Array)
-```
-
-Applies the exclusive NOR operation, expects two arrays of the same size and returns a new one.
-
-```js
-bitwise.bits.xnor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
-// [1,1,1,0,1,0,0,1]
-```
-
-### bits.nand
-
-```ts
-(bits1: Array, bits2: Array)
-```
-
-Applies the NAND operation, expects two arrays of the same size and returns a new one.
-
-```js
-bitwise.bits.nand([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
-// [1,1,1,0,1,0,0,1]
 ```
 
 ## History
