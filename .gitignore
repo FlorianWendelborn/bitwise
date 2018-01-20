@@ -5,6 +5,7 @@
 /bits/
 /buffer/
 /byte/
+/index.js
+/integer/
 /nibble/
 /string/
-/index.js

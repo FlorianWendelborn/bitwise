@@ -69,6 +69,10 @@ or
 * [byte](#byte)
 	* [read](#byteread)
 	* [write](#bytewrite)
+* [integer](#integer)
+	* [getBit](#integergetbit)
+	* [setBit](#integersetbit)
+	* [toggleBit](#integertogglebit)
 * [nibble](#nibble)
 	* [read](#nibbleread)
 	* [write](#nibblewrite)
@@ -400,6 +404,52 @@ bitwise.byte.write([0, 0, 1, 0, 1, 0, 1, 0, 0])
 // RangeError('invalid array length')
 ```
 
+## integer
+
+```js
+// cherry-pick
+import integer from 'bitwise/integer'
+```
+
+### integer.getBit
+
+```ts
+(number: Integer, position: Integer)
+```
+
+Gets the value of a specific bit.
+
+```js
+bitwise.integer.getBit(128, 7)
+// 1
+```
+
+### integer.setBit
+
+```ts
+(number: Integer, position: Integer, value: Integer)
+```
+
+Sets the value of a specific bit.
+
+```js
+bitwise.integer.setBit(128, 7, 0)
+// 0
+```
+
+### integer.toggleBit
+
+```ts
+(number: Integer, position: Integer)
+```
+
+Toggles the value of a specific bit.
+
+```js
+bitwise.integer.toggleBit(128, 7)
+// 0
+```
+
 ## nibble
 
 ```js
@@ -458,6 +508,11 @@ bitwise.string.toBits('10 10 12$%_.0')
 ```
 
 ## History
+
+### 1.1.0
+- add `integer.getBit`
+- add `integer.setBit`
+- add `integer.toggleBit`
 
 ### 1.0.0
 - rewrite in ES6
