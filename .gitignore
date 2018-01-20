@@ -1,8 +1,8 @@
-node_modules/
-coverage/
-bits/
-buffer/
-byte/
-nibble/
-string/
-index.js
+/node_modules/
+/coverage/
+/bits/
+/buffer/
+/byte/
+/nibble/
+/string/
+/index.js

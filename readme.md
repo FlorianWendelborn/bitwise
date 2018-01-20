@@ -320,18 +320,19 @@ bitwise.buffer.read(buffer, 12)
 // [0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1]
 ```
 
-### buffer.readUInt
+### buffer.readCInt
 
 ```ts
 (buffer: Buffer, bitOffset = 0, bitLength = 8)
 ```
 
-Converts a section of a buffer to an unsigned integer.
+Converts a section of a buffer to a complementary integer.
+A complementary integer is like an unsigned integer, but always represents negative numbers.
 
 ```js
 // buffer 11110110
-bitwise.buffer.readUInt(buffer, 3, 5)
-// 22
+bitwise.buffer.readCInt(buffer, 3, 5)
+// -22
 ```
 
 ### buffer.readInt
@@ -344,23 +345,22 @@ Converts a section of a buffer to a signed integer.
 
 ```js
 // buffer 11110110
-bitwise.buffer.readUInt(buffer, 3, 5)
+bitwise.buffer.readInt(buffer, 3, 5)
 // -10
 ```
 
-### buffer.readCInt
+### buffer.readUInt
 
 ```ts
 (buffer: Buffer, bitOffset = 0, bitLength = 8)
 ```
 
-Converts a section of a buffer to a complementary integer.
-A complementary integer is like an unsigned integer, but always represents negative numbers.
+Converts a section of a buffer to an unsigned integer.
 
 ```js
 // buffer 11110110
 bitwise.buffer.readUInt(buffer, 3, 5)
-// -22
+// 22
 ```
 
 ## byte
