@@ -33,13 +33,25 @@
 	"keywords": [
 		"binary",
 		"bit",
+		"bits",
+		"bitwise",
 		"buffer",
-		"manipulate",
+		"buffers",
 		"change",
+		"manipulate",
+		"nibble",
+		"nibbles",
 		"read",
 		"write",
-		"bitwise",
-		"nibble"
+		"and",
+		"nand",
+		"nor",
+		"not",
+		"or",
+		"xnor",
+		"xor",
+		"flip",
+		"toggle"
 	],
 	"license": "MIT",
 	"main": "index.js",
@@ -51,9 +63,9 @@
 	"scripts": {
 		"build": "babel source --out-dir .",
 		"coverage": "jest source --coverage",
-		"prepublishOnly": "yarn run test && yarn run build",
 		"postpublish":
 			"git tag $(node -e \"process.stdout.write(require('./package.json').version)\") && git push --tags",
+		"prepublishOnly": "yarn run test && yarn run build",
 		"test": "jest source",
 		"travis": "yarn run coverage; codecov",
 		"watch": "nodemon --watch source --exec \"yarn run test\""

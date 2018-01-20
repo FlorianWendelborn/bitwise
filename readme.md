@@ -81,6 +81,13 @@ or
 
 ## bits
 
+```js
+// cherry-pick
+import bits from 'bitwise/bits'
+import toString from 'bitwise/bits/to-string'
+import { and } from 'bitwise/bits/operations'
+```
+
 ### bits.and
 
 ```ts
@@ -190,6 +197,8 @@ bitwise.bits.toString([1, 0, 1, 0, 1, 0], 2, '_')
 ```js
 // cherry-pick
 import buffer from 'bitwise/buffer'
+import create from 'bitwise/buffer/create'
+import { and } from 'bitwise/buffer/operations'
 ```
 
 ### buffer.create
@@ -372,6 +381,7 @@ bitwise.buffer.readUInt(buffer, 3, 5)
 ```js
 // cherry-pick
 import byte from 'bitwise/byte'
+import read from 'bitwise/byte/read'
 ```
 
 ### byte.read
@@ -455,6 +465,7 @@ bitwise.integer.toggleBit(128, 7)
 ```js
 // cherry-pick
 import nibble from 'bitwise/nibble'
+import read from 'bitwise/nibble/read'
 ```
 
 ### nibble.read
@@ -492,6 +503,7 @@ bitwise.nibble.write([0, 0, 1, 0, 1])
 ```js
 // cherry-pick
 import string from 'bitwise/string'
+import toBits from 'bitwise/string/to-bits'
 ```
 
 ### string.toBits
