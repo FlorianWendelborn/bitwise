@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  *	Flips all given bits and returns the flipped bits.
  *
@@ -9,9 +7,7 @@
  *	@param bits {Array} the array containing the bits to flip
  *	@return {Array}
  */
-function not (bits) {
-	return applyOperation('not', bits);
-}
+export const not = bits => applyOperation('not', bits)
 
 /**
  *	Applies the OR operation, expects two arrays of the same size and returns a new one.
@@ -23,9 +19,7 @@ function not (bits) {
  *	@param otherBits {Array} the array containing the other bits
  *	@return {Array}
  */
-function or (bits, otherBits) {
-	return applyOperation('or', bits, otherBits);
-}
+export const or = (bits, otherBits) => applyOperation('or', bits, otherBits)
 
 /**
  *	Applies the NOR operation, expects two arrays of the same size and returns a new one.
@@ -37,9 +31,7 @@ function or (bits, otherBits) {
  *	@param otherBits {Array} the array containing the other bits
  *	@return {Array}
  */
-function nor (bits, otherBits) {
-	return applyOperation('nor', bits, otherBits);
-}
+export const nor = (bits, otherBits) => applyOperation('nor', bits, otherBits)
 
 /**
  *	Applies the exclusive or operation, expects two arrays of the same size and returns a new one.
@@ -51,9 +43,7 @@ function nor (bits, otherBits) {
  *	@param otherBits {Array} the array containing the other bits
  *	@return {Array}
  */
-function xor (bits, otherBits) {
-	return applyOperation('xor', bits, otherBits);
-}
+export const xor = (bits, otherBits) => applyOperation('xor', bits, otherBits)
 
 /**
  *	Applies the exclusive NOR operation, expects two arrays of the same size and returns a new one.
@@ -65,9 +55,7 @@ function xor (bits, otherBits) {
  *	@param otherBits {Array} the array containing the other bits
  *	@return {Array}
  */
-function xnor (bits, otherBits) {
-	return applyOperation('xnor', bits, otherBits);
-}
+export const xnor = (bits, otherBits) => applyOperation('xnor', bits, otherBits)
 
 /**
  *	Applies the AND operation, expects two arrays of the same size and returns a new one.
@@ -79,9 +67,7 @@ function xnor (bits, otherBits) {
  *	@param otherBits {Array} the array containing the other bits
  *	@return {Array}
  */
-function and (bits, otherBits) {
-	return applyOperation('and', bits, otherBits);
-}
+export const and = (bits, otherBits) => applyOperation('and', bits, otherBits)
 
 /**
  *	Applies the NAND operation, expects two arrays of the same size and returns a new one.
@@ -93,9 +79,7 @@ function and (bits, otherBits) {
  *	@param otherBits {Array} the array containing the other bits
  *	@return {Array}
  */
-function nand (bits, otherBits) {
-	return applyOperation('nand', bits, otherBits);
-}
+export const nand = (bits, otherBits) => applyOperation('nand', bits, otherBits)
 
 /**
  *	Helper method, contains the logic for the bitwise operations in this script.
@@ -108,42 +92,35 @@ function nand (bits, otherBits) {
  *	@param otherBits {Array} the array containing the other bits
  *	@return {Array}
  */
-function applyOperation (type, bits, otherBits) {
-	var result = [];
-	for (var i = 0; i < bits.length; i++) {
+export const applyOperation = (type, bits, otherBits) => {
+	const result = []
+
+	for (let i = 0; i < bits.length; i++)
 		switch (type) {
 			case 'not':
-				result[i] = bits[i] === 0 ? 1 : 0;
-			break;
+				result[i] = bits[i] === 0 ? 1 : 0
+				break
 			case 'or':
-				result[i] = bits[i] === 0 && bits[i] === otherBits[i] ? 0 : 1;
-			break;
+				result[i] = bits[i] === 0 && bits[i] === otherBits[i] ? 0 : 1
+				break
 			case 'nor':
-				result[i] = bits[i] === 0 && bits[i] === otherBits[i] ? 1 : 0;
-			break;
+				result[i] = bits[i] === 0 && bits[i] === otherBits[i] ? 1 : 0
+				break
 			case 'xor':
-				result[i] = bits[i] === otherBits[i] ? 0 : 1;
-			break;
+				result[i] = bits[i] === otherBits[i] ? 0 : 1
+				break
 			case 'xnor':
-				result[i] = bits[i] === otherBits[i] ? 1 : 0;
-			break;
+				result[i] = bits[i] === otherBits[i] ? 1 : 0
+				break
 			case 'and':
-				result[i] = bits[i] * otherBits[i];
-			break;
+				result[i] = bits[i] * otherBits[i]
+				break
 			case 'nand':
-				result[i] = bits[i] === 1 && bits[i] === otherBits[i] ? 0 : 1;
-			break;
+				result[i] = bits[i] === 1 && bits[i] === otherBits[i] ? 0 : 1
+				break
 		}
-	}
-	return result;
+
+	return result
 }
 
-module.exports = {
-	not: not,
-	or: or,
-	nor: nor,
-	xor: xor,
-	xnor: xnor,
-	and: and,
-	nand: nand
-};
+export default { and, nand, nor, not, or, xnor, xor }

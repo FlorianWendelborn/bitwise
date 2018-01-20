@@ -35,7 +35,7 @@ Returns an Array containing bitLength bits starting at bitOffset.
 Example:
 ````javascript
 var buffer = new Buffer('ED743E17', 'hex');
-bitwise.readBuffer(buffer, 12);
+bitwise.buffer.read(buffer, 12);
 // 0100 0011 1110 0001 0111
 ````
 
@@ -55,7 +55,7 @@ Creates a new buffer and writes the given bits.
 Example:
 ````javascript
 var buffer = bitwise.createBuffer([1,1,1,1, 0,0,0,1, 1,0,1,0]);
-bitwise.readBuffer(buffer);
+bitwise.buffer.read(buffer);
 // 1111 0001 1010 0000
 ````
 
@@ -76,7 +76,7 @@ Converts a section of a buffer to an unsigned integer.
 Example:
 ````javascript
 // buffer 11110110
-bitwise.readUInt(buffer, 3, 5) → 22
+bitwise.buffer.readUInt(buffer, 3, 5) → 22
 ````
 
 ### readInt (Buffer buffer, Int bitOffset = 0, Int bitLength = 8)
@@ -86,7 +86,7 @@ Converts a section of a buffer to a signed integer.
 Example:
 ````javascript
 // buffer 11110110
-bitwise.readUInt(buffer, 3, 5) → -10
+bitwise.buffer.readUInt(buffer, 3, 5) → -10
 ````
 
 ### readCInt (Buffer buffer, Int bitOffset = 0, Int bitLength = 8)
@@ -97,7 +97,7 @@ A complementary integer is like an unsigned integer, but always represents negat
 Example:
 ````javascript
 // buffer 11110110
-bitwise.readUInt(buffer, 3, 5) → -22
+bitwise.buffer.readUInt(buffer, 3, 5) → -22
 ````
 
 ### not (Array bits)
