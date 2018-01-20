@@ -6,7 +6,7 @@
 
 <p align="center">
 	<a href="https://travis-ci.org/dodekeract/bitwise/"><img src="https://travis-ci.org/dodekeract/bitwise.svg?branch=master"/></a>
-	<a href="https://coveralls.io/github/dodekeract/bitwise?branch=master"><img src="https://coveralls.io/repos/dodekeract/bitwise/badge.svg?branch=master&service=github"/></a>
+	<a href="https://codecov.io/gh/dodekeract/bitwise"><img src="https://img.shields.io/codecov/c/github/dodekeract/bitwise/master.svg"/></a>
 	<a href="https://inch-ci.org/github/dodekeract/bitwise"><img src="https://inch-ci.org/github/dodekeract/bitwise.svg"/></a>
 	<a href="https://codeclimate.com/github/dodekeract/bitwise/maintainability"><img src="https://api.codeclimate.com/v1/badges/5828648788cdc3b806ac/maintainability"/></a>
 </p>
@@ -107,7 +107,7 @@ bitwise.byte.read(256)
 // RangeError('invalid size')
 ```
 
-### write (Int byte)
+### byte.write (Int byte)
 
 Returns a Byte (0-255) which equals the given bits.
 
@@ -126,7 +126,7 @@ byte.read([0,0,1,0,1,0,1,0, 0])
 import buffer from 'bitwise/buffer'
 ```
 
-### read (Buffer buffer, [Int bitOffset], [Int bitLength])
+### buffer.read (Buffer buffer, [Int bitOffset], [Int bitLength])
 
 Returns an Array containing `bitLength` bits starting at `bitOffset`.
 
@@ -136,7 +136,7 @@ bitwise.buffer.read(buffer, 12)
 // [0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1]
 ```
 
-### modify (Buffer buffer, Array newBits, [Int bitOffset])
+### buffer.modify (Buffer buffer, Array newBits, [Int bitOffset])
 
 Modifies the buffer's bits to equal `newBits` starting at `bitOffset`.
 
@@ -146,7 +146,7 @@ bitwise.modifyBuffer(buffer, [0, 0, 0, 1, 0, 0, 1], 3);
 // Buffer(1010 1001 0011 1010)
 ```
 
-### create (Array bits)
+### buffer.create (Array bits)
 
 Creates a new buffer and writes the given bits.
 
@@ -155,7 +155,7 @@ const buffer = bitwise.create([1,1,1,1, 0,0,0,1, 1,0,1,0]);
 // Buffer(1111 0001 1010 0000)
 ```
 
-### readUInt (Buffer buffer, Int bitOffset = 0, Int bitLength = 8)
+### buffer.readUInt (Buffer buffer, Int bitOffset = 0, Int bitLength = 8)
 
 Converts a section of a buffer to an unsigned integer.
 
@@ -165,7 +165,7 @@ bitwise.buffer.readUInt(buffer, 3, 5)
 // 22
 ```
 
-### readInt (Buffer buffer, Int bitOffset = 0, Int bitLength = 8)
+### buffer.readInt (Buffer buffer, Int bitOffset = 0, Int bitLength = 8)
 
 Converts a section of a buffer to a signed integer.
 
@@ -175,7 +175,7 @@ bitwise.buffer.readUInt(buffer, 3, 5)
 // -10
 ```
 
-### readCInt (Buffer buffer, Int bitOffset = 0, Int bitLength = 8)
+### buffer.readCInt (Buffer buffer, Int bitOffset = 0, Int bitLength = 8)
 
 Converts a section of a buffer to a complementary integer.
 A complementary integer is like an unsigned integer, but always represents negative numbers.

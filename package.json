@@ -26,7 +26,6 @@
 		"babel-core": "^7.0.0-0",
 		"babel-jest": "^22.1.0",
 		"codecov": "^3.0.0",
-		"coveralls": "^3.0.0",
 		"jest-cli": "^22.1.4",
 		"nodemon": "^1.14.11"
 	},
@@ -53,8 +52,7 @@
 		"build": "babel source --out-dir build",
 		"coverage": "jest source --coverage",
 		"test": "jest source",
-		"travis":
-			"yarn run coverage; cat ./coverage/lcov.info | coveralls; codecov",
+		"travis": "yarn run coverage; codecov",
 		"watch": "nodemon --watch source --exec \"yarn run test\""
 	},
 	"version": "0.2.0"
