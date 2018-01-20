@@ -14,5 +14,5 @@ export default data => {
 		for (let i = 0; i < 8; i++) result[7 - i] = (data >> i) & 1
 
 		return result
-	} else throw new RangeError('invalid array length')
+	} else throw new RangeError('invalid size')
 }

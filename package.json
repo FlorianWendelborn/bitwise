@@ -11,6 +11,12 @@
 	"bugs": {
 		"url": "https://github.com/dodekeract/bitwise/issues"
 	},
+	"contributors": [
+		{
+			"name": "Hubertus Weber",
+			"url": "https://github.com/HubertusWeber"
+		}
+	],
 	"description": "Bit manipulation library.",
 	"devDependencies": {
 		"@babel/cli": "^7.0.0-beta.38",
