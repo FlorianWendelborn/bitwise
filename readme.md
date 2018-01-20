@@ -55,25 +55,25 @@ or
 
 ## Table of Contents
 
-* bits
-	* operations (and, nand, nor, not, or, xnor, xor)
-	* toString
-* buffer
-	* create
-	* modify
-	* operations (and, nand, nor, not, or, xnor, xor)
-	* read
-	* readCInt
-	* readInt
-	* readUInt
-* byte
-	* read
-	* write
-* nibble
-	* read
-	* write
-* string
-	* toBits
+* [bits](#bits)
+	* operations ([and](#bitsand), [nand](#bitsnand), [nor](#bitsnor), [not](#bitsnot), [or](#bitsor), [xnor](#bitsxnor), [xor](#bitsxor))
+	* [toString](#bitstostring)
+* [buffer](#buffer)
+	* [create](#buffercreate)
+	* [modify](#buffermodify)
+	* operations ([and](#bufferand), [nand](#buffernand), [nor](#buffernor), [not](#buffernot), [or](#bufferor), [xnor](#bufferxnor), [xor](#bufferxor))
+	* [read](#bufferread)
+	* [readCInt](#bufferreadcint)
+	* [readInt](#bufferreadint)
+	* [readUInt](#bufferreaduint)
+* [byte](#byte)
+	* [read](#byteread)
+	* [write](#bytewrite)
+* [nibble](#nibble)
+	* [read](#nibbleread)
+	* [write](#nibblewrite)
+* [string](#string)
+	* [toBits](#stringtobits)
 
 ## byte
 
@@ -221,7 +221,11 @@ const resultBuffer = bitwise.buffer.xor(bufferA, bufferB, isLooping);
 import string from 'bitwise/string'
 ```
 
-### string.toBits (String string)
+### string.toBits
+
+```ts
+(string: String)
+```
 
 Converts a string into an array of bits. Ignores all characters except `1` and `0`.
 
@@ -232,7 +236,11 @@ bitwise.string.toBits('10 10 12$%_.0')
 
 ## bits
 
-### bits.toString (Array bits, [Int spacing], [String spacer])
+### bits.toString
+
+```ts
+(bits: Array, spacing = 0, spacer = ' ')
+```
 
 Converts a bit `Array` to a `String`. If defined, inserts `spacer` every `spacing` characters, but never inserts it as the last substring.
 
@@ -241,7 +249,11 @@ bitwise.bits.toString([1,0,1,0,1,0], 2, '_')
 // '10_10_10'
 ```
 
-### bits.not (Array bits)
+### bits.not
+
+```ts
+(bits: Array)
+```
 
 Flips all given bits and returns the flipped bits.
 
@@ -250,7 +262,11 @@ bitwise.bits.not([1,0,1,1,0,1])
 // [0,1,0,0,1,0]
 ```
 
-### bits.and (Array bits1, Array bits2)
+### bits.and
+
+```ts
+(bits1: Array, bits2: Array)
+```
 
 Applies the AND operation, expects two arrays of the same size and returns a new one.
 
@@ -259,7 +275,11 @@ bitwise.bits.and([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
 // [0,0,0,0,0,1,0,0]
 ```
 
-### bits.or (Array bits1, Array bits2)
+### bits.or
+
+```ts
+(bits1: Array, bits2: Array)
+```
 
 Applies the OR operation, expects two arrays of the same size and returns a new one.
 
@@ -268,7 +288,11 @@ bitwise.bits.or([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
 // [1,1,1,0,1,1,0,1]
 ```
 
-### bits.xor (Array bits1, Array bits2)
+### bits.xor
+
+```ts
+(bits1: Array, bits2: Array)
+```
 
 Applies the exclusive or operation, expects two arrays of the same size and returns a new one.
 
@@ -277,7 +301,11 @@ bitwise.bits.xor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
 // [1,1,1,0,1,0,0,1]
 ```
 
-### bits.nor (Array bits1, Array bits2)
+### bits.nor
+
+```ts
+(bits1: Array, bits2: Array)
+```
 
 Applies the NOR operation, expects two arrays of the same size and returns a new one.
 
@@ -286,7 +314,11 @@ bitwise.bits.nor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
 // [1,1,1,0,1,0,0,1]
 ```
 
-### bits.xnor (Array bits1, Array bits2)
+### bits.xnor
+
+```ts
+(bits1: Array, bits2: Array)
+```
 
 Applies the exclusive NOR operation, expects two arrays of the same size and returns a new one.
 
@@ -295,7 +327,11 @@ bitwise.bits.xnor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
 // [1,1,1,0,1,0,0,1]
 ```
 
-### bits.nand (Array bits1, Array bits2)
+### bits.nand
+
+```ts
+(bits1: Array, bits2: Array)
+```
 
 Applies the NAND operation, expects two arrays of the same size and returns a new one.
 
