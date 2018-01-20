@@ -42,14 +42,14 @@
 		"nibble"
 	],
 	"license": "MIT",
-	"main": "build/index.js",
+	"main": "index.js",
 	"name": "bitwise",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/dodekeract/bitwise.git"
 	},
 	"scripts": {
-		"build": "babel source --out-dir build",
+		"build": "babel source --out-dir .",
 		"coverage": "jest source --coverage",
 		"test": "jest source",
 		"travis": "yarn run coverage; codecov",

@@ -1,3 +1,8 @@
 node_modules/
 coverage/
-build/
+bits/
+buffer/
+byte/
+nibble/
+string/
+index.js
