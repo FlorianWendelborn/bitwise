@@ -1,4 +1,4 @@
-import byte from '../byte'
+import writeByte from '../byte/write'
 
 /**
  *	Creates a new buffer and writes the given bits.
@@ -19,7 +19,7 @@ export default bits => {
 			if (bits[i * 8 + j]) data[j] = bits[i * 8 + j]
 			else data[j] = 0
 		}
-		buffer[i] = byte.write(data)
+		buffer[i] = writeByte(data)
 	}
 
 	return buffer

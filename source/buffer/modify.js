@@ -1,5 +1,5 @@
-import byte from '../byte'
-import read from './read'
+import writeByte from '../byte/write'
+import readBuffer from './read'
 
 /**
  *	Modifies the buffer's bits to equal newBits starting at bitOffset.
@@ -17,7 +17,7 @@ export default (buffer, bits, offset = 0) => {
 	const end = Math.ceil((offset + bits.length) / 8)
 	const subBuffer = buffer.slice(start, end)
 
-	const byteData = read(subBuffer)
+	const byteData = readBuffer(subBuffer)
 
 	let subOffset = offset % 8
 
@@ -25,5 +25,5 @@ export default (buffer, bits, offset = 0) => {
 
 	const length = end - start
 	for (let i = 0; i < length; i++)
-		subBuffer[i] = byte.write(byteData.slice(i * 8, (i + 1) * 8))
+		subBuffer[i] = writeByte(byteData.slice(i * 8, (i + 1) * 8))
 }

@@ -1,4 +1,4 @@
-import byte from '../byte'
+import readByte from '../byte/read'
 
 /**
  *	Returns an Array containing bitLength bits starting at bitOffset.
@@ -23,7 +23,7 @@ export default (buffer, offset = 0, length) => {
 	for (let i = 0; i < bytesToRead; i++) {
 		const toRead = buffer[start + i]
 		if (toRead === undefined) continue
-		const bits = byte.read(buffer[start + i])
+		const bits = readByte(buffer[start + i])
 		arr[i * 8] = bits[0]
 		arr[i * 8 + 1] = bits[1]
 		arr[i * 8 + 2] = bits[2]
