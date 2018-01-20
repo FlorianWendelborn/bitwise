@@ -56,30 +56,16 @@ or
 ## Table of Contents
 
 * bits
-	* operations
-		* and
-		* nand
-		* nor
-		* not
-		* or
-		* xnor
-		* xor
+	* operations (and, nand, nor, not, or, xnor, xor)
 	* toString
 * buffer
-	* operations
-		* and
-		* nand
-		* nor
-		* not
-		* or
-		* xnor
-		* xor
 	* create
 	* modify
+	* operations (and, nand, nor, not, or, xnor, xor)
 	* read
 	* readCInt
-	* readUInt
 	* readInt
+	* readUInt
 * byte
 	* read
 	* write
@@ -96,7 +82,11 @@ or
 import byte from 'bitwise/byte'
 ```
 
-### byte.read (Int byte)
+### byte.read
+
+```ts
+(byte: Integer)
+```
 
 Returns an Array of length 8 containing the read bits.
 
@@ -107,15 +97,18 @@ bitwise.byte.read(256)
 // RangeError('invalid size')
 ```
 
-### byte.write (Int byte)
+### byte.write
+
+```ts
+(bits: Array)
+```
 
 Returns a Byte (0-255) which equals the given bits.
 
 ```js
-import byte from 'bitwise/byte'
-byte.write([0,0,1,0,1,0,1,0])
+bitwise.byte.write([0, 0, 1, 0, 1, 0, 1, 0])
 // 42
-byte.read([0,0,1,0,1,0,1,0, 0])
+bitwise.byte.read([0, 0, 1, 0, 1, 0, 1, 0, 0])
 // RangeError('invalid array length')
 ```
 
@@ -126,7 +119,11 @@ byte.read([0,0,1,0,1,0,1,0, 0])
 import buffer from 'bitwise/buffer'
 ```
 
-### buffer.read (Buffer buffer, [Int bitOffset], [Int bitLength])
+### buffer.read
+
+```ts
+(buffer: Buffer, bitOffset = 0, bitLength = 8)
+```
 
 Returns an Array containing `bitLength` bits starting at `bitOffset`.
 
@@ -136,26 +133,38 @@ bitwise.buffer.read(buffer, 12)
 // [0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1]
 ```
 
-### buffer.modify (Buffer buffer, Array newBits, [Int bitOffset])
+### buffer.modify
+
+```ts
+(buffer: Buffer, newBits: Array, bitOffset = 0)
+```
 
 Modifies the buffer's bits to equal `newBits` starting at `bitOffset`.
 
 ```js
 const buffer = new Buffer('A43A', 'hex');
-bitwise.modifyBuffer(buffer, [0, 0, 0, 1, 0, 0, 1], 3);
+bitwise.buffer.modify(buffer, [0, 0, 0, 1, 0, 0, 1], 3);
 // Buffer(1010 1001 0011 1010)
 ```
 
-### buffer.create (Array bits)
+### buffer.create
+
+```ts
+(bits: Array)
+```
 
 Creates a new buffer and writes the given bits.
 
 ```js
-const buffer = bitwise.create([1,1,1,1, 0,0,0,1, 1,0,1,0]);
+const buffer = bitwise.buffer.create([1,1,1,1, 0,0,0,1, 1,0,1,0]);
 // Buffer(1111 0001 1010 0000)
 ```
 
-### buffer.readUInt (Buffer buffer, Int bitOffset = 0, Int bitLength = 8)
+### buffer.readUInt
+
+```ts
+(buffer: Buffer, bitOffset = 0, bitLength = 8)
+```
 
 Converts a section of a buffer to an unsigned integer.
 
@@ -165,7 +174,11 @@ bitwise.buffer.readUInt(buffer, 3, 5)
 // 22
 ```
 
-### buffer.readInt (Buffer buffer, Int bitOffset = 0, Int bitLength = 8)
+### buffer.readInt
+
+```ts
+(buffer: Buffer, bitOffset = 0, bitLength = 8)
+```
 
 Converts a section of a buffer to a signed integer.
 
@@ -175,7 +188,11 @@ bitwise.buffer.readUInt(buffer, 3, 5)
 // -10
 ```
 
-### buffer.readCInt (Buffer buffer, Int bitOffset = 0, Int bitLength = 8)
+### buffer.readCInt
+
+```ts
+(buffer: Buffer, bitOffset = 0, bitLength = 8)
+```
 
 Converts a section of a buffer to a complementary integer.
 A complementary integer is like an unsigned integer, but always represents negative numbers.
@@ -220,7 +237,7 @@ bitwise.string.toBits('10 10 12$%_.0')
 Converts a bit `Array` to a `String`. If defined, inserts `spacer` every `spacing` characters, but never inserts it as the last substring.
 
 ```js
-bitwise.toString([1,0,1,0,1,0], 2, '_')
+bitwise.bits.toString([1,0,1,0,1,0], 2, '_')
 // '10_10_10'
 ```
 
@@ -229,7 +246,7 @@ bitwise.toString([1,0,1,0,1,0], 2, '_')
 Flips all given bits and returns the flipped bits.
 
 ```js
-bitwise.not([1,0,1,1,0,1])
+bitwise.bits.not([1,0,1,1,0,1])
 // [0,1,0,0,1,0]
 ```
 
@@ -238,7 +255,7 @@ bitwise.not([1,0,1,1,0,1])
 Applies the AND operation, expects two arrays of the same size and returns a new one.
 
 ```js
-bitwise.and([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
+bitwise.bits.and([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
 // [0,0,0,0,0,1,0,0]
 ```
 
@@ -247,7 +264,7 @@ bitwise.and([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
 Applies the OR operation, expects two arrays of the same size and returns a new one.
 
 ```js
-bitwise.or([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
+bitwise.bits.or([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
 // [1,1,1,0,1,1,0,1]
 ```
 
@@ -256,7 +273,7 @@ bitwise.or([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
 Applies the exclusive or operation, expects two arrays of the same size and returns a new one.
 
 ```js
-bitwise.xor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
+bitwise.bits.xor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
 // [1,1,1,0,1,0,0,1]
 ```
 
@@ -265,7 +282,7 @@ bitwise.xor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
 Applies the NOR operation, expects two arrays of the same size and returns a new one.
 
 ```js
-bitwise.nor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
+bitwise.bits.nor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
 // [1,1,1,0,1,0,0,1]
 ```
 
@@ -274,7 +291,7 @@ bitwise.nor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
 Applies the exclusive NOR operation, expects two arrays of the same size and returns a new one.
 
 ```js
-bitwise.xnor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
+bitwise.bits.xnor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
 // [1,1,1,0,1,0,0,1]
 ```
 
@@ -283,11 +300,16 @@ bitwise.xnor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
 Applies the NAND operation, expects two arrays of the same size and returns a new one.
 
 ```js
-bitwise.nand([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
+bitwise.bits.nand([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0])
 // [1,1,1,0,1,0,0,1]
 ```
 
 ## History
+
+### 1.0.0
+- rewrite in ES6
+- improve utilization of bitwise operators
+- improve API (**breaking change**)
 
 ### 0.2.0
 - Added buffer bitwise operations
