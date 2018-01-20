@@ -46,7 +46,7 @@ byte.read(42)
 ## Installation
 
 <pre>
-<a href="https://yarnpkg.com">yarn</a> add <a href="https://yarnpkg.com/package/bitwise">bitwise</a>
+<a href="https://yarnpkg.com">yarn</a> add <a href="https://yarnpkg.com/en/package/bitwise">bitwise</a>
 </pre>
 or
 <pre>
