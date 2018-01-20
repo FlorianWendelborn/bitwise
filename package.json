@@ -19,6 +19,7 @@
 		"@babel/preset-es2015": "^7.0.0-beta.38",
 		"babel-core": "^7.0.0-0",
 		"babel-jest": "^22.1.0",
+		"codecov": "^3.0.0",
 		"coveralls": "^3.0.0",
 		"jest-cli": "^22.1.4",
 		"nodemon": "^1.14.11"
@@ -44,9 +45,10 @@
 	},
 	"scripts": {
 		"build": "babel source --out-dir build",
-		"coverage": "jest --coverage",
-		"test": "jest",
-		"travis": "yarn run coverage; cat ./coverage/lcov.info | coveralls",
+		"coverage": "jest source --coverage",
+		"test": "jest source",
+		"travis":
+			"yarn run coverage; cat ./coverage/lcov.info | coveralls; codecov",
 		"watch": "nodemon --watch source --exec \"yarn run test\""
 	},
 	"version": "0.2.0"
