@@ -1,4 +1,6 @@
-node_modules/
+# mirror to .gitignore
+/coverage/
+/node_modules/
+# .npmignore-only
 .travis.yml
-test/
-coverage/
+.codeclimate.yml

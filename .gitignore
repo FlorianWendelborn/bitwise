@@ -1,5 +1,7 @@
-/node_modules/
+# mirror to .npmignore
 /coverage/
+/node_modules/
+# .gitignore-only
 /bits/
 /buffer/
 /byte/
