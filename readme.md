@@ -322,10 +322,10 @@ bitwise.buffer.xor(buffer1, buffer2, false)
 ### buffer.read
 
 ```ts
-(buffer: Buffer, bitOffset = 0, bitLength = 8)
+(buffer: Buffer, bitOffset = 0, bitLength?: Integer)
 ```
 
-Returns an Array containing `bitLength` bits starting at `bitOffset`.
+Returns an Array containing `bitLength` bits starting at `bitOffset`. If no `bitLength` is given, it's assumed to be the rest of the buffer.
 
 ```js
 const buffer = new Buffer('ED743E17', 'hex')
