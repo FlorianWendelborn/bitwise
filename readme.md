@@ -196,9 +196,9 @@ bitwise.bits.toString([1, 0, 1, 0, 1, 0], 2, '_')
 
 ```js
 // cherry-pick
+import and from 'bitwise/buffer/and'
 import buffer from 'bitwise/buffer'
 import create from 'bitwise/buffer/create'
-import { and } from 'bitwise/buffer/operations'
 ```
 
 ### buffer.create
@@ -394,7 +394,7 @@ Returns an Array of length 8 containing the read bits.
 
 ```js
 bitwise.byte.read(42)
-// [0,0,1,0,1,0,1,0]
+// [0, 0, 1, 0, 1, 0, 1, 0]
 bitwise.byte.read(256)
 // RangeError('invalid size')
 ```
