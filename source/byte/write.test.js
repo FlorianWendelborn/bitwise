@@ -12,4 +12,5 @@ test('throw when the array is invalid', () => {
 	expect(() => write([1, 0, 1, 0, 1, 0, 1, 0, 1])).toThrow()
 	expect(() => write([])).toThrow()
 	expect(() => write('10101010')).toThrow()
+	expect(() => write()).toThrow()
 })

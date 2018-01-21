@@ -18,3 +18,12 @@ test('read', () => {
 	expect(read(0xe)).toEqual([1, 1, 1, 0])
 	expect(read(0xf)).toEqual([1, 1, 1, 1])
 })
+
+test('throw when the array is invalid', () => {
+	expect(() => read()).toThrow()
+	expect(() => read(256)).toThrow()
+	expect(() => read(-1)).toThrow()
+	expect(() => read(0.01)).toThrow()
+	expect(() => read([0, 1, 0, 1, 1])).toThrow()
+	expect(() => read('FF')).toThrow()
+})

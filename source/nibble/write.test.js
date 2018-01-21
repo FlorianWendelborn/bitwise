@@ -18,3 +18,11 @@ test('write', () => {
 	expect(write([1, 1, 1, 0])).toEqual(0xe)
 	expect(write([1, 1, 1, 1])).toEqual(0xf)
 })
+
+test('throw when the array is invalid', () => {
+	expect(() => write([1, 0, 1, 0, 1])).toThrow()
+	expect(() => write([1, 0, 1])).toThrow()
+	expect(() => write([])).toThrow()
+	expect(() => write('1010')).toThrow()
+	expect(() => write()).toThrow()
+})
