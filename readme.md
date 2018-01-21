@@ -521,6 +521,12 @@ bitwise.string.toBits('10 10 12$%_.0')
 
 ## History
 
+### 1.1.2
+- split up `buffer.operations`
+
+### 1.1.1
+- split up `bits.operations`
+
 ### 1.1.0
 - add `integer.getBit`
 - add `integer.setBit`
