@@ -83,9 +83,9 @@ or
 
 ```js
 // cherry-pick
+import and from 'bitwise/bits/and'
 import bits from 'bitwise/bits'
 import toString from 'bitwise/bits/to-string'
-import { and } from 'bitwise/bits/operations'
 ```
 
 ### bits.and

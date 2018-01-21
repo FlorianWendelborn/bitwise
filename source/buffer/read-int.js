@@ -1,5 +1,5 @@
+import not from '../bits/not'
 import read from './read'
-import { not } from '../bits/operations'
 
 // 32-bit powers of two wouldn't be possible with <<
 const p2 = []
