@@ -4,8 +4,8 @@
  *	@example
  *	nand([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) => [1,1,1,1,1,0,1,1]
  *
- *	@param bits {Array} the array containing the bits
- *	@param otherBits {Array} the array containing the other bits
+ *	@param {Array} bits1
+ *	@param {Array} bits2
  *	@return {Array}
  */
 export default (bits1, bits2) => {
