@@ -1,15 +1,15 @@
 import readByte from '../byte/read'
 
 /**
- *	Returns an Array containing bitLength bits starting at bitOffset.
+ * Returns an Array containing bitLength bits starting at bitOffset.
  *
- *	@example
- *	readBuffer(buffer, 2, 4) => [0,0,1,0]
+ * @example
+ * readBuffer(buffer, 2, 4) => [0,0,1,0]
  *
- *	@param buffer {Buffer} the buffer to read
- *	@param offset {Number} where to start (in bits)
- *	@param length {Number} how many bits to read
- *	@returns {Array}
+ * @param buffer {Buffer} the buffer to read
+ * @param offset {Number} where to start (in bits)
+ * @param length {Number} how many bits to read
+ * @returns {Array}
  */
 export default (buffer, offset = 0, length) => {
 	if (!length) length = buffer.length * 8 - offset

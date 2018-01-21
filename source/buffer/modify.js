@@ -2,15 +2,15 @@ import writeByte from '../byte/write'
 import readBuffer from './read'
 
 /**
- *	Modifies the buffer's bits to equal newBits starting at bitOffset.
+ * Modifies the buffer's bits to equal newBits starting at bitOffset.
  *
- *	@example
- *	modifyBuffer(buffer, [0,0,1,0], 0) => buffer was modified
+ * @example
+ * modifyBuffer(buffer, [0,0,1,0], 0) => buffer was modified
  *
- *	@param buffer {Buffer} the buffer to modify
- *	@param bits {Array} the bits to insert
- *	@param offset {Number} where to start (in bits)
- *	@returns undefined
+ * @param buffer {Buffer} the buffer to modify
+ * @param bits {Array} the bits to insert
+ * @param offset {Number} where to start (in bits)
+ * @returns undefined
  */
 export default (buffer, bits, offset = 0) => {
 	const start = Math.floor(offset / 8)

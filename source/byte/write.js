@@ -1,11 +1,11 @@
 /**
- *	Returns a Byte (0-255) which equals the given bits.
+ * Returns a Byte (0-255) which equals the given bits.
  *
- *	@example
- *	byte.write([0,0,1,0,1,0,1,0]) => 42
+ * @example
+ * byte.write([0,0,1,0,1,0,1,0]) => 42
  *
- *	@param {Array} bits 8-bit unsigned integer
- *	@return {Number}
+ * @param {Array} bits 8-bit unsigned integer
+ * @return {Number}
  */
 export default bits => {
 	let data = 0

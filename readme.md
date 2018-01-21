@@ -94,7 +94,7 @@ import toString from 'bitwise/bits/to-string'
 (bits1: Array, bits2: Array)
 ```
 
-Applies the `AND` operation, expects two arrays of the same size and returns a new one.
+Applies the bitwise `AND` operation, expects two arrays of the same size and returns a new one.
 
 ```js
 bitwise.bits.and([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
@@ -107,7 +107,7 @@ bitwise.bits.and([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
 (bits1: Array, bits2: Array)
 ```
 
-Applies the `NAND` operation, expects two arrays of the same size and returns a new one.
+Applies the bitwise `NAND` operation, expects two arrays of the same size and returns a new one.
 
 ```js
 bitwise.bits.nand([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
@@ -120,7 +120,7 @@ bitwise.bits.nand([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
 (bits1: Array, bits2: Array)
 ```
 
-Applies the `NOR` operation, expects two arrays of the same size and returns a new one.
+Applies the bitwise `NOR` operation, expects two arrays of the same size and returns a new one.
 
 ```js
 bitwise.bits.nor([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
@@ -146,7 +146,7 @@ bitwise.bits.not([1, 0, 1, 1, 0, 1])
 (bits1: Array, bits2: Array)
 ```
 
-Applies the `OR` operation, expects two arrays of the same size and returns a new one.
+Applies the bitwise `OR` operation, expects two arrays of the same size and returns a new one.
 
 ```js
 bitwise.bits.or([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
@@ -159,7 +159,7 @@ bitwise.bits.or([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
 (bits1: Array, bits2: Array)
 ```
 
-Applies the exclusive `NOR` operation, expects two arrays of the same size and returns a new one.
+Applies the bitwise exclusive `NOR` operation, expects two arrays of the same size and returns a new one.
 
 ```js
 bitwise.bits.xnor([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
@@ -172,7 +172,7 @@ bitwise.bits.xnor([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
 (bits1: Array, bits2: Array)
 ```
 
-Applies the exclusive `OR` operation, expects two arrays of the same size and returns a new one.
+Applies the bitwise exclusive `OR` operation, expects two arrays of the same size and returns a new one.
 
 ```js
 bitwise.bits.xor([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])

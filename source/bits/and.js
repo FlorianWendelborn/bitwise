@@ -1,12 +1,12 @@
 /**
- *	Applies the AND operation, expects two arrays of the same size and returns a new one.
+ * Applies the AND operation, expects two arrays of the same size and returns a new one.
  *
- *	@example
- *	and([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) => [0,0,0,0,0,1,0,0]
+ * @example
+ * and([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) => [0,0,0,0,0,1,0,0]
  *
- *	@param bits {Array} the array containing the bits
- *	@param otherBits {Array} the array containing the other bits
- *	@return {Array}
+ * @param {Array} bits1 input data
+ * @param {Array} bits2 input data
+ * @return {Array} [bits1 AND bits2]
  */
 export default (bits1, bits2) => {
 	const result = []

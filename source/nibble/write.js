@@ -1,11 +1,11 @@
 /**
- *	Returns a Nibble (0-15) which equals the given bits.
+ * Returns a Nibble (0-15) which equals the given bits.
  *
- *	@example
- *	byte.write([1,0,1,0]) => 10
+ * @example
+ * byte.write([1,0,1,0]) => 10
  *
- *	@param {Array} bits 4-bit unsigned integer
- *	@return {Number}
+ * @param {Array} bits 4-bit unsigned integer
+ * @return {Number}
  */
 export default bits => {
 	let data = 0

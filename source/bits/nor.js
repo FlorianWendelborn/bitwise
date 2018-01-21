@@ -1,12 +1,12 @@
 /**
- *	Applies the NOR operation, expects two arrays of the same size and returns a new one.
+ * Applies the NOR operation, expects two arrays of the same size and returns a new one.
  *
- *	@example
- *	nor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) => [0,0,0,1,0,0,1,0]
+ * @example
+ * nor([1,0,0,0,1,1,0,1], [0,1,1,0,0,1,0,0]) => [0,0,0,1,0,0,1,0]
  *
- *	@param {Array} bits1
- *	@param {Array} bits2
- *	@return {Array}
+ * @param {Array} bits1 input data
+ * @param {Array} bits2 input data
+ * @return {Array} [bits1 NOR bits2]
  */
 export default (bits1, bits2) => {
 	const result = []
