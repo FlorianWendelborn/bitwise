@@ -260,6 +260,19 @@ bitwise.bits.reduceXor([1, 0, 0, 0, 1, 1, 0, 1])
 // 0
 ```
 
+### bits.toBoolean
+
+```ts
+(bits: Array): Array
+```
+
+Converts a bit array to a boolean array.
+
+```js
+bitwise.bits.toBoolean([0, 1])
+// [false, true]
+```
+
 ### bits.toString
 
 ```ts
@@ -601,6 +614,9 @@ bitwise.string.toBits('10 10 12$%_.0')
 ```
 
 ## History
+
+### 1.3.0
+- add `bits.toBoolean`
 
 ### 1.2.0
 - add `bits.reduceAnd`
