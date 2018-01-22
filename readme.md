@@ -57,6 +57,7 @@ or
 
 * [bits](#bits)
 	* operations ([and](#bitsand), [nand](#bitsnand), [nor](#bitsnor), [not](#bitsnot), [or](#bitsor), [xnor](#bitsxnor), [xor](#bitsxor))
+	* reduce operations ([reduceAnd](#bitsreduceand), [reduceNand](#bitsreducenand), [reduceNor](#bitsreducenor), [reduceOr](#bitsreduceor), [reduceXnor](#bitsreducexnor), [reduceXor](#bitsreducexor))
 	* [toString](#bitstostring)
 * [buffer](#buffer)
 	* [create](#buffercreate)
@@ -177,6 +178,86 @@ Applies the bitwise exclusive `OR` operation, expects two arrays of the same siz
 ```js
 bitwise.bits.xor([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
 // [1, 1, 1, 0, 1, 0, 0, 1]
+```
+
+### bits.reduceAnd
+
+```ts
+(bits: Array): Integer
+```
+
+Applies the bitwise `AND` operation on the given bits. Returns one bit. Throws if less than 2 bits are given.
+
+```js
+bitwise.bits.reduceAnd([1,0,0,0,1,1,0,1])
+// 0
+```
+
+### bits.reduceNand
+
+```ts
+(bits: Array): Integer
+```
+
+Applies the `NAND` operation on the given bits. Returns one bit. Throws if less than 2 bits are given.
+
+```js
+bitwise.bits.reduceNand([1, 0, 0, 0, 1, 1, 0, 1])
+// 0
+```
+
+### bits.reduceNor
+
+```ts
+(bits: Array): Integer
+```
+
+Applies the `NOR` operation on the given bits. Returns one bit. Throws if less than 2 bits are given.
+
+```js
+bitwise.bits.reduceNor([1, 0, 0, 0, 1, 1, 0, 1])
+// 0
+```
+
+### bits.reduceOr
+
+```ts
+(bits: Array): Integer
+```
+
+Applies the `OR` operation on the given bits. Returns one bit.
+Throws if less than 2 bits are given.
+
+```js
+bitwise.bits.reduceOr([1, 0, 0, 0, 1, 1, 0, 1])
+// 1
+```
+
+### bits.reduceXnor
+
+```ts
+(bits: Array): Integer
+```
+
+Applies the `XNOR` operation on the given bits. Returns one bit. Throws if less than 2 bits are given.
+
+```js
+bitwise.bits.reduceXnor([1, 0, 0, 0, 1, 1, 0, 1])
+// 1
+```
+
+### bits.reduceXor
+
+```ts
+(bits: Array): Integer
+```
+
+Applies the `XOR` operation on the given bits. Returns one bit.
+Throws if less than 2 bits are given.
+
+```js
+bitwise.bits.reduceXor([1, 0, 0, 0, 1, 1, 0, 1])
+// 0
 ```
 
 ### bits.toString
@@ -520,6 +601,14 @@ bitwise.string.toBits('10 10 12$%_.0')
 ```
 
 ## History
+
+### 1.2.0
+- add `bits.reduceAnd`
+- add `bits.reduceNand`
+- add `bits.reduceNor`
+- add `bits.reduceOr`
+- add `bits.reduceXnor`
+- add `bits.reduceXor`
 
 ### 1.1.2
 - split up `buffer.operations`
