@@ -31,7 +31,7 @@ bitwise.bits.toString(bits, 4)
 bitwise.byte.write(bits)
 // 42
 
-bitwise.bits.xor([0, 0, 1, 1], [0, 1, 0, 1])
+bitwise.bits.and([0, 0, 1, 1], [0, 1, 0, 1])
 // [0, 0, 0, 1]
 
 bitwise.bits.xor([0, 0, 1, 1], [0, 1, 0, 1])
