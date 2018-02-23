@@ -615,6 +615,9 @@ bitwise.string.toBits('10 10 12$%_.0')
 
 ## History
 
+### 1.4.0
+- improve `require()` support
+
 ### 1.3.0
 - add `bits.toBoolean`
 
