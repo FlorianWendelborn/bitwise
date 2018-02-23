@@ -59,7 +59,8 @@ or
 	* operations ([and](#bitsand), [nand](#bitsnand), [nor](#bitsnor), [not](#bitsnot), [or](#bitsor), [xnor](#bitsxnor), [xor](#bitsxor))
 	* reduce operations ([reduceAnd](#bitsreduceand), [reduceNand](#bitsreducenand), [reduceNor](#bitsreducenor), [reduceOr](#bitsreduceor), [reduceXnor](#bitsreducexnor), [reduceXor](#bitsreducexor))
 	* [toString](#bitstostring)
-* [buffer](#buffer)
+	* [toBits](#stringtobits)
+	* [buffer](#buffer)
 	* [create](#buffercreate)
 	* [modify](#buffermodify)
 	* operations ([and](#bufferand), [nand](#buffernand), [nor](#buffernor), [not](#buffernot), [or](#bufferor), [xnor](#bufferxnor), [xor](#bufferxor))
@@ -280,10 +281,21 @@ bitwise.bits.toBoolean([0, 1])
 ```
 
 Converts a bit `Array` to a `String`. If defined, inserts `spacer` every `spacing` characters, but never inserts it as the last substring.
-
 ```js
 bitwise.bits.toString([1, 0, 1, 0, 1, 0], 2, '_')
 // '10_10_10'
+```
+
+### bits.toBits
+
+```ts
+(bits: String): Array
+```
+Converts a string into an array of bits. Ignores all characters except 1 and 0.
+
+```js
+bitwise.bits.toBits('10101010')
+// [1,0,1,0,1,0,1,0]
 ```
 
 ## buffer
