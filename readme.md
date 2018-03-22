@@ -1,4 +1,4 @@
-<h1 align="center">bitwise</h2>
+<h1 align="center">bitwise</h1>
 
 <p align="center">
 	JavaScript library to manipulate bits, nibbles, bytes, and buffers.
