@@ -70,5 +70,5 @@
 		"travis": "yarn run coverage; codecov",
 		"watch": "nodemon --watch source --exec \"yarn run test\""
 	},
-	"version": "1.4.0"
+	"version": "1.4.1"
 }
