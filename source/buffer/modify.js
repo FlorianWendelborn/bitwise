@@ -7,10 +7,10 @@ import readBuffer from './read'
  * @example
  * modifyBuffer(buffer, [0,0,1,0], 0) => buffer was modified
  *
- * @param buffer {Buffer} the buffer to modify
- * @param bits {Array} the bits to insert
- * @param offset {Number} where to start (in bits)
- * @returns undefined
+ * @param {Buffer} buffer the buffer to modify
+ * @param {Array} bits the bits to insert
+ * @param {Number} offset where to start (in bits)
+ * @returns {undefined}
  */
 export default (buffer, bits, offset = 0) => {
 	const start = Math.floor(offset / 8)

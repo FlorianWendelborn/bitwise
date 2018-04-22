@@ -5,7 +5,7 @@
  * nibble.read(15) => [1,1,1,1]
  *
  * @param {Number} data one nibble
- * @return {Array, false}
+ * @return {Array}
  */
 export default data => {
 	if (data < 16 && data >= 0 && Math.floor(data) === data) {
