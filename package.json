@@ -64,7 +64,7 @@
 		"build": "babel source --out-dir .",
 		"coverage": "jest source --coverage",
 		"postpublish":
-			"git tag $(node -e \"process.stdout.write(require('./package.json').version)\") && git push --tags",
+			"git tag $(node -p \"require('./package.json').version\") && git push --tags",
 		"prepublishOnly": "yarn run test && yarn run build",
 		"test": "jest source",
 		"travis": "yarn run coverage; codecov",
