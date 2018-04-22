@@ -8,8 +8,7 @@
  * @return {Buffer} Buffer(NOT buffer)
  */
 export default buffer => {
-	const result = new Buffer(buffer.length)
-	result.fill(0x00)
+	const result = Buffer.alloc(buffer.length)
 
 	for (let i = 0; i < buffer.length; i++) result[i] = ~buffer[i]
 

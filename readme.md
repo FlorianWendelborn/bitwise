@@ -317,7 +317,7 @@ const buffer = bitwise.buffer.create([1,1,1,1, 0,0,0,1, 1,0,1,0]);
 Modifies the buffer's bits to equal `newBits` starting at `bitOffset`.
 
 ```js
-const buffer = new Buffer('A43A', 'hex');
+const buffer = Buffer.from('A43A', 'hex');
 bitwise.buffer.modify(buffer, [0, 0, 0, 1, 0, 0, 1], 3);
 // Buffer(1010 1001 0011 1010)
 ```
@@ -422,7 +422,7 @@ bitwise.buffer.xor(buffer1, buffer2, false)
 Returns an Array containing `bitLength` bits starting at `bitOffset`. If no `bitLength` is given, it's assumed to be the rest of the buffer.
 
 ```js
-const buffer = new Buffer('ED743E17', 'hex')
+const buffer = Buffer.from('ED743E17', 'hex')
 bitwise.buffer.read(buffer, 12)
 // [0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1]
 ```
