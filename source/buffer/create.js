@@ -6,7 +6,7 @@ import writeByte from '../byte/write'
  * @example
  * createBuffer([1,1,1,1, 0,0,0,1, 1,0,1,0]) => buffer with data 1111 0001 1010 0000
  *
- * @param bits {Array} an array containing the bits to insert
+ * @param {Array} bits an array containing the bits to insert
  * @returns {Buffer}
  */
 export default bits => {

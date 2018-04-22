@@ -4,7 +4,7 @@
  * @example
  * toBits('10 10 12$%_.0') => [1,0,1,0,1,0]
  *
- * @param string {String} the string to convert
+ * @param {String} string the string to convert
  * @returns {Array} resulting array of bits
  */
 export default string => {

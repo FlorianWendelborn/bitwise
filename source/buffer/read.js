@@ -6,9 +6,9 @@ import readByte from '../byte/read'
  * @example
  * readBuffer(buffer, 2, 4) => [0,0,1,0]
  *
- * @param buffer {Buffer} the buffer to read
- * @param offset {Number} where to start (in bits)
- * @param length {Number} how many bits to read
+ * @param {Buffer} buffer the buffer to read
+ * @param {Number} offset where to start (in bits)
+ * @param {Number} length how many bits to read
  * @returns {Array}
  */
 export default (buffer, offset = 0, length) => {

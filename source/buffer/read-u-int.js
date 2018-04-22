@@ -11,9 +11,9 @@ for (let i = 0; i < 32; i++) p2[i] = Math.pow(2, i)
  * // buffer 11110110
  * readUInt(buffer, 3, 5) => 22
  *
- * @param buffer {Buffer} the buffer to extract information from
- * @param length {Number} the length of the unsigned integer (in bits)
- * @param offset {Number} where to start (in bits)
+ * @param {Buffer} buffer the buffer to extract information from
+ * @param {Number} length the length of the unsigned integer (in bits)
+ * @param {Number} offset where to start (in bits)
  * @returns {Number}
  */
 export default (buffer, offset = 0, length = 8) => {
