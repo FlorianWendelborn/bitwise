@@ -12,8 +12,7 @@
 export default (buffer1, buffer2, isLooping = false) => {
 	const length = isLooping ? buffer2.length : buffer1.length
 
-	const result = new Buffer(length)
-	result.fill(0x00)
+	const result = Buffer.alloc(length)
 
 	for (let i = 0; i < length; i++) {
 		const j = isLooping ? i % buffer1.length : i

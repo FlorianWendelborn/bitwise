@@ -11,8 +11,7 @@ import writeByte from '../byte/write'
  */
 export default bits => {
 	const data = [0, 0, 0, 0, 0, 0, 0, 0]
-	const buffer = new Buffer(Math.ceil(bits.length / 8))
-	buffer.fill(0x00)
+	const buffer = Buffer.alloc(Math.ceil(bits.length / 8))
 
 	for (let i = 0; i < buffer.length; i++) {
 		for (let j = 0; j < 8; j++) {
