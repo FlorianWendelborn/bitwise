@@ -1,11 +1,5 @@
 # mirror to .npmignore
+/build/
 /coverage/
 /node_modules/
 # .gitignore-only
-/bits/
-/buffer/
-/byte/
-/index.js
-/integer/
-/nibble/
-/string/

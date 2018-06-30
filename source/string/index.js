@@ -1,5 +1,5 @@
-import _toBits from './to-bits'
+import toBits from './to-bits'
 
-export const toBits = _toBits
+export { toBits }
 
 export default { toBits }

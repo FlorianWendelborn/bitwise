@@ -2,11 +2,15 @@
 	"author": {
 		"email": "1133858+dodekeract@users.noreply.github.com",
 		"name": "Florian Wendelborn",
-		"url": "https://referrer.dodekeract.com/npm/bitwise"
+		"url": "https://hello.dodekeract.com/npm/bitwise"
 	},
 	"babel": {
-		"plugins": ["@babel/plugin-proposal-object-rest-spread"],
-		"presets": ["@babel/preset-es2015"]
+		"plugins": [
+			"@babel/plugin-proposal-object-rest-spread"
+		],
+		"presets": [
+			"@babel/preset-es2015"
+		]
 	},
 	"bugs": {
 		"url": "https://github.com/dodekeract/bitwise/issues"
@@ -29,8 +33,12 @@
 		"jest-cli": "^22.1.4",
 		"nodemon": "^1.14.11"
 	},
+	"files": [
+		"build"
+	],
 	"homepage": "https://github.com/dodekeract/bitwise#readme",
 	"keywords": [
+		"and",
 		"binary",
 		"bit",
 		"bits",
@@ -38,20 +46,19 @@
 		"buffer",
 		"buffers",
 		"change",
+		"flip",
 		"manipulate",
+		"nand",
 		"nibble",
 		"nibbles",
-		"read",
-		"write",
-		"and",
-		"nand",
 		"nor",
 		"not",
 		"or",
+		"read",
+		"toggle",
+		"write",
 		"xnor",
-		"xor",
-		"flip",
-		"toggle"
+		"xor"
 	],
 	"license": "MIT",
 	"main": "index.js",
@@ -61,14 +68,14 @@
 		"url": "git+https://github.com/dodekeract/bitwise.git"
 	},
 	"scripts": {
-		"build": "babel source --out-dir .",
+		"build": "babel source --out-dir build && yarn run build:copy",
+		"build:copy": "cp package.json build && cp readme.md build && cp license.md build",
 		"coverage": "jest source --coverage",
-		"postpublish":
-			"git tag $(node -p \"require('./package.json').version\") && git push --tags",
+		"postpublish": "git tag $(node -p \"require('./package.json').version\") && git push --tags",
 		"prepublishOnly": "yarn run test && yarn run build",
 		"test": "jest source",
 		"travis": "yarn run coverage; codecov",
 		"watch": "nodemon --watch source --exec \"yarn run test\""
 	},
-	"version": "1.4.1"
+	"version": "1.5.0"
 }
