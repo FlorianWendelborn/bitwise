@@ -33,9 +33,6 @@
 		"jest-cli": "^22.1.4",
 		"nodemon": "^1.14.11"
 	},
-	"files": [
-		"build"
-	],
 	"homepage": "https://github.com/dodekeract/bitwise#readme",
 	"keywords": [
 		"and",
@@ -76,5 +73,5 @@
 		"travis": "yarn run coverage; codecov",
 		"watch": "nodemon --watch source --exec \"yarn run test\""
 	},
-	"version": "1.5.1"
+	"version": "1.5.2"
 }
