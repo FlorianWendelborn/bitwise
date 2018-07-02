@@ -72,10 +72,9 @@
 		"build:copy": "cp package.json build && cp readme.md build && cp license.md build",
 		"coverage": "jest source --coverage",
 		"postpublish": "git tag $(node -p \"require('./package.json').version\") && git push --tags",
-		"prepublishOnly": "yarn run test && yarn run build",
 		"test": "jest source",
 		"travis": "yarn run coverage; codecov",
 		"watch": "nodemon --watch source --exec \"yarn run test\""
 	},
-	"version": "1.5.0"
+	"version": "1.5.1"
 }
