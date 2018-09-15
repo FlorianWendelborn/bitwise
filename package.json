@@ -75,9 +75,10 @@
 	"scripts": {
 		"build": "rm -rf build/* && tsc && yarn run build:copy",
 		"build:copy": "cp package.json build && cp readme.md build && cp license.md build",
+		"clean": "read -p \"Are you sure you want to discard all uncommitted changes? (y/n)\" CONTINUE; if [ \"$CONTINUE\" = \"y\" ]; then git clean -dxf; else exit 1; fi && yarn install",
 		"coverage": "jest --coverage",
+		"custom-publish": "yarn run clean && yarn run build && yarn run test && echo \"cd build && npm publish\"",
 		"postpublish": "git tag $(node -p \"require('./package.json').version\") && git push --tags",
-		"prepublish": "yarn run build",
 		"test": "jest",
 		"travis": "yarn run coverage; codecov",
 		"watch": "jest --watch"
