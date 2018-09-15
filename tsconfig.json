@@ -1,12 +1,14 @@
 {
 	"compilerOptions": {
-		"module": "commonjs",
-		"target": "es5",
 		"declaration": true,
-		"outDir": "./build",
 		"forceConsistentCasingInFileNames": true,
+		"module": "commonjs",
+		"noImplicitAny": true,
+		"noUnusedLocals": true,
+		"outDir": "./build",
 		"strict": true,
-		"noUnusedLocals": true
+		"strictNullChecks": true,
+		"target": "es5"
 	},
 	"exclude": ["source/**/*.test.ts"],
 	"include": ["source/**/*.ts"]

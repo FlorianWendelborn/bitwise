@@ -4,7 +4,7 @@ export type BooleanBits = Array<boolean>
 export type Byte = [Bit, Bit, Bit, Bit, Bit, Bit, Bit, Bit]
 export type Nibble = [Bit, Bit, Bit, Bit]
 
-// @TODO: Find better solution for this
+// @TODO: Find a better solution
 export type UInt4 =
 	| 0
 	| 1
@@ -23,6 +23,7 @@ export type UInt4 =
 	| 14
 	| 15
 
+// @TODO: Find a better solution
 export type UInt8 =
 	| 0
 	| 1

@@ -23,6 +23,19 @@
 		"typescript": "^3.0.3"
 	},
 	"homepage": "https://github.com/dodekeract/bitwise#readme",
+	"jest": {
+		"moduleFileExtensions": [
+			"ts",
+			"js"
+		],
+		"roots": [
+			"<rootDir>/source"
+		],
+		"testRegex": "\\.test\\.ts$",
+		"transform": {
+			"^.+\\.ts$": "ts-jest"
+		}
+	},
 	"keywords": [
 		"and",
 		"binary",
@@ -49,20 +62,6 @@
 	"license": "MIT",
 	"main": "index.js",
 	"name": "bitwise",
-	"types": "index.d.ts",
-	"jest": {
-		"roots": [
-			"<rootDir>/source"
-		],
-		"transform": {
-			"^.+\\.ts$": "ts-jest"
-		},
-		"testRegex": "\\.test\\.ts$",
-		"moduleFileExtensions": [
-			"ts",
-			"js"
-		]
-	},
 	"prettier": {
 		"semi": false,
 		"singleQuote": true,
@@ -74,7 +73,7 @@
 		"url": "git+https://github.com/dodekeract/bitwise.git"
 	},
 	"scripts": {
-		"build": "tsc && yarn run build:copy",
+		"build": "rm -rf build/* && tsc && yarn run build:copy",
 		"build:copy": "cp package.json build && cp readme.md build && cp license.md build",
 		"coverage": "jest --coverage",
 		"postpublish": "git tag $(node -p \"require('./package.json').version\") && git push --tags",
@@ -83,5 +82,6 @@
 		"travis": "yarn run coverage; codecov",
 		"watch": "jest --watch"
 	},
+	"types": "index.d.ts",
 	"version": "2.0.0"
 }
