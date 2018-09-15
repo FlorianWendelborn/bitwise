@@ -4,9 +4,11 @@ describe('convert to bits', () => {
 	test('without special characters', () => {
 		expect(string.toBits('1001')).toEqual([1, 0, 0, 1])
 	})
+
 	test('with special characters', () => {
 		expect(string.toBits('10$" -_,.\\/=01')).toEqual([1, 0, 0, 1])
 	})
+
 	test('with long strings', () => {
 		expect(
 			string.toBits(

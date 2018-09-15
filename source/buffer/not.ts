@@ -8,9 +8,9 @@
  * @return {Buffer} Buffer(NOT buffer)
  */
 export default (buffer: Buffer): Buffer => {
-	const result = Buffer.alloc(buffer.length)
+	const result: Buffer = Buffer.alloc(buffer.length)
 
-	for (let i = 0; i < buffer.length; i++) result[i] = ~buffer[i]
+	for (let i: number = 0; i < buffer.length; i++) result[i] = ~buffer[i]
 
 	return result
 }

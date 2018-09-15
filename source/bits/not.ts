@@ -1,4 +1,4 @@
-import { Bits } from '../types'
+import { Bit, Bits } from '../types'
 
 /**
  * Flips all given bits and returns the flipped bits.
@@ -10,9 +10,9 @@ import { Bits } from '../types'
  * @return {Array} [NOT bits]
  */
 export default (bits: Bits): Bits => {
-	const result = []
+	const result: Bits = []
 
-	for (let i = 0; i < bits.length; i++) result[i] = bits[i] ^ 1
+	for (let i: number = 0; i < bits.length; i++) result[i] = <Bit>(bits[i] ^ 1)
 
 	return result
 }

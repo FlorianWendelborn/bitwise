@@ -1,3 +1,5 @@
+import { Bit } from '../types'
+
 /**
  * Gets the value of a specific bit.
  * @example bitwise.integer.getBit(128, 7) => 1
@@ -5,5 +7,5 @@
  * @param {Integer} position bit's position
  * @returns {Integer} bit's value
  */
-export default (int32: number, position: number): number =>
-	(int32 >> position) & 1
+export default (int32: number, position: number): Bit =>
+	<Bit>((int32 >> position) & 1)

@@ -4,7 +4,7 @@ import read from './read'
 import toBits from '../string/to-bits'
 
 describe('NOR', () => {
-	let buffer1, buffer2, buffer3
+	let buffer1: Buffer, buffer2: Buffer, buffer3: Buffer
 	beforeEach(() => {
 		buffer1 = create(toBits('0110 1100 0110 1000 1110 0001 0010 1100'))
 		buffer2 = create(toBits('1011 0101 1001 1110 0001 1011 0100 0011'))

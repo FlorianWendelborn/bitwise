@@ -1,4 +1,4 @@
-import { Bits, Byte } from '../types'
+import { Bit, Byte, UInt8 } from '../types'
 
 /**
  * Returns an Array of length 8 containing the read bits.
@@ -9,13 +9,13 @@ import { Bits, Byte } from '../types'
  * @param {Number} byte one byte
  * @return {Array}
  */
-export default (byte: Byte): Bits => {
+export default (byte: UInt8): Byte => {
 	if (byte > 255 || byte < 0 || ~~byte !== byte)
 		throw new RangeError('invalid byte')
 
-	const result = [0, 0, 0, 0, 0, 0, 0, 0]
+	const result: Byte = [0, 0, 0, 0, 0, 0, 0, 0]
 
-	for (let i = 0; i < 8; i++) result[7 - i] = (byte >> i) & 1
+	for (let i: number = 0; i < 8; i++) result[7 - i] = <Bit>((byte >> i) & 1)
 
 	return result
 }

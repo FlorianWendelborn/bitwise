@@ -1,4 +1,4 @@
-import { Bits } from '../types'
+import { Bits, UInt8 } from '../types'
 import readByte from '../byte/read'
 
 /**
@@ -15,16 +15,16 @@ import readByte from '../byte/read'
 export default (buffer: Buffer, offset: number = 0, length?: number): Bits => {
 	if (!length) length = buffer.length * 8 - offset
 
-	const start = Math.floor(offset / 8)
-	const bytesToRead = Math.floor(length / 8) + 2
+	const start: number = Math.floor(offset / 8)
+	const bytesToRead: number = Math.floor(length / 8) + 2
 
-	const arr = []
+	const arr: Bits = []
 	arr.length = bytesToRead * 8
 
 	for (let i = 0; i < bytesToRead; i++) {
-		const toRead = buffer[start + i]
+		const toRead: UInt8 = <UInt8>buffer[start + i]
 		if (toRead === undefined) continue
-		const bits = readByte(buffer[start + i])
+		const bits = readByte(<UInt8>buffer[start + i])
 		arr[i * 8] = bits[0]
 		arr[i * 8 + 1] = bits[1]
 		arr[i * 8 + 2] = bits[2]
@@ -35,6 +35,6 @@ export default (buffer: Buffer, offset: number = 0, length?: number): Bits => {
 		arr[i * 8 + 7] = bits[7]
 	}
 
-	const subOffset = offset % 8
+	const subOffset: number = offset % 8
 	return arr.slice(subOffset, subOffset + length)
 }

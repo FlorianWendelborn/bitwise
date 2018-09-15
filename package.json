@@ -4,14 +4,6 @@
 		"name": "Florian Wendelborn",
 		"url": "https://hello.dodekeract.com/npm/bitwise"
 	},
-	"babel": {
-		"plugins": [
-			"@babel/plugin-proposal-object-rest-spread"
-		],
-		"presets": [
-			"@babel/preset-es2015"
-		]
-	},
 	"bugs": {
 		"url": "https://github.com/dodekeract/bitwise/issues"
 	},
@@ -57,6 +49,7 @@
 	"license": "MIT",
 	"main": "index.js",
 	"name": "bitwise",
+	"types": "index.d.ts",
 	"jest": {
 		"roots": [
 			"<rootDir>/source"
@@ -85,9 +78,10 @@
 		"build:copy": "cp package.json build && cp readme.md build && cp license.md build",
 		"coverage": "jest --coverage",
 		"postpublish": "git tag $(node -p \"require('./package.json').version\") && git push --tags",
+		"prepublish": "yarn run build",
 		"test": "jest",
 		"travis": "yarn run coverage; codecov",
 		"watch": "jest --watch"
 	},
-	"version": "1.5.2"
+	"version": "2.0.0"
 }

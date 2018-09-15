@@ -1,4 +1,4 @@
-import { Bits } from '../types'
+import { Bit, Bits } from '../types'
 
 /**
  * Applies the OR operation on the given bits. Returns one bit.
@@ -10,12 +10,12 @@ import { Bits } from '../types'
  * @param {Array} bits input data
  * @return {Integer} OR bits
  */
-export default (bits: Bits): number => {
+export default (bits: Bits): Bit => {
 	if (bits.length < 2) throw new RangeError('Not enough bits.')
 
-	let result = bits[0]
+	let result: Bit = bits[0]
 
-	for (let i = 1; i < bits.length; i++) result |= bits[i]
+	for (let i: number = 1; i < bits.length; i++) result |= bits[i]
 
 	return result
 }

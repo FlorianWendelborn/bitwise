@@ -1,4 +1,4 @@
-import { Bits } from '../types'
+import { Bits, BooleanBits } from '../types'
 
 /**
  * Converts a bit array to a boolean array.
@@ -7,10 +7,10 @@ import { Bits } from '../types'
  * @param {Array} bits input data
  * @returns {Array} boolean bits
  */
-export default (bits: Bits): Array<Boolean> => {
-	const result = []
+export default (bits: Bits): BooleanBits => {
+	const result: BooleanBits = []
 
-	for (let i = 0; i < bits.length; i++) result[i] = !!bits[i]
+	for (let i: number = 0; i < bits.length; i++) result[i] = bits[i] === 1
 
 	return result
 }

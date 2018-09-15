@@ -14,13 +14,13 @@ import { Bits } from '../types'
 export default (
 	bits: Bits,
 	spacing: number = 0,
-	spacer: String = ' '
-): String => {
+	spacer: string = ' '
+): string => {
 	if (!spacing) return bits.join('')
 
-	let result = ''
+	let result: string = ''
 
-	for (var i = 0; i < bits.length; i++) {
+	for (let i: number = 0; i < bits.length; i++) {
 		result += `${bits[i]}`
 		if (i % spacing === spacing - 1 && i !== bits.length - 1) result += spacer
 	}

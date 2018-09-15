@@ -1,7 +1,7 @@
-import { Bits, Byte } from '../types'
+import { Byte, UInt8 } from '../types'
 
 /**
- * Returns a Byte (0-255) which equals the given bits.
+ * Returns a UInt8 (0-255) which equals the given bits.
  *
  * @example
  * byte.write([0,0,1,0,1,0,1,0]) => 42
@@ -9,13 +9,13 @@ import { Bits, Byte } from '../types'
  * @param {Array} bits 8-bit unsigned integer
  * @return {Number}
  */
-export default (bits: Bits): Byte => {
-	if (!Array.isArray(bits) || bits.length !== 8)
+export default (byte: Byte): UInt8 => {
+	if (!Array.isArray(byte) || byte.length !== 8)
 		throw new RangeError('invalid array length')
 
-	let data = 0
+	let data: UInt8 = 0
 
-	for (let i = 0; i < 8; i++) if (bits[7 - i]) data |= 1 << i
+	for (let i: number = 0; i < 8; i++) if (byte[7 - i]) data |= 1 << i
 
-	return data
+	return <UInt8>data
 }

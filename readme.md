@@ -48,37 +48,35 @@ byte.read(42)
 <pre>
 <a href="https://yarnpkg.com">yarn</a> add <a href="https://yarnpkg.com/en/package/bitwise">bitwise</a>
 </pre>
+
 or
+
 <pre>
 <a href="https://npmjs.com">npm</a> i <a href="https://npmjs.com/package/bitwise">bitwise</a>
 </pre>
 
 ## Table of Contents
 
-* [bits](#bits)
-	* operations ([and](#bitsand), [nand](#bitsnand), [nor](#bitsnor), [not](#bitsnot), [or](#bitsor), [xnor](#bitsxnor), [xor](#bitsxor))
-	* reduce operations ([reduceAnd](#bitsreduceand), [reduceNand](#bitsreducenand), [reduceNor](#bitsreducenor), [reduceOr](#bitsreduceor), [reduceXnor](#bitsreducexnor), [reduceXor](#bitsreducexor))
-	* [toString](#bitstostring)
-* [buffer](#buffer)
-	* [create](#buffercreate)
-	* [modify](#buffermodify)
-	* operations ([and](#bufferand), [nand](#buffernand), [nor](#buffernor), [not](#buffernot), [or](#bufferor), [xnor](#bufferxnor), [xor](#bufferxor))
-	* [read](#bufferread)
-	* [readCInt](#bufferreadcint)
-	* [readInt](#bufferreadint)
-	* [readUInt](#bufferreaduint)
-* [byte](#byte)
-	* [read](#byteread)
-	* [write](#bytewrite)
-* [integer](#integer)
-	* [getBit](#integergetbit)
-	* [setBit](#integersetbit)
-	* [toggleBit](#integertogglebit)
-* [nibble](#nibble)
-	* [read](#nibbleread)
-	* [write](#nibblewrite)
-* [string](#string)
-	* [toBits](#stringtobits)
+- [bits](#bits)
+  _ operations ([and](#bitsand), [nand](#bitsnand), [nor](#bitsnor), [not](#bitsnot), [or](#bitsor), [xnor](#bitsxnor), [xor](#bitsxor))
+  _ reduce operations ([reduceAnd](#bitsreduceand), [reduceNand](#bitsreducenand), [reduceNor](#bitsreducenor), [reduceOr](#bitsreduceor), [reduceXnor](#bitsreducexnor), [reduceXor](#bitsreducexor)) \* [toString](#bitstostring)
+- [buffer](#buffer)
+  _ [create](#buffercreate)
+  _ [modify](#buffermodify)
+  _ operations ([and](#bufferand), [nand](#buffernand), [nor](#buffernor), [not](#buffernot), [or](#bufferor), [xnor](#bufferxnor), [xor](#bufferxor))
+  _ [read](#bufferread)
+  _ [readInt](#bufferreadint)
+  _ [readUInt](#bufferreaduint)
+- [byte](#byte)
+  _ [read](#byteread)
+  _ [write](#bytewrite)
+- [integer](#integer)
+  _ [getBit](#integergetbit)
+  _ [setBit](#integersetbit) \* [toggleBit](#integertogglebit)
+- [nibble](#nibble)
+  _ [read](#nibbleread)
+  _ [write](#nibblewrite)
+- [string](#string) \* [toBits](#stringtobits)
 
 ## bits
 
@@ -189,7 +187,7 @@ bitwise.bits.xor([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
 Applies the bitwise `AND` operation on the given bits. Returns one bit. Throws if less than 2 bits are given.
 
 ```js
-bitwise.bits.reduceAnd([1,0,0,0,1,1,0,1])
+bitwise.bits.reduceAnd([1, 0, 0, 0, 1, 1, 0, 1])
 // 0
 ```
 
@@ -276,7 +274,7 @@ bitwise.bits.toBoolean([0, 1])
 ### bits.toString
 
 ```ts
-(bits: Array, spacing = 0, spacer = ' '): String
+(bits: Array, spacing = 0, spacer = ' '): string
 ```
 
 Converts a bit `Array` to a `String`. If defined, inserts `spacer` every `spacing` characters, but never inserts it as the last substring.
@@ -304,7 +302,7 @@ import create from 'bitwise/buffer/create'
 Creates a new buffer and writes the given bits.
 
 ```js
-const buffer = bitwise.buffer.create([1,1,1,1, 0,0,0,1, 1,0,1,0]);
+const buffer = bitwise.buffer.create([1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0])
 // Buffer(1111 0001 1010 0000)
 ```
 
@@ -317,8 +315,8 @@ const buffer = bitwise.buffer.create([1,1,1,1, 0,0,0,1, 1,0,1,0]);
 Modifies the buffer's bits to equal `newBits` starting at `bitOffset`.
 
 ```js
-const buffer = Buffer.from('A43A', 'hex');
-bitwise.buffer.modify(buffer, [0, 0, 0, 1, 0, 0, 1], 3);
+const buffer = Buffer.from('A43A', 'hex')
+bitwise.buffer.modify(buffer, [0, 0, 0, 1, 0, 0, 1], 3)
 // Buffer(1010 1001 0011 1010)
 ```
 
@@ -425,21 +423,6 @@ Returns an Array containing `bitLength` bits starting at `bitOffset`. If no `bit
 const buffer = Buffer.from('ED743E17', 'hex')
 bitwise.buffer.read(buffer, 12)
 // [0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1]
-```
-
-### buffer.readCInt
-
-```ts
-(buffer: Buffer, bitOffset = 0, bitLength = 8): Integer
-```
-
-Converts a section of a buffer to a complementary integer.
-A complementary integer is like an unsigned integer, but always represents negative numbers.
-
-```js
-// buffer 11110110
-bitwise.buffer.readCInt(buffer, 3, 5)
-// -22
 ```
 
 ### buffer.readInt
@@ -603,7 +586,7 @@ import toBits from 'bitwise/string/to-bits'
 ### string.toBits
 
 ```ts
-(string: String): Array
+(string: string): Array
 ```
 
 Converts a string into an array of bits. Ignores all characters except `1` and `0`.
@@ -615,13 +598,21 @@ bitwise.string.toBits('10 10 12$%_.0')
 
 ## History
 
+### 2.0.0
+
+- refactor to typescript
+- remove `bitwise.buffer.readCInt()`
+
 ### 1.4.0
+
 - improve `require()` support
 
 ### 1.3.0
+
 - add `bits.toBoolean`
 
 ### 1.2.0
+
 - add `bits.reduceAnd`
 - add `bits.reduceNand`
 - add `bits.reduceNor`
@@ -630,29 +621,36 @@ bitwise.string.toBits('10 10 12$%_.0')
 - add `bits.reduceXor`
 
 ### 1.1.2
+
 - split up `buffer.operations`
 
 ### 1.1.1
+
 - split up `bits.operations`
 
 ### 1.1.0
+
 - add `integer.getBit`
 - add `integer.setBit`
 - add `integer.toggleBit`
 
 ### 1.0.0
+
 - rewrite in ES6
 - improve utilization of bitwise operators
 - improve API (**breaking change**)
 
 ### 0.2.0
+
 - Added buffer bitwise operations
 
 ### 0.1.2
+
 - Added nor, xnor, nand
 - Fixed bitwise operations modifying original array
 
 ### 0.1.0
+
 - **Re-ordered the arguments** in readInt, readCInt, readUInt
 - Added not, and, or, xor
 - Renamed flipBits to not

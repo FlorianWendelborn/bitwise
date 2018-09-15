@@ -1,13 +1,15 @@
 import bitwise from '../'
 
-const createTestBuffer = () =>
+type TestArray = Array<{ length?: number; offset: number; expected: number }>
+
+const createTestBuffer = (): Buffer =>
 	bitwise.buffer.create(
 		bitwise.string.toBits('11110110 11111110 10000110 11001000')
 	)
 
 test('2-7 bit', () => {
-	const buffer = createTestBuffer()
-	const tests = [
+	const buffer: Buffer = createTestBuffer()
+	const tests: TestArray = [
 		{ length: 2, offset: 6, expected: -2 },
 		{ length: 3, offset: 5, expected: -2 },
 		{ length: 4, offset: 4, expected: 6 },
@@ -16,13 +18,18 @@ test('2-7 bit', () => {
 		{ length: 7, offset: 1, expected: -10 },
 	]
 	tests.forEach(test => {
-		const number = bitwise.buffer.readInt(buffer, test.offset, test.length)
-		expect(number).toBe(test.expected)
+		const result: number = bitwise.buffer.readInt(
+			buffer,
+			test.offset,
+			test.length
+		)
+		expect(result).toBe(test.expected)
 	})
 })
+
 test('8-15 bit', () => {
 	const buffer = createTestBuffer()
-	const tests = [
+	const tests: TestArray = [
 		{ length: undefined, offset: 0, expected: -10 },
 		{ length: 8, offset: 0, expected: -10 },
 		{ length: 9, offset: 7, expected: 254 },
@@ -34,13 +41,18 @@ test('8-15 bit', () => {
 		{ length: 15, offset: 1, expected: -2306 },
 	]
 	tests.forEach(test => {
-		const number = bitwise.buffer.readInt(buffer, test.offset, test.length)
-		expect(number).toBe(test.expected)
+		const result: number = bitwise.buffer.readInt(
+			buffer,
+			test.offset,
+			test.length
+		)
+		expect(result).toBe(test.expected)
 	})
 })
+
 test('16-23 bit', () => {
 	const buffer = createTestBuffer()
-	const tests = [
+	const tests: TestArray = [
 		{ length: 16, offset: 0, expected: -2306 },
 		{ length: 17, offset: 7, expected: 65158 },
 		{ length: 18, offset: 6, expected: -65914 },
@@ -51,13 +63,18 @@ test('16-23 bit', () => {
 		{ length: 23, offset: 1, expected: -590202 },
 	]
 	tests.forEach(test => {
-		const number = bitwise.buffer.readInt(buffer, test.offset, test.length)
-		expect(number).toBe(test.expected)
+		const result: number = bitwise.buffer.readInt(
+			buffer,
+			test.offset,
+			test.length
+		)
+		expect(result).toBe(test.expected)
 	})
 })
+
 test('24-31 bit', () => {
 	const buffer = createTestBuffer()
-	const tests = [
+	const tests: TestArray = [
 		{ length: 24, offset: 0, expected: -590202 },
 		{ length: 25, offset: 7, expected: 16680648 },
 		{ length: 26, offset: 6, expected: -16873784 },
@@ -68,12 +85,17 @@ test('24-31 bit', () => {
 		{ length: 31, offset: 1, expected: -151091512 },
 	]
 	tests.forEach(test => {
-		const number = bitwise.buffer.readInt(buffer, test.offset, test.length)
-		expect(number).toBe(test.expected)
+		const result: number = bitwise.buffer.readInt(
+			buffer,
+			test.offset,
+			test.length
+		)
+		expect(result).toBe(test.expected)
 	})
 })
+
 test('32 bit', () => {
-	const buffer = createTestBuffer()
-	const number = bitwise.buffer.readInt(buffer, 0, 32)
-	expect(number).toBe(-151091512)
+	const buffer: Buffer = createTestBuffer()
+	const result: number = bitwise.buffer.readInt(buffer, 0, 32)
+	expect(result).toBe(-151091512)
 })

@@ -1,5 +1,5 @@
 # mirror to .npmignore
-/build/
 /coverage/
 /node_modules/
 # .gitignore-only
+/build/

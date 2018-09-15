@@ -1,4 +1,4 @@
-import { Bits } from '../types'
+import { Bits, Byte } from '../types'
 import writeByte from '../byte/write'
 
 /**
@@ -11,11 +11,11 @@ import writeByte from '../byte/write'
  * @returns {Buffer}
  */
 export default (bits: Bits): Buffer => {
-	const data = [0, 0, 0, 0, 0, 0, 0, 0]
-	const buffer = Buffer.alloc(Math.ceil(bits.length / 8))
+	const data: Byte = [0, 0, 0, 0, 0, 0, 0, 0]
+	const buffer: Buffer = Buffer.alloc(Math.ceil(bits.length / 8))
 
-	for (let i = 0; i < buffer.length; i++) {
-		for (let j = 0; j < 8; j++) {
+	for (let i: number = 0; i < buffer.length; i++) {
+		for (let j: number = 0; j < 8; j++) {
 			if (bits[i * 8 + j]) data[j] = bits[i * 8 + j]
 			else data[j] = 0
 		}

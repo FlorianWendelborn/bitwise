@@ -1,7 +1,7 @@
 import bitwise from '../'
 
 test('with one bit of data', () => {
-	const buffer = Buffer.alloc(1)
+	const buffer: Buffer = Buffer.alloc(1)
 
 	bitwise.buffer.modify(buffer, bitwise.string.toBits('1'))
 
@@ -11,7 +11,7 @@ test('with one bit of data', () => {
 })
 
 test('without offset', () => {
-	const buffer = Buffer.from('FBA8', 'hex')
+	const buffer: Buffer = Buffer.from('FBA8', 'hex')
 
 	bitwise.buffer.modify(buffer, bitwise.string.toBits('01010'))
 
@@ -21,7 +21,7 @@ test('without offset', () => {
 })
 
 test('with offset', () => {
-	const buffer = Buffer.from('A43A', 'hex')
+	const buffer: Buffer = Buffer.from('A43A', 'hex')
 
 	bitwise.buffer.modify(buffer, bitwise.string.toBits('01001001'), 3)
 
@@ -31,7 +31,7 @@ test('with offset', () => {
 })
 
 test('with one byte offset', () => {
-	const buffer = Buffer.from('AC14E974', 'hex')
+	const buffer: Buffer = Buffer.from('AC14E974', 'hex')
 
 	bitwise.buffer.modify(buffer, bitwise.string.toBits('01001001'), 8)
 

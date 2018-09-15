@@ -12,14 +12,14 @@
 export default (
 	buffer1: Buffer,
 	buffer2: Buffer,
-	isLooping: Boolean = false
+	isLooping: boolean = false
 ): Buffer => {
-	const length = isLooping ? buffer2.length : buffer1.length
+	const length: number = isLooping ? buffer2.length : buffer1.length
 
-	const result = Buffer.alloc(length)
+	const result: Buffer = Buffer.alloc(length)
 
-	for (let i = 0; i < length; i++) {
-		const j = isLooping ? i % buffer1.length : i
+	for (let i: number = 0; i < length; i++) {
+		const j: number = isLooping ? i % buffer1.length : i
 		result[i] = buffer1[j] | buffer2[i]
 	}
 

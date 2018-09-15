@@ -9,10 +9,10 @@ import { Bits } from '../types'
  * @param {String} string the string to convert
  * @returns {Array} resulting array of bits
  */
-export default (string: String): Bits => {
-	const result = []
+export default (string: string): Bits => {
+	const result: Bits = []
 
-	for (let i = 0; i < string.length; i++) {
+	for (let i: number = 0; i < string.length; i++) {
 		if (string[i] === '1') result.push(1)
 		else if (string[i] === '0') result.push(0)
 	}

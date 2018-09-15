@@ -12,7 +12,7 @@
 export default (
 	buffer1: Buffer,
 	buffer2: Buffer,
-	isLooping: Boolean = false
+	isLooping: boolean = false
 ): Buffer => {
 	const length = isLooping ? buffer2.length : buffer1.length
 
