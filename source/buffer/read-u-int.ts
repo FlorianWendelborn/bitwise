@@ -1,9 +1,6 @@
 import { Bits } from '../types'
+import { p2 } from '../utilities'
 import read from './read'
-
-// 32-bit powers of two wouldn't be possible with <<
-const p2: Array<number> = []
-for (let i: number = 0; i < 32; i++) p2[i] = Math.pow(2, i)
 
 /**
  * Converts a section of a buffer to an unsigned integer.
