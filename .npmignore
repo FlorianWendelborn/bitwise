@@ -1,7 +1,9 @@
 # mirror to .gitignore
-/build/
 /coverage/
 /node_modules/
 # .npmignore-only
-.travis.yml
 .codeclimate.yml
+.travis.yml
+.gitignore
+tsconfig.json
+yarn.lock

@@ -4,14 +4,6 @@
 		"name": "Florian Wendelborn",
 		"url": "https://hello.dodekeract.com/npm/bitwise"
 	},
-	"babel": {
-		"plugins": [
-			"@babel/plugin-proposal-object-rest-spread"
-		],
-		"presets": [
-			"@babel/preset-es2015"
-		]
-	},
 	"bugs": {
 		"url": "https://github.com/dodekeract/bitwise/issues"
 	},
@@ -23,17 +15,27 @@
 	],
 	"description": "Manipulates bits, nibbles, bytes, and buffers.",
 	"devDependencies": {
-		"@babel/cli": "^7.0.0-beta.38",
-		"@babel/core": "^7.0.0-beta.38",
-		"@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.38",
-		"@babel/preset-es2015": "^7.0.0-beta.38",
-		"babel-core": "^7.0.0-0",
-		"babel-jest": "^22.1.0",
+		"@types/jest": "^23.3.2",
 		"codecov": "^3.0.0",
 		"jest-cli": "^22.1.4",
-		"nodemon": "^1.14.11"
+		"ts-jest": "^23.1.4",
+		"tslint": "^5.11.0",
+		"typescript": "^3.0.3"
 	},
 	"homepage": "https://github.com/dodekeract/bitwise#readme",
+	"jest": {
+		"moduleFileExtensions": [
+			"ts",
+			"js"
+		],
+		"roots": [
+			"<rootDir>/source"
+		],
+		"testRegex": "\\.test\\.ts$",
+		"transform": {
+			"^.+\\.ts$": "ts-jest"
+		}
+	},
 	"keywords": [
 		"and",
 		"binary",
@@ -60,18 +62,27 @@
 	"license": "MIT",
 	"main": "index.js",
 	"name": "bitwise",
+	"prettier": {
+		"semi": false,
+		"singleQuote": true,
+		"trailingComma": "es5",
+		"useTabs": true
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/dodekeract/bitwise.git"
 	},
 	"scripts": {
-		"build": "babel source --out-dir build && yarn run build:copy",
+		"build": "rm -rf build/* && tsc && yarn run build:copy",
 		"build:copy": "cp package.json build && cp readme.md build && cp license.md build",
-		"coverage": "jest source --coverage",
+		"clean": "read -p \"Are you sure you want to discard all uncommitted changes? (y/n)\" CONTINUE; if [ \"$CONTINUE\" = \"y\" ]; then git clean -dxf; else exit 1; fi && yarn install",
+		"coverage": "jest --coverage",
+		"custom-publish": "yarn run clean && yarn run build && yarn run test && echo \"cd build && npm publish\"",
 		"postpublish": "git tag $(node -p \"require('./package.json').version\") && git push --tags",
-		"test": "jest source",
+		"test": "jest",
 		"travis": "yarn run coverage; codecov",
-		"watch": "nodemon --watch source --exec \"yarn run test\""
+		"watch": "jest --watch"
 	},
-	"version": "1.5.2"
+	"types": "index.d.ts",
+	"version": "2.0.0"
 }

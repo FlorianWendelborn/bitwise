@@ -1,7 +1,7 @@
 <h1 align="center">bitwise</h1>
 
 <p align="center">
-	JavaScript library to manipulate bits, nibbles, bytes, and buffers.
+	JavaScript/TypeScript library to manipulate bits, nibbles, bytes, and buffers.
 </p>
 
 <p align="center">
@@ -48,37 +48,38 @@ byte.read(42)
 <pre>
 <a href="https://yarnpkg.com">yarn</a> add <a href="https://yarnpkg.com/en/package/bitwise">bitwise</a>
 </pre>
+
 or
+
 <pre>
 <a href="https://npmjs.com">npm</a> i <a href="https://npmjs.com/package/bitwise">bitwise</a>
 </pre>
 
 ## Table of Contents
 
-* [bits](#bits)
-	* operations ([and](#bitsand), [nand](#bitsnand), [nor](#bitsnor), [not](#bitsnot), [or](#bitsor), [xnor](#bitsxnor), [xor](#bitsxor))
-	* reduce operations ([reduceAnd](#bitsreduceand), [reduceNand](#bitsreducenand), [reduceNor](#bitsreducenor), [reduceOr](#bitsreduceor), [reduceXnor](#bitsreducexnor), [reduceXor](#bitsreducexor))
-	* [toString](#bitstostring)
-* [buffer](#buffer)
-	* [create](#buffercreate)
-	* [modify](#buffermodify)
-	* operations ([and](#bufferand), [nand](#buffernand), [nor](#buffernor), [not](#buffernot), [or](#bufferor), [xnor](#bufferxnor), [xor](#bufferxor))
-	* [read](#bufferread)
-	* [readCInt](#bufferreadcint)
-	* [readInt](#bufferreadint)
-	* [readUInt](#bufferreaduint)
-* [byte](#byte)
-	* [read](#byteread)
-	* [write](#bytewrite)
-* [integer](#integer)
-	* [getBit](#integergetbit)
-	* [setBit](#integersetbit)
-	* [toggleBit](#integertogglebit)
-* [nibble](#nibble)
-	* [read](#nibbleread)
-	* [write](#nibblewrite)
-* [string](#string)
-	* [toBits](#stringtobits)
+- [bits](#bits)
+  - operations ([and](#bitsand), [nand](#bitsnand), [nor](#bitsnor), [not](#bitsnot), [or](#bitsor), [xnor](#bitsxnor), [xor](#bitsxor))
+  - reduce operations ([reduceAnd](#bitsreduceand), [reduceNand](#bitsreducenand), [reduceNor](#bitsreducenor), [reduceOr](#bitsreduceor), [reduceXnor](#bitsreducexnor), [reduceXor](#bitsreducexor))
+  - [toString](#bitstostring)
+- [buffer](#buffer)
+  - [create](#buffercreate)
+  - [modify](#buffermodify)
+  - operations ([and](#bufferand), [nand](#buffernand), [nor](#buffernor), [not](#buffernot), [or](#bufferor), [xnor](#bufferxnor), [xor](#bufferxor))
+  - [read](#bufferread)
+  - [readInt](#bufferreadint)
+  - [readUInt](#bufferreaduint)
+- [byte](#byte)
+  - [read](#byteread)
+  - [write](#bytewrite)
+- [integer](#integer)
+  - [getBit](#integergetbit)
+  - [setBit](#integersetbit)
+  - [toggleBit](#integertogglebit)
+- [nibble](#nibble)
+  - [read](#nibbleread)
+  - [write](#nibblewrite)
+- [string](#string)
+  - [toBits](#stringtobits)
 
 ## bits
 
@@ -92,7 +93,7 @@ import toString from 'bitwise/bits/to-string'
 ### bits.and
 
 ```ts
-(bits1: Array, bits2: Array): Array
+(bits1: Array<0|1>, bits2: Array<0|1>): Array<0|1>
 ```
 
 Applies the bitwise `AND` operation, expects two arrays of the same size and returns a new one.
@@ -105,7 +106,7 @@ bitwise.bits.and([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
 ### bits.nand
 
 ```ts
-(bits1: Array, bits2: Array): Array
+(bits1: Array<0|1>, bits2: Array<0|1>): Array<0|1>
 ```
 
 Applies the bitwise `NAND` operation, expects two arrays of the same size and returns a new one.
@@ -118,7 +119,7 @@ bitwise.bits.nand([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
 ### bits.nor
 
 ```ts
-(bits1: Array, bits2: Array): Array
+(bits1: Array<0|1>, bits2: Array<0|1>): Array<0|1>
 ```
 
 Applies the bitwise `NOR` operation, expects two arrays of the same size and returns a new one.
@@ -131,7 +132,7 @@ bitwise.bits.nor([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
 ### bits.not
 
 ```ts
-(bits: Array): Array
+(bits: Array<0|1>): Array<0|1>
 ```
 
 Flips all given bits and returns the flipped bits.
@@ -144,7 +145,7 @@ bitwise.bits.not([1, 0, 1, 1, 0, 1])
 ### bits.or
 
 ```ts
-(bits1: Array, bits2: Array): Array
+(bits1: Array<0|1>, bits2: Array<0|1>): Array<0|1>
 ```
 
 Applies the bitwise `OR` operation, expects two arrays of the same size and returns a new one.
@@ -157,7 +158,7 @@ bitwise.bits.or([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
 ### bits.xnor
 
 ```ts
-(bits1: Array, bits2: Array): Array
+(bits1: Array<0|1>, bits2: Array<0|1>): Array<0|1>
 ```
 
 Applies the bitwise exclusive `NOR` operation, expects two arrays of the same size and returns a new one.
@@ -170,7 +171,7 @@ bitwise.bits.xnor([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
 ### bits.xor
 
 ```ts
-(bits1: Array, bits2: Array): Array
+(bits1: Array<0|1>, bits2: Array<0|1>): Array<0|1>
 ```
 
 Applies the bitwise exclusive `OR` operation, expects two arrays of the same size and returns a new one.
@@ -183,20 +184,20 @@ bitwise.bits.xor([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
 ### bits.reduceAnd
 
 ```ts
-(bits: Array): Integer
+(bits: Array<0|1>): 0|1
 ```
 
 Applies the bitwise `AND` operation on the given bits. Returns one bit. Throws if less than 2 bits are given.
 
 ```js
-bitwise.bits.reduceAnd([1,0,0,0,1,1,0,1])
+bitwise.bits.reduceAnd([1, 0, 0, 0, 1, 1, 0, 1])
 // 0
 ```
 
 ### bits.reduceNand
 
 ```ts
-(bits: Array): Integer
+(bits: Array<0|1>): 0|1
 ```
 
 Applies the `NAND` operation on the given bits. Returns one bit. Throws if less than 2 bits are given.
@@ -209,7 +210,7 @@ bitwise.bits.reduceNand([1, 0, 0, 0, 1, 1, 0, 1])
 ### bits.reduceNor
 
 ```ts
-(bits: Array): Integer
+(bits: Array<0|1>): 0|1
 ```
 
 Applies the `NOR` operation on the given bits. Returns one bit. Throws if less than 2 bits are given.
@@ -222,7 +223,7 @@ bitwise.bits.reduceNor([1, 0, 0, 0, 1, 1, 0, 1])
 ### bits.reduceOr
 
 ```ts
-(bits: Array): Integer
+(bits: Array<0|1>): 0|1
 ```
 
 Applies the `OR` operation on the given bits. Returns one bit.
@@ -236,7 +237,7 @@ bitwise.bits.reduceOr([1, 0, 0, 0, 1, 1, 0, 1])
 ### bits.reduceXnor
 
 ```ts
-(bits: Array): Integer
+(bits: Array<0|1>): 0|1
 ```
 
 Applies the `XNOR` operation on the given bits. Returns one bit. Throws if less than 2 bits are given.
@@ -249,7 +250,7 @@ bitwise.bits.reduceXnor([1, 0, 0, 0, 1, 1, 0, 1])
 ### bits.reduceXor
 
 ```ts
-(bits: Array): Integer
+(bits: Array<0|1>): 0|1
 ```
 
 Applies the `XOR` operation on the given bits. Returns one bit.
@@ -263,7 +264,7 @@ bitwise.bits.reduceXor([1, 0, 0, 0, 1, 1, 0, 1])
 ### bits.toBoolean
 
 ```ts
-(bits: Array): Array
+(bits: Array<0|1>): Array<boolean>
 ```
 
 Converts a bit array to a boolean array.
@@ -276,7 +277,7 @@ bitwise.bits.toBoolean([0, 1])
 ### bits.toString
 
 ```ts
-(bits: Array, spacing = 0, spacer = ' '): String
+(bits: Array<0|1>, spacing: number = 0, spacer: string = ' '): string
 ```
 
 Converts a bit `Array` to a `String`. If defined, inserts `spacer` every `spacing` characters, but never inserts it as the last substring.
@@ -298,27 +299,27 @@ import create from 'bitwise/buffer/create'
 ### buffer.create
 
 ```ts
-(bits: Array): Buffer
+(bits: Array<0|1>): Buffer
 ```
 
 Creates a new buffer and writes the given bits.
 
 ```js
-const buffer = bitwise.buffer.create([1,1,1,1, 0,0,0,1, 1,0,1,0]);
+const buffer = bitwise.buffer.create([1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0])
 // Buffer(1111 0001 1010 0000)
 ```
 
 ### buffer.modify
 
 ```ts
-(buffer: Buffer, newBits: Array, bitOffset = 0): void
+(buffer: Buffer, newBits: Array<0|1>, bitOffset: number = 0): void
 ```
 
 Modifies the buffer's bits to equal `newBits` starting at `bitOffset`.
 
 ```js
-const buffer = Buffer.from('A43A', 'hex');
-bitwise.buffer.modify(buffer, [0, 0, 0, 1, 0, 0, 1], 3);
+const buffer = Buffer.from('A43A', 'hex')
+bitwise.buffer.modify(buffer, [0, 0, 0, 1, 0, 0, 1], 3)
 // Buffer(1010 1001 0011 1010)
 ```
 
@@ -416,7 +417,7 @@ bitwise.buffer.xor(buffer1, buffer2, false)
 ### buffer.read
 
 ```ts
-(buffer: Buffer, bitOffset = 0, bitLength?: Integer): Array
+(buffer: Buffer, bitOffset: number = 0, bitLength?: number): Array<0|1>
 ```
 
 Returns an Array containing `bitLength` bits starting at `bitOffset`. If no `bitLength` is given, it's assumed to be the rest of the buffer.
@@ -427,25 +428,10 @@ bitwise.buffer.read(buffer, 12)
 // [0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1]
 ```
 
-### buffer.readCInt
-
-```ts
-(buffer: Buffer, bitOffset = 0, bitLength = 8): Integer
-```
-
-Converts a section of a buffer to a complementary integer.
-A complementary integer is like an unsigned integer, but always represents negative numbers.
-
-```js
-// buffer 11110110
-bitwise.buffer.readCInt(buffer, 3, 5)
-// -22
-```
-
 ### buffer.readInt
 
 ```ts
-(buffer: Buffer, bitOffset = 0, bitLength = 8): Integer
+(buffer: Buffer, bitOffset: number = 0, bitLength: number = 8): number
 ```
 
 Converts a section of a buffer to a signed integer.
@@ -459,7 +445,7 @@ bitwise.buffer.readInt(buffer, 3, 5)
 ### buffer.readUInt
 
 ```ts
-(buffer: Buffer, bitOffset = 0, bitLength = 8): Integer
+(buffer: Buffer, bitOffset: number = 0, bitLength: number = 8): number
 ```
 
 Converts a section of a buffer to an unsigned integer.
@@ -481,7 +467,7 @@ import read from 'bitwise/byte/read'
 ### byte.read
 
 ```ts
-(byte: Integer): Array
+(byte: UInt8): Array<0|1>
 ```
 
 Returns an Array of length 8 containing the read bits.
@@ -496,7 +482,7 @@ bitwise.byte.read(256)
 ### byte.write
 
 ```ts
-(bits: Array): Integer
+(bits: Array<0|1>): UInt8
 ```
 
 Returns a Byte (0-255) which represents the given bits.
@@ -518,7 +504,7 @@ import integer from 'bitwise/integer'
 ### integer.getBit
 
 ```ts
-(number: Integer, position: Integer): Integer
+(number: number, position: number): 0|1
 ```
 
 Gets the value of a specific bit.
@@ -531,7 +517,7 @@ bitwise.integer.getBit(128, 7)
 ### integer.setBit
 
 ```ts
-(number: Integer, position: Integer, value: Integer): Array
+(number: number, position: number, value: 0|1): Array<0|1>
 ```
 
 Sets the value of a specific bit.
@@ -544,7 +530,7 @@ bitwise.integer.setBit(128, 7, 0)
 ### integer.toggleBit
 
 ```ts
-(number: Integer, position: Integer): Array
+(number: number, position: number): Array<0|1>
 ```
 
 Toggles the value of a specific bit.
@@ -565,7 +551,7 @@ import read from 'bitwise/nibble/read'
 ### nibble.read
 
 ```ts
-(nibble: Integer): Array
+(nibble: UInt4): Array<0|1>
 ```
 
 Returns an Array of length 4 containing the read bits.
@@ -580,7 +566,7 @@ bitwise.nibble.read(42)
 ### nibble.write
 
 ```ts
-(nibble: Array): Integer
+(nibble: [<0|1>, <0|1>, <0|1>, <0|1>]): UInt4
 ```
 
 Returns a Nibble (`0-15`) which represents the given bits.
@@ -603,7 +589,7 @@ import toBits from 'bitwise/string/to-bits'
 ### string.toBits
 
 ```ts
-(string: String): Array
+(string: string): Array<0|1>
 ```
 
 Converts a string into an array of bits. Ignores all characters except `1` and `0`.
@@ -615,13 +601,21 @@ bitwise.string.toBits('10 10 12$%_.0')
 
 ## History
 
+### 2.0.0
+
+- refactor to typescript
+- remove `bitwise.buffer.readCInt()`
+
 ### 1.4.0
+
 - improve `require()` support
 
 ### 1.3.0
+
 - add `bits.toBoolean`
 
 ### 1.2.0
+
 - add `bits.reduceAnd`
 - add `bits.reduceNand`
 - add `bits.reduceNor`
@@ -630,29 +624,36 @@ bitwise.string.toBits('10 10 12$%_.0')
 - add `bits.reduceXor`
 
 ### 1.1.2
+
 - split up `buffer.operations`
 
 ### 1.1.1
+
 - split up `bits.operations`
 
 ### 1.1.0
+
 - add `integer.getBit`
 - add `integer.setBit`
 - add `integer.toggleBit`
 
 ### 1.0.0
+
 - rewrite in ES6
 - improve utilization of bitwise operators
 - improve API (**breaking change**)
 
 ### 0.2.0
+
 - Added buffer bitwise operations
 
 ### 0.1.2
+
 - Added nor, xnor, nand
 - Fixed bitwise operations modifying original array
 
 ### 0.1.0
+
 - **Re-ordered the arguments** in readInt, readCInt, readUInt
 - Added not, and, or, xor
 - Renamed flipBits to not
