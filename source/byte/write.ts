@@ -6,8 +6,8 @@ import { Byte, UInt8 } from '../types'
  * @example
  * byte.write([0,0,1,0,1,0,1,0]) => 42
  *
- * @param {Array} bits 8-bit unsigned integer
- * @return {Number}
+ * @param {Array} byte 8 bits
+ * @return {Number} 8-bit unsigned integer
  */
 export default (byte: Byte): UInt8 => {
 	if (!Array.isArray(byte) || byte.length !== 8)

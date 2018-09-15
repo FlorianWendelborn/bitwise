@@ -2,25 +2,21 @@
  * Applies a bitwise AND to the contents of two buffers. Returns a new buffer.
  *
  * @example
- * bitwise.buffer.and(buffer1, buffer2, false) => Buffer(buffer1 AND buffer2)
+ * bitwise.buffer.and(a, b, false) => Buffer(a AND b)
  *
- * @param {Buffer} buffer1 first buffer
- * @param {Buffer} buffer2 second buffer
+ * @param {Buffer} a first buffer
+ * @param {Buffer} b second buffer
  * @param {Boolean} isLooping loop through first buffer
- * @return {Buffer} buffer1 AND buffer2
+ * @return {Buffer} a AND b
  */
-export default (
-	buffer1: Buffer,
-	buffer2: Buffer,
-	isLooping: boolean = false
-): Buffer => {
-	const length = isLooping ? buffer2.length : buffer1.length
+export default (a: Buffer, b: Buffer, isLooping: boolean = false): Buffer => {
+	const length: number = isLooping ? b.length : a.length
 
-	const result = Buffer.alloc(length)
+	const result: Buffer = Buffer.alloc(length)
 
-	for (let i = 0; i < length; i++) {
-		const j = isLooping ? i % buffer1.length : i
-		result[i] = buffer1[j] & buffer2[i]
+	for (let i: number = 0; i < length; i++) {
+		const j = isLooping ? i % a.length : i
+		result[i] = a[j] & b[i]
 	}
 
 	return result
