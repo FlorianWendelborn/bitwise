@@ -23,15 +23,12 @@
 	],
 	"description": "Manipulates bits, nibbles, bytes, and buffers.",
 	"devDependencies": {
-		"@babel/cli": "^7.0.0-beta.38",
-		"@babel/core": "^7.0.0-beta.38",
-		"@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.38",
-		"@babel/preset-es2015": "^7.0.0-beta.38",
-		"babel-core": "^7.0.0-0",
-		"babel-jest": "^22.1.0",
+		"@types/jest": "^23.3.2",
 		"codecov": "^3.0.0",
 		"jest-cli": "^22.1.4",
-		"nodemon": "^1.14.11"
+		"ts-jest": "^23.1.4",
+		"tslint": "^5.11.0",
+		"typescript": "^3.0.3"
 	},
 	"homepage": "https://github.com/dodekeract/bitwise#readme",
 	"keywords": [
@@ -60,18 +57,37 @@
 	"license": "MIT",
 	"main": "index.js",
 	"name": "bitwise",
+	"jest": {
+		"roots": [
+			"<rootDir>/source"
+		],
+		"transform": {
+			"^.+\\.ts$": "ts-jest"
+		},
+		"testRegex": "\\.test\\.ts$",
+		"moduleFileExtensions": [
+			"ts",
+			"js"
+		]
+	},
+	"prettier": {
+		"semi": false,
+		"singleQuote": true,
+		"trailingComma": "es5",
+		"useTabs": true
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/dodekeract/bitwise.git"
 	},
 	"scripts": {
-		"build": "babel source --out-dir build && yarn run build:copy",
+		"build": "tsc && yarn run build:copy",
 		"build:copy": "cp package.json build && cp readme.md build && cp license.md build",
-		"coverage": "jest source --coverage",
+		"coverage": "jest --coverage",
 		"postpublish": "git tag $(node -p \"require('./package.json').version\") && git push --tags",
-		"test": "jest source",
+		"test": "jest",
 		"travis": "yarn run coverage; codecov",
-		"watch": "nodemon --watch source --exec \"yarn run test\""
+		"watch": "jest --watch"
 	},
 	"version": "1.5.2"
 }

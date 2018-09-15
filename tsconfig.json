@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es5",
+		"declaration": true,
+		"outDir": "./build",
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"noUnusedLocals": true
+	},
+	"include": ["source/**/*"]
+}
