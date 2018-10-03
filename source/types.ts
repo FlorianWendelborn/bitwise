@@ -1,6 +1,6 @@
 export type Bit = 0 | 1
-export type Bits = Array<Bit>
-export type BooleanBits = Array<boolean>
+export type Bits = Bit[]
+export type BooleanBits = boolean[]
 export type Byte = [Bit, Bit, Bit, Bit, Bit, Bit, Bit, Bit]
 export type Nibble = [Bit, Bit, Bit, Bit]
 
