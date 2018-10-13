@@ -10,6 +10,7 @@ import reduceOr from './reduce-or'
 import reduceXnor from './reduce-xnor'
 import reduceXor from './reduce-xor'
 import toBoolean from './to-boolean'
+import toHex from './to-hex'
 import toString from './to-string'
 import xnor from './xnor'
 import xor from './xor'
@@ -27,6 +28,7 @@ export {
 	reduceXnor,
 	reduceXor,
 	toBoolean,
+	toHex,
 	toString,
 	xnor,
 	xor,
@@ -45,6 +47,7 @@ export default {
 	reduceXnor,
 	reduceXor,
 	toBoolean,
+	toHex,
 	toString,
 	xnor,
 	xor,

@@ -2,6 +2,7 @@ export type Bit = 0 | 1
 export type Bits = Array<Bit>
 export type BooleanBits = Array<boolean>
 export type Byte = [Bit, Bit, Bit, Bit, Bit, Bit, Bit, Bit]
+export type HexArray = Array<UInt4>
 export type Nibble = [Bit, Bit, Bit, Bit]
 
 // @TODO: Find a better solution
