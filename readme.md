@@ -5,16 +5,16 @@
 </p>
 
 <p align="center">
-	<a href="https://travis-ci.org/dodekeract/bitwise/"><img src="https://travis-ci.org/dodekeract/bitwise.svg?branch=master"/></a>
-	<a href="https://codecov.io/gh/dodekeract/bitwise"><img src="https://img.shields.io/codecov/c/github/dodekeract/bitwise/master.svg"/></a>
-	<a href="https://inch-ci.org/github/dodekeract/bitwise"><img src="https://inch-ci.org/github/dodekeract/bitwise.svg"/></a>
-	<a href="https://codeclimate.com/github/dodekeract/bitwise/maintainability"><img src="https://api.codeclimate.com/v1/badges/5828648788cdc3b806ac/maintainability"/></a>
+	<a href="https://travis-ci.org/FlorianWendelborn/bitwise/"><img src="https://travis-ci.org/FlorianWendelborn/bitwise.svg?branch=master"/></a>
+	<a href="https://codecov.io/gh/FlorianWendelborn/bitwise"><img src="https://img.shields.io/codecov/c/github/FlorianWendelborn/bitwise/master.svg"/></a>
+	<a href="https://inch-ci.org/github/FlorianWendelborn/bitwise"><img src="https://inch-ci.org/github/FlorianWendelborn/bitwise.svg"/></a>
+	<a href="https://codeclimate.com/github/FlorianWendelborn/bitwise/maintainability"><img src="https://api.codeclimate.com/v1/badges/5828648788cdc3b806ac/maintainability"/></a>
 </p>
 
 <p align="center">
 	<a href="https://slack.dodekeract.com"><img src="https://slack.dodekeract.com/badge.svg"/></a>
 	<a href="https://npmjs.com/package/bitwise"><img src="https://img.shields.io/npm/dm/bitwise.svg"/></a>
-	<a href="https://npmjs.com/package/bitwise"><img src="https://david-dm.org/dodekeract/bitwise.svg"/></a>
+	<a href="https://npmjs.com/package/bitwise"><img src="https://david-dm.org/FlorianWendelborn/bitwise.svg"/></a>
 </p>
 
 ## Example

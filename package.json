@@ -1,11 +1,11 @@
 {
 	"author": {
-		"email": "1133858+dodekeract@users.noreply.github.com",
+		"email": "1133858+FlorianWendelborn@users.noreply.github.com",
 		"name": "Florian Wendelborn",
 		"url": "https://hello.dodekeract.com/npm/bitwise"
 	},
 	"bugs": {
-		"url": "https://github.com/dodekeract/bitwise/issues"
+		"url": "https://github.com/FlorianWendelborn/bitwise/issues"
 	},
 	"contributors": [
 		{
@@ -22,7 +22,7 @@
 		"tslint": "^5.11.0",
 		"typescript": "^3.0.3"
 	},
-	"homepage": "https://github.com/dodekeract/bitwise#readme",
+	"homepage": "https://github.com/FlorianWendelborn/bitwise#readme",
 	"jest": {
 		"moduleFileExtensions": [
 			"ts",
@@ -70,7 +70,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/dodekeract/bitwise.git"
+		"url": "git+https://github.com/FlorianWendelborn/bitwise.git"
 	},
 	"scripts": {
 		"build": "rm -rf build/* && tsc && yarn run build:copy",
