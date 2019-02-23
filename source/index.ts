@@ -7,4 +7,5 @@ import string from './string'
 
 export { bits, buffer, byte, integer, nibble, string }
 
-export default { bits, buffer, byte, integer, nibble, string }
+const bitwise = { bits, buffer, byte, integer, nibble, string }
+export default bitwise
