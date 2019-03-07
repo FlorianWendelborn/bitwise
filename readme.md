@@ -601,7 +601,7 @@ bitwise.string.toBits('10 10 12$%_.0')
 
 ## History
 
-### 2.0.2
+### 2.0.2–2.0.3
 
 - Add Support for Tree Shaking
 
