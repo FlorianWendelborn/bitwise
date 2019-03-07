@@ -14,6 +14,8 @@
 <p align="center">
 	<a href="https://npmjs.com/package/bitwise"><img src="https://img.shields.io/npm/dm/bitwise.svg"/></a>
 	<a href="https://npmjs.com/package/bitwise"><img src="https://david-dm.org/FlorianWendelborn/bitwise.svg"/></a>
+	<a href="https://bundlephobia.com/result?p=bitwise"><img src="https://img.shields.io/badge/tree--shaking-ready-success.svg"/></a>
+	<a href="https://bundlephobia.com/result?p=bitwise"><img src="https://img.shields.io/badge/side--effects-none-success.svg"/></a>
 	<a href="https://bundlephobia.com/result?p=bitwise"><img src="https://img.shields.io/bundlephobia/minzip/bitwise.svg"/></a>
 </p>
 
