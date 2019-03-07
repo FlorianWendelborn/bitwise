@@ -83,6 +83,7 @@
 		"travis": "yarn run coverage; codecov",
 		"watch": "jest --watch"
 	},
+	"sideEffects": false,
 	"types": "index.d.ts",
 	"version": "2.0.1"
 }
