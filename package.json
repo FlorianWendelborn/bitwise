@@ -61,6 +61,7 @@
 	],
 	"license": "MIT",
 	"main": "index.js",
+	"module": "esm/index.js",
 	"name": "bitwise",
 	"prettier": {
 		"semi": false,
@@ -73,7 +74,7 @@
 		"url": "git+https://github.com/FlorianWendelborn/bitwise.git"
 	},
 	"scripts": {
-		"build": "rm -rf build/* && tsc && yarn run build:copy",
+		"build": "rm -rf build/* && tsc && tsc -p ./tsconfig.treeshake.json && yarn run build:copy",
 		"build:copy": "cp package.json build && cp readme.md build && cp license.md build",
 		"clean": "read -p \"Are you sure you want to discard all uncommitted changes? (y/n)\" CONTINUE; if [ \"$CONTINUE\" = \"y\" ]; then git clean -dxf; else exit 1; fi && yarn install",
 		"coverage": "jest --coverage",
