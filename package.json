@@ -17,7 +17,7 @@
 	"devDependencies": {
 		"@types/jest": "^24.0.13",
 		"codecov": "^3.0.0",
-		"jest-cli": "^22.1.4",
+		"jest-cli": "^24.8.0",
 		"ts-jest": "^23.1.4",
 		"tslint": "^5.11.0",
 		"typescript": "^3.0.3"
