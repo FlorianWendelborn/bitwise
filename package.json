@@ -15,7 +15,7 @@
 	],
 	"description": "Manipulates bits, nibbles, bytes, and buffers.",
 	"devDependencies": {
-		"@types/jest": "^23.3.2",
+		"@types/jest": "^24.0.13",
 		"codecov": "^3.0.0",
 		"jest-cli": "^22.1.4",
 		"ts-jest": "^23.1.4",
