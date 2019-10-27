@@ -15,13 +15,14 @@
 	],
 	"description": "Manipulates bits, nibbles, bytes, and buffers.",
 	"devDependencies": {
-		"@types/jest": "^24.0.13",
-		"codecov": "^3.5.0",
-		"jest": "^24.8.0",
-		"jest-cli": "^24.8.0",
-		"ts-jest": "^24.0.2",
-		"tslint": "^5.17.0",
-		"typescript": "^3.5.1"
+		"@types/jest": "^24.0.20",
+		"@types/node": "^12.11.7",
+		"codecov": "^3.6.1",
+		"jest": "^24.9.0",
+		"jest-cli": "^24.9.0",
+		"ts-jest": "^24.1.0",
+		"tslint": "^5.20.0",
+		"typescript": "^3.6.4"
 	},
 	"homepage": "https://github.com/FlorianWendelborn/bitwise#readme",
 	"jest": {
