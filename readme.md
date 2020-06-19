@@ -8,7 +8,6 @@
 	<a href="https://travis-ci.org/FlorianWendelborn/bitwise/"><img src="https://travis-ci.org/FlorianWendelborn/bitwise.svg?branch=master"/></a>
 	<a href="https://codecov.io/gh/FlorianWendelborn/bitwise"><img src="https://img.shields.io/codecov/c/github/FlorianWendelborn/bitwise/master.svg"/></a>
 	<a href="https://codeclimate.com/github/FlorianWendelborn/bitwise/maintainability"><img src="https://api.codeclimate.com/v1/badges/a598d3d550af8f28ef85/maintainability"/></a>
-	<a href="https://slack.dodekeract.com"><img src="https://slack.dodekeract.com/badge.svg"/></a>
 </p>
 
 <p align="center">
