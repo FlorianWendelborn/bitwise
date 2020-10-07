@@ -1,6 +1,7 @@
 # mirror to .gitignore
 /coverage/
 /node_modules/
+.yarn/*
 # .npmignore-only
 .codeclimate.yml
 .travis.yml
