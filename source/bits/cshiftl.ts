@@ -7,7 +7,7 @@ import { Bits } from '../types'
  * cshiftl([1,0,1,1,0,1]) => [0,1,1,0,1,1]
  *
  * @param {Array} bits input data
- * @return {Array} [CHIFTL bits]
+ * @return {Array} [CSHIFTL bits]
  */
 export default (bits: Bits): Bits => {
     const result: Bits = []
