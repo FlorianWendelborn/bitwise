@@ -12,8 +12,8 @@ import { Bits } from '../types'
 export default (bits: Bits): Bits => {
     const result: Bits = []
 
-    result.push(bits[bits.length - 1])
-    for (let i: number = 0; i < bits.length - 1; i++) result.push(bits[i])
+    result[0] = bits.pop()
+    for (let i: number = 0; i < bits.length; i++) result[i + 1] = bits[i]
 
     return result
 }
