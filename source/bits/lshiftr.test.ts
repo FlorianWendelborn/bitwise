@@ -10,3 +10,4 @@ test('LSHIFTR', () => {
     const expected2: Bits = [0, 0, 0, 0, 1, 1, 1, 0]
     expect(lshiftr(bits2)).toEqual(expected2)
 })
+
