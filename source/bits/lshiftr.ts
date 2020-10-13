@@ -1,7 +1,7 @@
 import { Bit, Bits } from '../types'
 
 /**
- * Logiscal Shift Right
+ * Logical Shift Right
  * 
  * Shifts all given bits to right and returns the resulting bits
  *
