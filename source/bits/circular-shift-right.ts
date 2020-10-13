@@ -7,7 +7,7 @@ import { Bits } from '../types'
  * circularShiftRight([1,0,1,1,0,1]) => [1,1,0,1,1,0]
  *
  * @param {Array} bits input data
- * @return {Array} [CHIFTR bits]
+ * @return {Array} [CSHIFTR bits]
  */
 export default (bits: Bits): Bits => {
     const result: Bits = []
