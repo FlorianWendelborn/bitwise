@@ -1,4 +1,6 @@
 import and from './and'
+import arithmeticShiftLeft from './arithmetic-shift-left'
+import arithmeticShiftRight from './arithmetic-shift-right'
 import nand from './nand'
 import nor from './nor'
 import not from './not'
@@ -16,6 +18,8 @@ import xor from './xor'
 
 export {
 	and,
+	arithmeticShiftLeft,
+	arithmeticShiftRight,
 	nand,
 	nor,
 	not,
@@ -34,6 +38,8 @@ export {
 
 export default {
 	and,
+	arithmeticShiftLeft,
+	arithmeticShiftRight,
 	nand,
 	nor,
 	not,
