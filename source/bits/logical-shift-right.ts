@@ -14,8 +14,8 @@ import { Bit, Bits } from '../types'
 export default (bits: Bits): Bits => {
     const result: Bits = []
 
-    result.push(0 as Bit)
-    for (let i: number = 0; i < bits.length - 1; i++) result.push(bits[i])
+    result[0] = (0 as Bit)
+    for (let i: number = 0; i < bits.length - 1; i++) result[i + 1] = bits[i]
 
     return result
 }
