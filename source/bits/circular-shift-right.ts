@@ -4,7 +4,7 @@ import { Bits } from '../types'
  * Circular Shift Right
  *
  * @example
- * cshiftr([1,0,1,1,0,1]) => [1,1,0,1,1,0]
+ * circularShiftRight([1,0,1,1,0,1]) => [1,1,0,1,1,0]
  *
  * @param {Array} bits input data
  * @return {Array} [CHIFTR bits]

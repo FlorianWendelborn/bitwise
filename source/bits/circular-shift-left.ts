@@ -4,7 +4,7 @@ import { Bits } from '../types'
  * Circular Shift Left
  *
  * @example
- * cshiftl([1,0,1,1,0,1]) => [0,1,1,0,1,1]
+ * circularShiftLeft([1,0,1,1,0,1]) => [0,1,1,0,1,1]
  *
  * @param {Array} bits input data
  * @return {Array} [CHIFTL bits]
