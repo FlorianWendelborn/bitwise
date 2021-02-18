@@ -1,0 +1,21 @@
+name: CI
+on: push
+jobs:
+  jest:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+       node-version: '14'
+    - uses: actions/cache@v2
+      with:
+        path: |
+          **/node_modules
+        key: ${{ hashFiles('**/yarn.lock') }}
+    - name: Install modules
+      run: yarn install --immutable --immutable-cache --check-cache
+    - name: Test bitwise
+      run: yarn run test
+    - name: Build bitwise
+      run: yarn run build
