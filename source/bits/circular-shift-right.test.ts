@@ -1,12 +1,54 @@
 import { Bits } from '../types'
 import circularShiftRight from './circular-shift-right'
 
-test('CSHIFTR', () => {
-	const bits1: Bits = [1, 0, 0, 0, 1, 1, 0, 1]
-	const expected1: Bits = [1, 1, 0, 0, 0, 1, 1, 0]
-	expect(circularShiftRight(bits1)).toEqual(expected1)
+test('circularShiftRight with amount 1', () => {
+	const testCases: Array<[Bits, Bits]> = [
+		[
+			[1, 0, 0, 0, 1, 1, 0, 1],
+			[1, 1, 0, 0, 0, 1, 1, 0],
+		],
+		[
+			[0, 0, 0, 1, 1, 1, 1, 1],
+			[1, 0, 0, 0, 1, 1, 1, 1],
+		],
+	]
 
-	const bits2: Bits = [0, 0, 0, 1, 1, 1, 1, 1]
-	const expected2: Bits = [1, 0, 0, 0, 1, 1, 1, 1]
-	expect(circularShiftRight(bits2)).toEqual(expected2)
+	for (const [input, expectedResult] of testCases)
+		expect(circularShiftRight(input, 1)).toEqual(expectedResult)
+})
+
+test('circularShiftRight with amount 2', () => {
+	const testCases: Array<[Bits, Bits]> = [
+		[
+			[1, 0, 0, 0, 1, 1, 0, 1],
+			[0, 1, 1, 0, 0, 0, 1, 1],
+		],
+		[
+			[0, 0, 0, 1, 1, 1, 1, 1],
+			[1, 1, 0, 0, 0, 1, 1, 1],
+		],
+	]
+
+	for (const [input, expectedResult] of testCases)
+		expect(circularShiftRight(input, 2)).toEqual(expectedResult)
+})
+
+test('circularShiftRight with amount 3', () => {
+	const testCases: Array<[Bits, Bits]> = [
+		[
+			[1, 0, 0, 0, 1, 1, 0, 1],
+			[1, 0, 1, 1, 0, 0, 0, 1],
+		],
+		[
+			[0, 0, 0, 1, 1, 1, 1, 1],
+			[1, 1, 1, 0, 0, 0, 1, 1],
+		],
+	]
+
+	for (const [input, expectedResult] of testCases)
+		expect(circularShiftRight(input, 3)).toEqual(expectedResult)
+})
+
+test('circularShiftRight throws when amount too large', () => {
+	expect(() => circularShiftRight([0, 1], 3)).toThrow()
 })

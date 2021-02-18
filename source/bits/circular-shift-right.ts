@@ -1,4 +1,4 @@
-import { Bit, Bits } from '../types'
+import { Bits } from '../types'
 
 /**
  * Circular Shift Right
@@ -6,14 +6,20 @@ import { Bit, Bits } from '../types'
  * @example
  * circularShiftRight([1,0,1,1,0,1]) => [1,1,0,1,1,0]
  *
+ * @see {@link https://en.wikipedia.org/wiki/Circular_shift}
+ *
  * @param {Array} bits input data
- * @return {Array} [CSHIFTR bits]
+ * @param {number} amount how far should it be shifted
+ * @return {Array} [ROR bits]
  */
-export default (bits: Bits): Bits => {
+export default (bits: Bits, amount: number): Bits => {
 	const result: Bits = []
 
-	result[0] = bits.pop() as Bit
-	for (let i: number = 0; i < bits.length; i++) result[i + 1] = bits[i]
+	if (amount > bits.length)
+		throw new Error('shift amount can’t be larger than bits array length')
+
+	for (let i = 0; i < bits.length; i++)
+		result[(i + amount) % bits.length] = bits[i]
 
 	return result
 }

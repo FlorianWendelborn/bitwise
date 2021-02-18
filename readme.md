@@ -59,7 +59,7 @@ or
 ## Table of Contents
 
 - [bits](#bits)
-  - operations ([and](#bitsand), [nand](#bitsnand), [nor](#bitsnor), [not](#bitsnot), [or](#bitsor), [xnor](#bitsxnor), [xor](#bitsxor))
+  - operations ([and](#bitsand), [circularShiftLeft](#bitscircularshiftleft), [circularShiftRight](#bitscircularshiftright), [nand](#bitsnand), [nor](#bitsnor), [not](#bitsnot), [or](#bitsor), [xnor](#bitsxnor), [xor](#bitsxor))
   - reduce operations ([reduceAnd](#bitsreduceand), [reduceNand](#bitsreducenand), [reduceNor](#bitsreducenor), [reduceOr](#bitsreduceor), [reduceXnor](#bitsreducexnor), [reduceXor](#bitsreducexor))
   - [toString](#bitstostring)
 - [buffer](#buffer)
@@ -102,6 +102,32 @@ Applies the bitwise `AND` operation, expects two arrays of the same size and ret
 ```js
 bitwise.bits.and([1, 0, 0, 0, 1, 1, 0, 1], [0, 1, 1, 0, 0, 1, 0, 0])
 // [0, 0, 0, 0, 0, 1, 0, 0]
+```
+
+### bits.circularShiftLeft
+
+```ts
+(bits: Array<0|1>, amount: number): Array<0|1>
+```
+
+Applies the bitwise `ROL` operation, expects two arrays of the same size and a shift amount and returns a new one.
+
+```js
+bitwise.bits.circularShiftLeft([0, 0, 0, 1, 1, 1, 1, 1], 1)
+// [0, 0, 1, 1, 1, 1, 1, 0]
+```
+
+### bits.circularShiftRight
+
+```ts
+(bits: Array<0|1>, amount: number): Array<0|1>
+```
+
+Applies the bitwise `ROR` operation, expects two arrays of the same size and a shift amount and returns a new one.
+
+```js
+bitwise.bits.circularShiftRight([0, 0, 0, 1, 1, 1, 1, 1], 1)
+// [1, 0, 0, 0, 1, 1, 1, 1]
 ```
 
 ### bits.nand

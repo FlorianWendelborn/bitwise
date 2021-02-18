@@ -6,14 +6,20 @@ import { Bits } from '../types'
  * @example
  * circularShiftLeft([1,0,1,1,0,1]) => [0,1,1,0,1,1]
  *
+ * @see {@link https://en.wikipedia.org/wiki/Circular_shift}
+ *
  * @param {Array} bits input data
- * @return {Array} [CSHIFTL bits]
+ * @param {number} amount how far should it be shifted
+ * @return {Array} [ROL bits]
  */
-export default (bits: Bits): Bits => {
+export default (bits: Bits, amount: number): Bits => {
 	const result: Bits = []
 
-	for (let i: number = 1; i < bits.length; i++) result[i - 1] = bits[i]
-	result[bits.length - 1] = bits[0]
+	if (amount > bits.length)
+		throw new Error('shift amount can’t be larger than bits array length')
+
+	for (let i = 0; i < bits.length; i++)
+		result[(bits.length + i - amount) % bits.length] = bits[i]
 
 	return result
 }
