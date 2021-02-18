@@ -628,6 +628,11 @@ bitwise.string.toBits('10 10 12$%_.0')
 
 ## History
 
+### 2.1.0
+
+- Add `bits.circularShiftLeft` (#44 / #49) via @0xflotus
+- Add `bits.circularShiftRight` (#44 / #49) via @0xflotus
+
 ### 2.0.2–2.0.3
 
 - Add Support for Tree Shaking
