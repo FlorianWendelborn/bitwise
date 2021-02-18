@@ -1,4 +1,6 @@
 import and from './and'
+import circularShiftLeft from './circular-shift-left'
+import circularShiftRight from './circular-shift-right'
 import nand from './nand'
 import nor from './nor'
 import not from './not'
@@ -16,6 +18,8 @@ import xor from './xor'
 
 export {
 	and,
+	circularShiftLeft,
+	circularShiftRight,
 	nand,
 	nor,
 	not,
@@ -34,6 +38,8 @@ export {
 
 export default {
 	and,
+	circularShiftLeft,
+	circularShiftRight,
 	nand,
 	nor,
 	not,
