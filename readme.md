@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-	<a href="https://travis-ci.org/FlorianWendelborn/bitwise/"><img src="https://travis-ci.org/FlorianWendelborn/bitwise.svg?branch=master"/></a>
+	<a href="https://github.com/FlorianWendelborn/bitwise/actions/"><img src="https://img.shields.io/github/workflow/status/FlorianWendelborn/bitwise/CI"/></a>
 	<a href="https://codecov.io/gh/FlorianWendelborn/bitwise"><img src="https://img.shields.io/codecov/c/github/FlorianWendelborn/bitwise/master.svg"/></a>
 	<a href="https://codeclimate.com/github/FlorianWendelborn/bitwise/maintainability"><img src="https://api.codeclimate.com/v1/badges/a598d3d550af8f28ef85/maintainability"/></a>
 </p>
