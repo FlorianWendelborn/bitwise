@@ -6,7 +6,6 @@
 
 <p align="center">
 	<a href="https://github.com/FlorianWendelborn/bitwise/actions/"><img src="https://img.shields.io/github/workflow/status/FlorianWendelborn/bitwise/CI?label=actions&logo=github"/></a>
-	<a href="https://travis-ci.org/FlorianWendelborn/bitwise/"><img src="https://img.shields.io/travis/FlorianWendelborn/bitwise?logo=travis"/></a>
 	<a href="https://codecov.io/gh/FlorianWendelborn/bitwise"><img src="https://img.shields.io/codecov/c/github/FlorianWendelborn/bitwise/master.svg"/></a>
 	<a href="https://openbase.com/js/bitwise?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge"><img src="https://badges.openbase.com/js/rating/bitwise.svg"/></a>
 </p>
