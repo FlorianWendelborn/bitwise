@@ -4,7 +4,6 @@
 .yarn/*
 # .npmignore-only
 .codeclimate.yml
-.travis.yml
 .gitignore
 tsconfig.json
 yarn.lock

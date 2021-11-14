@@ -88,7 +88,6 @@
 		"custom-publish": "yarn run clean && yarn run build && yarn run test && echo \"cd build && npm publish\"",
 		"postpublish": "git tag $(node -p \"require('./package.json').version\") && git push --tags",
 		"test": "jest",
-		"travis": "yarn run coverage; codecov",
 		"watch": "jest --watch"
 	},
 	"sideEffects": false,
