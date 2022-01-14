@@ -7,15 +7,16 @@
 <p align="center">
 	<a href="https://github.com/FlorianWendelborn/bitwise/actions/"><img src="https://img.shields.io/github/workflow/status/FlorianWendelborn/bitwise/CI?label=actions&logo=github"/></a>
 	<a href="https://codecov.io/gh/FlorianWendelborn/bitwise"><img src="https://img.shields.io/codecov/c/github/FlorianWendelborn/bitwise/master.svg"/></a>
-	<a href="https://openbase.com/js/bitwise?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge"><img src="https://badges.openbase.com/js/rating/bitwise.svg"/></a>
+	<a href="https://npmjs.com/package/bitwise"><img src="https://img.shields.io/npm/dm/bitwise.svg"/></a>
+	<a href="https://npmjs.com/package/bitwise"><img src="https://img.shields.io/npm/dt/bitwise.svg"/></a>
+	<a href="https://bundlephobia.com/result?p=bitwise"><img src="https://img.shields.io/bundlephobia/minzip/bitwise.svg"/></a>
 </p>
 
 <p align="center">
-	<a href="https://npmjs.com/package/bitwise"><img src="https://img.shields.io/npm/dm/bitwise.svg"/></a>
-	<a href="https://npmjs.com/package/bitwise"><img src="https://img.shields.io/npm/dt/bitwise.svg"/></a>
+	<a href="https://npmjs.com/package/bitwise"><img src="https://img.shields.io/badge/dependencies-none-success.svg"/></a>
 	<a href="https://bundlephobia.com/result?p=bitwise"><img src="https://img.shields.io/badge/tree--shaking-ready-success.svg"/></a>
 	<a href="https://bundlephobia.com/result?p=bitwise"><img src="https://img.shields.io/badge/side--effects-none-success.svg"/></a>
-	<a href="https://bundlephobia.com/result?p=bitwise"><img src="https://img.shields.io/bundlephobia/minzip/bitwise.svg"/></a>
+	<a href="https://openbase.com/js/bitwise?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge"><img src="https://badges.openbase.com/js/rating/bitwise.svg"/></a>
 </p>
 
 ## Example
