@@ -17,6 +17,7 @@
 	<a href="https://bundlephobia.com/result?p=bitwise"><img src="https://img.shields.io/badge/tree--shaking-ready-success.svg"/></a>
 	<a href="https://bundlephobia.com/result?p=bitwise"><img src="https://img.shields.io/badge/side--effects-none-success.svg"/></a>
 	<a href="https://openbase.com/js/bitwise?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge"><img src="https://badges.openbase.com/js/rating/bitwise.svg"/></a>
+	<a href="https://kandi.openweaver.com/typescript/FlorianWendelborn/bitwise"><img src="https://kandi.openweaver.com/badges/xray.svg"/></a>
 </p>
 
 ## Example
