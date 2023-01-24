@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-	<a href="https://github.com/FlorianWendelborn/bitwise/actions/"><img src="https://img.shields.io/github/workflow/status/FlorianWendelborn/bitwise/CI?label=actions&logo=github"/></a>
+	<a href="https://github.com/FlorianWendelborn/bitwise/actions/"><img src="https://img.shields.io/github/actions/workflow/status/FlorianWendelborn/bitwise/jest.yml?branch=main&label=actions&logo=github"/></a>
 	<a href="https://codecov.io/gh/FlorianWendelborn/bitwise"><img src="https://img.shields.io/codecov/c/github/FlorianWendelborn/bitwise/master.svg"/></a>
 	<a href="https://npmjs.com/package/bitwise"><img src="https://img.shields.io/npm/dm/bitwise.svg"/></a>
 	<a href="https://npmjs.com/package/bitwise"><img src="https://img.shields.io/npm/dt/bitwise.svg"/></a>
