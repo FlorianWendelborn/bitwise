@@ -10,7 +10,7 @@ test('with spacing', () => {
 		bits.toString(
 			'10100011000100001011000001001101111100001101100100000100111000011110000100100100'
 				.split('')
-				.map(i => parseInt(i, 10)),
+				.map((i) => parseInt(i, 10)),
 			4
 		)
 	).toBe(

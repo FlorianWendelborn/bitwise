@@ -1,11 +1,5 @@
 # mirror to .npmignore
 /coverage/
 /node_modules/
-.yarn/*
 # .gitignore-only
 /build/
-!.yarn/cache
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions

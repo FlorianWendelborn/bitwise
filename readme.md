@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-	<a href="https://github.com/FlorianWendelborn/bitwise/actions/"><img src="https://img.shields.io/github/actions/workflow/status/FlorianWendelborn/bitwise/jest.yml?branch=main&label=actions&logo=github"/></a>
+	<a href="https://github.com/FlorianWendelborn/bitwise/actions/"><img src="https://img.shields.io/github/actions/workflow/status/FlorianWendelborn/bitwise/push.yml?branch=main&label=actions&logo=github"/></a>
 	<a href="https://codecov.io/gh/FlorianWendelborn/bitwise"><img src="https://img.shields.io/codecov/c/github/FlorianWendelborn/bitwise/master.svg"/></a>
 	<a href="https://npmjs.com/package/bitwise"><img src="https://img.shields.io/npm/dm/bitwise.svg"/></a>
 	<a href="https://npmjs.com/package/bitwise"><img src="https://img.shields.io/npm/dt/bitwise.svg"/></a>
@@ -49,13 +49,19 @@ byte.read(42)
 ## Installation
 
 <pre>
-<a href="https://yarnpkg.com">yarn</a> add <a href="https://yarnpkg.com/en/package/bitwise">bitwise</a>
+<a href="https://bun.sh">bun</a> add bitwise
 </pre>
 
 or
 
 <pre>
-<a href="https://npmjs.com">npm</a> i <a href="https://npmjs.com/package/bitwise">bitwise</a>
+<a href="https://yarnpkg.com">yarn</a> add bitwise
+</pre>
+
+or
+
+<pre>
+<a href="https://npmjs.com">npm</a> install --save bitwise
 </pre>
 
 ## Table of Contents
@@ -628,7 +634,26 @@ bitwise.string.toBits('10 10 12$%_.0')
 // [1, 0, 1, 0, 1, 0]
 ```
 
+### Development
+
+`bitwise` uses [`bun`](https://bun.sh) instead of `node`
+
+```sh
+# install dependencies
+bun install
+
+# run tests
+bun test
+
+# build
+bun run build
+```
+
 ## History
+
+### 2.2.0
+
+- Switch to `bun`
 
 ### 2.1.0
 

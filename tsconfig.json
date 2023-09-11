@@ -1,6 +1,7 @@
 {
 	"compilerOptions": {
 		"declaration": true,
+		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"module": "commonjs",
 		"noImplicitAny": true,
@@ -9,7 +10,7 @@
 		"strict": true,
 		"strictNullChecks": true,
 		"target": "es5",
-		"types": ["node"]
+		"types": ["bun-types"]
 	},
 	"exclude": ["source/**/*.test.ts"],
 	"include": ["source/**/*.ts"]

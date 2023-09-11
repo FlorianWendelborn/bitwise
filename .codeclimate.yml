@@ -1,3 +1,2 @@
 exclude_patterns:
   - '**/*.test.ts'
-  - '.yarn/'
