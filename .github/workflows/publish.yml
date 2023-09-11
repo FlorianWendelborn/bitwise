@@ -1,0 +1,31 @@
+name: Publish Package to NPM
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: oven-sh/setup-bun@v1
+
+      - run: bun install
+
+      # update npm for provenance support
+      - run: npm --version && npm install -g npm && npm --version
+
+      # make sure this publish doesn’t break anything
+      - run: bun test
+
+      - run: bun run build
+
+      - name: publish
+        run: cd build && npm publish --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

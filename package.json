@@ -62,10 +62,7 @@
 	"scripts": {
 		"build": "rm -rf build && tsc && tsc -p ./tsconfig.treeshake.json && bun run build:copy",
 		"build:copy": "cp package.json build && cp readme.md build && cp license.md build",
-		"clean": "read -p \"Are you sure you want to discard all uncommitted changes? (y/n)\" CONTINUE; if [ \"$CONTINUE\" = \"y\" ]; then git clean -dxf; else exit 1; fi && bun install",
 		"coverage": "bun test --coverage",
-		"custom-publish": "bun run clean && bun run build && bun test && echo \"cd build && npm publish\"",
-		"postpublish": "git tag $(bun repl -p \"require('./package.json').version\") && git push --tags",
 		"test": "bun test",
 		"watch": "bun test --watch"
 	},
