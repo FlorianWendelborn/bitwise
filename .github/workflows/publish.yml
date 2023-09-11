@@ -29,8 +29,6 @@ jobs:
 
       - run: bun run build
 
-      - run: echo "//registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}" >> .npmrc
-
       - name: publish
         run: cd build && npm publish --provenance
         env:
