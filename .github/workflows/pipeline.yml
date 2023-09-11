@@ -1,0 +1,27 @@
+name: Pipeline
+
+on:
+  push:
+    branches: [main]
+
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: oven-sh/setup-bun@v1
+
+      - run: bun install
+
+      # update npm for provenance support
+      - run: npm --version && npm install -g npm && npm --version
+
+      - run: bun test
+
+      - run: bun run build
+
+      - name: dry-publish
+        run: cd build && npm publish --provenance --dry-run
