@@ -653,7 +653,9 @@ bun run build
 
 ### 2.2.0
 
-- Switch to `bun`
+- add npm provenance support to package
+- (internal) add auto-publish from pipelines
+- (internal) Switch to `bun`
 
 ### 2.1.0
 
