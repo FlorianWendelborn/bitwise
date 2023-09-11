@@ -1,8 +1,3 @@
 {
-	"search.exclude": {
-		"**/.pnp.*": true,
-		"**/.yarn": true
-	},
-	"typescript.enablePromptUseWorkspaceTsdk": true,
-	"typescript.tsdk": ".yarn/sdks/typescript/lib"
+	"editor.formatOnSave": true
 }

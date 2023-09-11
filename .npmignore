@@ -1,9 +1,8 @@
 # mirror to .gitignore
 /coverage/
 /node_modules/
-.yarn/*
 # .npmignore-only
 .codeclimate.yml
 .gitignore
 tsconfig.json
-yarn.lock
+bun.lockb

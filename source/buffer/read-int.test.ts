@@ -17,7 +17,7 @@ test('2-7 bit', () => {
 		{ length: 6, offset: 2, expected: -10 },
 		{ length: 7, offset: 1, expected: -10 },
 	]
-	tests.forEach(test => {
+	tests.forEach((test) => {
 		const result: number = bitwise.buffer.readInt(
 			buffer,
 			test.offset,
@@ -40,7 +40,7 @@ test('8-15 bit', () => {
 		{ length: 14, offset: 2, expected: -2306 },
 		{ length: 15, offset: 1, expected: -2306 },
 	]
-	tests.forEach(test => {
+	tests.forEach((test) => {
 		const result: number = bitwise.buffer.readInt(
 			buffer,
 			test.offset,
@@ -62,7 +62,7 @@ test('16-23 bit', () => {
 		{ length: 22, offset: 2, expected: -590202 },
 		{ length: 23, offset: 1, expected: -590202 },
 	]
-	tests.forEach(test => {
+	tests.forEach((test) => {
 		const result: number = bitwise.buffer.readInt(
 			buffer,
 			test.offset,
@@ -84,7 +84,7 @@ test('24-31 bit', () => {
 		{ length: 30, offset: 2, expected: -151091512 },
 		{ length: 31, offset: 1, expected: -151091512 },
 	]
-	tests.forEach(test => {
+	tests.forEach((test) => {
 		const result: number = bitwise.buffer.readInt(
 			buffer,
 			test.offset,
