@@ -651,6 +651,11 @@ bun run build
 
 ## History
 
+### 2.2.1
+
+- remove `typescript` from `dependencies` in favor of `devDependencies`
+- (internal) update and apply prettier
+
 ### 2.2.0
 
 - add npm provenance support to package
