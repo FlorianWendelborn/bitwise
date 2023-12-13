@@ -1,11 +1,9 @@
 type UnionRange<
 	N extends number,
 	Result extends Array<number> = [],
-> =
-(Result['length'] extends N
+> = Result['length'] extends N
 	? Result[number]
 	: UnionRange<N, [...Result, Result['length']]>
-)
 
 export type Bit = 0 | 1
 export type Bits = Array<Bit>

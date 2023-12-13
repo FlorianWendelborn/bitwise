@@ -13,13 +13,11 @@
 			"url": "https://github.com/HubertusWeber"
 		}
 	],
-	"dependencies": {
-		"typescript": "^5.2.2"
-	},
 	"description": "Manipulates bits, nibbles, bytes, and buffers.",
 	"devDependencies": {
 		"bun-types": "^1.0.1",
-		"prettier": "^3.0.3"
+		"prettier": "^3.0.3",
+		"typescript": "^5.3.3"
 	},
 	"homepage": "https://github.com/FlorianWendelborn/bitwise#readme",
 	"keywords": [
@@ -68,5 +66,5 @@
 	},
 	"sideEffects": false,
 	"types": "index.d.ts",
-	"version": "2.2.0"
+	"version": "2.2.1"
 }
